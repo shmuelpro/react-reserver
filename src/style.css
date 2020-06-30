@@ -1,0 +1,16 @@
+.row_cell {
+    border: 1px solid #eaeaea;
+    color: hsl(0, 0%, 0%);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: white;
+}
+
+.row {
+    line-height: 1;
+}
