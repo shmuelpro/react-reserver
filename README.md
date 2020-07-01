@@ -1,4 +1,7 @@
-# react-reserver
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/3017787/86244313-759bbb80-bbb0-11ea-9050-6efeb50f0ee7.png" alt="react reserver" />
+</p>
+<h1 align="center">react-reserver</h1>
 
 > A grid allowing to visualize reservations in a system
 
@@ -15,13 +18,12 @@ npm install --save react-reserver
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-reserver'
+import Reserver from 'react-reserver'
 import 'react-reserver/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+function App(){
+
+  return <Reserver />
 }
 ```
 
