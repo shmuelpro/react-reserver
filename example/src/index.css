@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.default-bar{
+  background:#B0F4E6;
+  border-left: solid 1px #0D0221;
+
+}

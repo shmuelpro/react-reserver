@@ -1,7 +1,14 @@
-import { ExampleComponent } from '.'
 
-describe('ExampleComponent', () => {
-  it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Reserver from './index'
+describe('Header', () => {
+  test('"How it works" link points to the correct page', () => {
+    render(
+      
+        <Reserver />
+   
+    );
+    
+  });
+});

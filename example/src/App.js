@@ -1,7 +1,8 @@
-import React,{useState,useRef} from 'react'
+import React, { useState, useRef } from 'react'
 
 import Reserver, { Bar, actionTypes, useReserver, reserverReducer, getPosition, evaluatePosition, createBar, resizeBar } from 'react-reserver'
 import { bars as testBars } from './testData'
+import moment from 'moment';
 import 'react-reserver/dist/index.css'
 
 
@@ -24,7 +25,7 @@ const App = () => {
   const [height, setHeight] = useState(500)
   const [dimension, setDimension] = useState(25);
 
-  const gDate = useRef(new Date());
+  const [globalDate,setGlobalDate] = useState(moment(new Date()))
 
 
   function moveBar(newLocation) {
@@ -43,86 +44,98 @@ const App = () => {
 
 
   return <div><Reserver
-  style={{ display: "inline-block" }}
-  rowTitles={() => {
-  return titles.map((c, i) => {
-    if (c === null) {
-      return null;
+    style={{ display: "inline-block" }}
+    rowTitles={() => {
+      return titles.map((c, i) => {
+        if (c === null) {
+          return null;
+        }
+        return <button onClick={() => {
+          let ntitles = [...titles];
+          ntitles.push("asd")
+          setTitles(ntitles)
+        }} style={{ background: "orange" }}>{i + 1}{c}</button>
+
+      })
+    }}
+    rowTitleWidth={widthtitle}
+    headRow={(columnCount) => {
+
+      var z = [];
+      var x = new Date();
+
+
+
+      for (var i = 0; i < 10; i++) {
+        var y = x.getDate();
+        z.push(y);
+        x.setDate(y + 1)
+
+      }
+
+      return z;
+
+      return headRow.map((r) => {
+        return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
+
+      })
+    }}
+    mouseLeaveGrid={() => { doneEditing() }}
+    mouseUpCell={(props) => {
+
+
+      let tcontent = { ...content }
+      tcontent[`r${props.cell.row}c${props.cell.column}`] = <div style={{ background: "purple" }}>test</div>;
+      setContent(tcontent)
+
+      doneEditing()
+    }}
+    mouseEnterCell={(props) => {
+
+      const nBars = resizeBar(bars, props)
+      
+      nBars.forEach((bar)=>{
+        editBar(bar)
+      })
     }
-    return <button onClick={() => {
-      let ntitles = [...titles];
-      ntitles.push("asd")
-      setTitles(ntitles)
-    }} style={{ background: "orange" }}>{i + 1}{c}</button>
 
-  })
-}}
-  rowTitleWidth={widthtitle}
-  headRow={(columnCount) => {
-  
-  var z = [];
-  var x = new Date();
+    }
+    mouseDownCell={(props) => {
 
+      
+      console.log(props)
 
+      let newbar = createBar(props.dimension, props.cell);
+      addBar(newbar)
+    }
+    }
+    mouseCellDrop={(props) => { moveBar(props.cell) }}
+    width={document.documentElement.clientWidth}
+    height={height}
+    content={content}
+    dimension={dimension}
+  >
+    {({ rowCount, rowTitleWidth, dimension }) => {
 
-  for (var i = 0; i < 10; i++) {
-    var y = x.getDate();
-    z.push(y);
-    x.setDate(y + 1)
+      return bars.map((bar) => {
 
-  }
+        return (rowCount > bar.row) && <Bar key={bar.id} 
+          {...bar}
+          dimension={dimension}
+          onDragStart={() => { editBar({ ...bar, editing: true }) }}
+          onClick={() => { console.log("delete", bar); deleteBar({ id: bar.id }) }}
 
-  return z;
+          onMouseOver={() => { }}
+          style={{...bar.style, ...getPosition(rowTitleWidth, bar.row, bar.column, dimension)}}
 
-  return headRow.map((r) => {
-    return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
+          >
+          <span style={{ position: "absolute" }}>{bar.children}</span>
+        </Bar>
+      })
 
-  })
-}}
-  mouseLeaveGrid={() => { doneEditing() }}
-  mouseUpCell={(props) => {
+    }}
 
-
-  let tcontent = { ...content }
-  tcontent[`r${props.cell.row}c${props.cell.column}`] = <div style={{ background: "purple" }}>test</div>;
-  setContent(tcontent)
-
-  doneEditing()
-}}
-  mouseEnterCell={(props) => { resizeBar(editBar, bars, props) }}
-  mouseDownCell={(props) => {
-
-    console.log(gDate.current.getUTCDate());
-    console.log(props)
-
-  let newbar = createBar(props.dimension, props.cell);
-  addBar(newbar)
-}
-}
-  mouseCellDrop={(props) => { moveBar(props.cell) }}
-  width={document.documentElement.clientWidth}
-  height={height}
-  content={content}
-  dimension={dimension}
->
-{({ rowCount, rowTitleWidth, dimension }) => {
-
-  return bars.map((bar) => {
-
-    return (rowCount > bar.row) && <Bar key={bar.id}
-      dimension={dimension}
-      onDragStart={() => { editBar({ ...bar, editing: true }) }}
-      onClick={() => { console.log("delete", bar); deleteBar({ id: bar.id }) }}
-
-      onMouseOver={() => { }}
-      {...bar} {...getPosition(rowTitleWidth, bar.row, bar.column, dimension)} >
-      <span style={{ position: "absolute" }}>{bar.children}</span>
-    </Bar>
-  })
-
-}}
-
-</Reserver> </div>
+  </Reserver> </div>
 }
 
 export default App

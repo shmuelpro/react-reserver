@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useState} from 'react';
 import styles from './style.css'
 export default function Head(props) {
 
@@ -15,10 +15,10 @@ export default function Head(props) {
 
 
 
-    return (<div  style={{ height: props.dimension, display: "flex" }}>
+    return (<div  role="columnheader" style={{ height: props.dimension, display: "flex" }}>
         <div className={styles.row_cell} style={{ width: props.rowTitleWidth, height: props.dimension + "px" }} />
         {headRow.map((headitem, i) => {
-            return <div key={i} style={{ width: props.dimension + "px", height: props.dimension + "px" }} className={styles.row_cell}>{headitem}</div>;
+            return <div aria-colindex={i} key={i} style={{ width: props.dimension + "px", height: props.dimension + "px" }} className={styles.row_cell}>{headitem}</div>;
         })
         }</div>)
 

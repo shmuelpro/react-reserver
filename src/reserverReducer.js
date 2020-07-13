@@ -1,12 +1,25 @@
 import actionTypes from './actionTypes'
-import { makeId, evaluatePosition } from './helpers'
+
 export default function reserverReducer(state, action) {
     switch (action.type) {
 
         case actionTypes.edit: {
             let nBars = [...state.bars];
             let bIndex = nBars.findIndex(bar => { return action.payload.id === bar.id });
+            
+            let otherBars = [...nBars].splice(1,bIndex);
+
+            otherBars.forEach((b)=>{
+                console.log(b)
+
+            })
+
             nBars[bIndex] = action.payload;
+
+
+
+
+
             return { ...state, bars: nBars };
 
         }
@@ -21,6 +34,12 @@ export default function reserverReducer(state, action) {
 
 
             return { ...state, bars: bars, isEditing: true };
+        }
+        case actionTypes.setBars: {
+
+
+
+            return { ...state, bars: action.payload.bars };
         }
 
         case actionTypes.delete: {
@@ -40,7 +59,10 @@ export default function reserverReducer(state, action) {
                 nBars = nBars.map((bar) => {
                     if (bar.editing) {
 
-                        return { ...bar, editing: false, pointerEvents: "auto" };
+                        let barStyle = { ...bar.style };
+                        barStyle.pointerEvents = "auto";
+
+                        return { ...bar, editing: false, style: barStyle };
                     }
                     return bar;
 
