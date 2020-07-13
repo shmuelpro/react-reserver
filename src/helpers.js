@@ -9,6 +9,11 @@ export function makeId(length = 15) {
   return text;
 
 }
+export const isBetween = (min,max,num)=>{
+
+  return(num >= min && max >= num);
+  }
+  
 
 export function validForBar(number){
 

@@ -1,4 +1,5 @@
 import actionTypes from './actionTypes'
+import { isBetween } from './helpers'
 
 export default function reserverReducer(state, action) {
     switch (action.type) {
@@ -6,11 +7,30 @@ export default function reserverReducer(state, action) {
         case actionTypes.edit: {
             let nBars = [...state.bars];
             let bIndex = nBars.findIndex(bar => { return action.payload.id === bar.id });
-            
-            let otherBars = [...nBars].splice(1,bIndex);
 
-            otherBars.forEach((b)=>{
-                console.log(b)
+            let otherBars = [...nBars];
+            otherBars.splice(bIndex, 1)
+            // console.log(otherBars)
+            //console.log(nBars)
+            otherBars.forEach((b) => {
+                //console.log(nBars[bIndex], b)
+                if (nBars[bIndex].row === b.row) {
+
+
+                    let bTotal = b.column + b.length;
+                    let rowTotal = nBars[bIndex].column + nBars[bIndex].length;
+             
+                   console.log(isBetween(nBars[bIndex].column, rowTotal,bTotal))
+                    //one bar is larger than the other it doesnt work. 
+                    if (isBetween(b.column, bTotal, nBars[bIndex].column) || isBetween(b.column, bTotal, rowTotal) ||isBetween(nBars[bIndex].column, rowTotal,bTotal)||isBetween(nBars[bIndex].column, rowTotal, b.column)) {
+
+                        console.log("collll")
+                    }
+
+                    console.log(b.column, b.length, b.column + b.length)
+                    console.log(nBars[bIndex].column, nBars[bIndex].length, nBars[bIndex].column + nBars[bIndex].length)
+
+                }
 
             })
 

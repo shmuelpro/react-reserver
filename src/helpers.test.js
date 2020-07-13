@@ -1,8 +1,14 @@
-import { makeId,getColumnCount,evaluatePosition,validForBar,getRowCount } from './helpers'
+import { makeId,getColumnCount,evaluatePosition,validForBar,getRowCount,isBetween } from './helpers'
 
 test('calculate number of columns based on width ', () => {
     
     expect(getColumnCount(20, 500, 80)).toBe(21);
+});
+
+test('number should be in between two other numbers ', () => {
+    
+    expect(isBetween(20, 500, 80)).toBe(true);
+    expect(isBetween(20, 30, 280)).toBe(false);
 });
 
 
