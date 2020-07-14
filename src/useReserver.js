@@ -1,37 +1,39 @@
-import {  useReducer} from 'react';
+import { useReducer } from 'react'
 import actionTypes from './actionTypes'
 function useReserver(reducer, initialState) {
+  const [{ bars, isEditing }, dispatch] = useReducer(reducer, {
+    bars: initialState,
+    isEditing: false
+  })
 
-    const [{ bars, isEditing }, dispatch] = useReducer(reducer, { bars: initialState, isEditing: false, })
+  const addBar = (props) => {
+    return dispatch({ payload: props, type: actionTypes.add })
+  }
 
-    const addBar = (props) => {
+  const editBar = (props) => {
+    return dispatch({ payload: props, type: actionTypes.edit })
+  }
 
-        return dispatch({ payload: props, type: actionTypes.add })
-    }
+  const deleteBar = (props) => {
+    return dispatch({ payload: props, type: actionTypes.delete })
+  }
 
-    const editBar = (props) => {
-        return dispatch({ payload: props, type: actionTypes.edit })
-    }
+  const doneEditing = (props) => {
+    return dispatch({ type: actionTypes.doneEditing })
+  }
 
-    const deleteBar = (props) => {
-        return dispatch({ payload: props, type: actionTypes.delete })
-    }
+  const addToEditing = (props) => {
+    return dispatch({ payload: props, type: actionTypes.addToEditing })
+  }
 
-
-    const doneEditing = (props) => {
-        return dispatch({ type: actionTypes.doneEditing })
-    }
-
-    const addToEditing =(props) => {
-        return dispatch({payload:props, type: actionTypes.addToEditing })
-    }
-
-
-
-    return { bars, isEditing, addBar,  editBar, doneEditing, deleteBar , addToEditing}
+  return {
+    bars,
+    isEditing,
+    addBar,
+    editBar,
+    doneEditing,
+    deleteBar,
+    addToEditing
+  }
 }
-
-
-export default useReserver;
-
-
+export default useReserver

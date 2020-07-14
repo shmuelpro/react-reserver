@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
-import Reserver, { Bar, actionTypes, useReserver, reserverReducer, getPosition, evaluatePosition, createBar, resizeBar } from 'react-reserver'
+import Reserver, { Bar, useReserver, reserverReducer, getPosition, createBar, resizeBar } from 'react-reserver'
 import { bars as testBars } from './testData'
-import moment from 'moment';
+//import moment from 'moment';
 import 'react-reserver/dist/index.css'
 
 
@@ -10,22 +10,22 @@ import 'react-reserver/dist/index.css'
 
 const App = () => {
 
-  const [headRow, setHeadRow] = useState([123, 1, 2, null, null, 123]);
+  //const [headRow, setHeadRow] = useState([123, 1, 2, null, null, 123]);
   const [content, setContent] = useState({
     "r0c0": <span style={{ background: "green", width: "20px", height: "20px", display: "block" }}></span>, "r2c1": <span style={{ fontSize: "10px" }}>150</span>
   });
 
   const [titles, setTitles] = useState(["Golf Cart 1", null, "Golf Cart 2",]);
-  const [resWidth, setResWidth] = useState(600);
+  //const [resWidth, setResWidth] = useState(600);
 
   const { addBar, editBar, doneEditing, deleteBar, bars } = useReserver(reserverReducer, testBars);
 
-  const [widthtitle, setWidthtitle] = useState(80)
+  const [widthtitle] = useState(80)
 
-  const [height, setHeight] = useState(500)
-  const [dimension, setDimension] = useState(25);
+  const [height] = useState(500)
+  const [dimension] = useState(25);
 
-  const [globalDate,setGlobalDate] = useState(moment(new Date()))
+  //const [globalDate,setGlobalDate] = useState(moment(new Date()))
 
 
   function moveBar(newLocation) {
@@ -75,10 +75,10 @@ const App = () => {
 
       return z;
 
-      return headRow.map((r) => {
+     /* return headRow.map((r) => {
         return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
 
-      })
+      })*/
     }}
     mouseLeaveGrid={() => { doneEditing() }}
     mouseUpCell={(props) => {
