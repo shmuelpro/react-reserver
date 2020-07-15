@@ -118,7 +118,7 @@ const App = () => {
     {({ rowCount, rowTitleWidth, dimension }) => {
 
       return bars.map((bar) => {
-
+console.log(bar.collisions)
         return (rowCount > bar.row) && <Bar key={bar.id} 
           {...bar}
           dimension={dimension}
@@ -129,7 +129,8 @@ const App = () => {
           style={{...bar.style, ...getPosition(rowTitleWidth, bar.row, bar.column, dimension)}}
 
           >
-          <span style={{ position: "absolute" }}>{bar.children}</span>
+                  
+          <span style={{ position: "absolute" }}>{bar.children}{bar.collisions && (Object.keys(bar.collisions).length > 0) &&<span>Collision detected</span>}</span>
         </Bar>
       })
 

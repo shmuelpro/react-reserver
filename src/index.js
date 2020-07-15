@@ -117,8 +117,7 @@ export default function Reserver(props) {
         )
       })}
 
-      <div role='list'>
-        {' '}
+      <div role='list'>        
         {typeof props.children === 'function' &&
           props.children({
             rowCount: rowCount,

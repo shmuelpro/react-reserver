@@ -9,7 +9,11 @@ export function makeId(length = 15) {
   return text
 }
 export const isBetween = (min, max, num) => {
-  return num >= min && max >= num
+  const states = num >= min && max >= num;
+  if(states){
+    console.log(min,max,num);
+  }
+  return states;
 }
 
 export function validForBar(number) {
@@ -68,4 +72,43 @@ export function resizeBar(bars, newLocation) {
   })
 
   return newBars
+}
+
+
+export const collision = (bar1, bar2) => {
+
+  bar1 = checkObjCollision(bar1);
+  bar1.collisions[bar2.id] = '';
+
+  bar2 = checkObjCollision(bar2);
+  bar2.collisions[bar1.id] = '';
+
+
+
+
+  return [bar1, bar2];
+}
+
+
+const checkObjCollision = (bar) => {
+
+  if (!bar.collisions) {
+      bar.collisions = {};
+  }
+
+  return bar;
+}
+
+
+export const removeCollision = (bar1,bar2)=>{
+
+  console.log(bar2.id)
+  bar1 = checkObjCollision(bar1);
+  delete bar1.collisions[bar2.id];
+  console.log(bar1)
+
+  bar2 = checkObjCollision(bar2);
+  delete bar2.collisions[bar1.id];
+  return [bar1, bar2];
+
 }
