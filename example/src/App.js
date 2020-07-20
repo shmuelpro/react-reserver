@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 import Reserver, { Bar, useReserver, reserverReducer, getPosition, createBar, resizeBar } from 'react-reserver'
+import SimpleContextMenu,{toggleContextMenu} from './SimpleContextMenu'
+
 import { bars as testBars } from './testData'
 //import moment from 'moment';
 import 'react-reserver/dist/index.css'
@@ -19,6 +21,7 @@ const App = () => {
   //const [resWidth, setResWidth] = useState(600);
 
   const { addBar, editBar, doneEditing, deleteBar, bars } = useReserver(reserverReducer, testBars);
+
 
   const [widthtitle] = useState(80)
 
@@ -75,10 +78,10 @@ const App = () => {
 
       return z;
 
-     /* return headRow.map((r) => {
-        return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
-
-      })*/
+      /* return headRow.map((r) => {
+         return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
+ 
+       })*/
     }}
     mouseLeaveGrid={() => { doneEditing() }}
     mouseUpCell={(props) => {
@@ -93,8 +96,8 @@ const App = () => {
     mouseEnterCell={(props) => {
 
       const nBars = resizeBar(bars, props)
-      
-      nBars.forEach((bar)=>{
+
+      nBars.forEach((bar) => {
         editBar(bar)
       })
     }
@@ -102,7 +105,7 @@ const App = () => {
     }
     mouseDownCell={(props) => {
 
-      
+
       console.log(props)
 
       let newbar = createBar(props.dimension, props.cell);
@@ -118,25 +121,28 @@ const App = () => {
     {({ rowCount, rowTitleWidth, dimension }) => {
 
       return bars.map((bar) => {
-console.log(bar.collisions)
-        return (rowCount > bar.row) && <Bar key={bar.id} 
+        console.log(bar.collisions)
+        return (rowCount > bar.row) && <Bar  key={bar.id}
           {...bar}
           dimension={dimension}
           onDragStart={() => { editBar({ ...bar, editing: true }) }}
-          onClick={() => { console.log("delete", bar); deleteBar({ id: bar.id }) }}
+          onClick={toggleContextMenu}
 
           onMouseOver={() => { }}
-          style={{...bar.style, ...getPosition(rowTitleWidth, bar.row, bar.column, dimension)}}
+          style={{ ...bar.style, ...getPosition(rowTitleWidth, bar.row, bar.column, dimension) }}
 
-          >
-                  
-          <span style={{ position: "absolute" }}>{bar.children}{bar.collisions && (Object.keys(bar.collisions).length > 0) &&<span>Collision detected</span>}</span>
+        >
+
+          <span style={{ position: "absolute" }}>{bar.children}{bar.collisions && (Object.keys(bar.collisions).length > 0) && <span>Collision detected</span>}</span>
         </Bar>
+    
       })
 
     }}
 
-  </Reserver> </div>
+  </Reserver> 
+  <SimpleContextMenu />
+</div >
 }
 
 export default App

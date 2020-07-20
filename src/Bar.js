@@ -5,11 +5,11 @@ export default function Bar(props) {
     <div
       role='listitem'
       onDragStart={props.onDragStart}
-      onClick={() => {
-        props.onClick(props)
+      onClick={(e) => {
+        props.onClick(e,props)
       }}
-      onMouseOver={() => {
-        props.onMouseOver(props)
+      onMouseOver={(e) => {
+        props.onMouseOver(e,props)
       }}
       draggable={props.draggable}
       style={{
