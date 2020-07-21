@@ -20,6 +20,7 @@
     "test:lint": "eslint . --format tap",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom ",
+    "test:codecov":"bash <(curl -s https://codecov.io/bash)",
     "test:cov":"react-scripts test --env=jsdom --watchAll=false --coverage | codecov",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build" 

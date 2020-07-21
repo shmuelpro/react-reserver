@@ -6,4 +6,4 @@ node_js:
 env: 
     - CODECOV_TOKEN="45859a4f-e76a-4d71-8408-09774844c609"
 script: 
-    - yarn run test:cov
+    - yarn run test:codecov
