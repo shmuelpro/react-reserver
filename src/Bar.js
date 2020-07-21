@@ -11,6 +11,9 @@ export default function Bar(props) {
       onMouseOver={(e) => {
         props.onMouseOver(e,props)
       }}
+      onContextMenu={(e)=>{
+        props.onContextMenu(e)
+      }}
       draggable={props.draggable}
       style={{
         ...props.style,
@@ -43,5 +46,6 @@ Bar.defaultProps = {
   dimension: 20,
   onClick: () => {},
   onMouseOver: () => {},
-  onDragStart: () => {}
+  onDragStart: () => {},
+  onContextMenu:()=>{}
 }

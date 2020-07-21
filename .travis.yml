@@ -3,3 +3,5 @@ node_js:
   - 14
   - 12
   - 10
+env: 
+    - CODECOV_TOKEN="45859a4f-e76a-4d71-8408-09774844c609"

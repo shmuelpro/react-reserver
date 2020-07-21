@@ -1,22 +1,24 @@
 import React from 'react';
-import contextReducer from './contextReducer';
 
 
-export default function ContextMenu(props){
+export default function ContextMenu(props) {
 
-    return <div style={{display:props.visible?"block":"none",position:"absolute",left:props.position.left,top:props.position.top}}> context </div>
+
+    return <div className={props.className} style={{ display: props.visible ? "block" : "none", position: "absolute", left: props.left, top: props.top, zIndex: props.zIndex || 10000 }}>
+        <ul>  {props.children}</ul>
+    </div>
 }
 
+const ContextMenuItem = (props) => {
 
-function toggleContextMenu (event){
-
-    console.log(event.clientX)
-    console.log(event.clientY)
+    return <li onClick={props.onClick}>{props.children}</li>
 }
+
+export { ContextMenuItem }
 
 ContextMenu.defaultProps = {
-    visible:false,
-    position:{left:0,top:0}
-}
+    visible: false,
+    left: 0,
+    top: 0
 
-export {contextReducer,toggleContextMenu}
+}

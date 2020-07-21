@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes'
-import { isBetween, collision,removeCollision } from './helpers'
+import checkCollision from './collision'
 
 
 export default function reserverReducer(state, action) {
@@ -9,57 +9,14 @@ export default function reserverReducer(state, action) {
             const bIndex = nBars.findIndex((bar) => {
                 return action.payload.id === bar.id
             })
-
             const otherBars = [...nBars]
-            let editingBar = action.payload;
-           
+         
             otherBars.splice(bIndex, 1)
-            // console.log(otherBars)
-            // console.log(nBars)
+            const [oBars,editingBar] = checkCollision(otherBars,action.payload)
 
-            const oBars = otherBars.map((b) => {
-                // console.log(nBars[bIndex], b)
-                if (editingBar.row === b.row) {
-
-                    const bStart = b.column +1;
-                    const barStart = editingBar.column +1;
-
-                    const bTotal = b.column + b.length 
-
-                    const editingBarTotal = editingBar.column + editingBar.length 
-
-                    console.log(editingBar,b)
-                    // one bar is larger than the other it doesnt work.
-                   
-                    if (
-                        isBetween(bStart, bTotal, barStart) ||
-                        isBetween(bStart, bTotal, editingBarTotal) ||
-                        isBetween(barStart, editingBarTotal, bTotal) ||
-                        isBetween(barStart, editingBarTotal, bStart)
-                    ) {
-                        const [bar1,bar2] = collision(b, editingBar);
-                        
-                        editingBar = bar2;
-                        return bar1;
-                        
-
-                    }else{
-                        const [bar1,bar2] = removeCollision(b, editingBar);
-                        editingBar = bar2;
-                        return bar1;
-                    }
-                   
-
-
-                }
-                return b;
-            })
-
-            oBars[bIndex] = editingBar;
-
+            oBars.push(editingBar);
             return { ...state, bars: oBars }
         }
-
         case actionTypes.add: {
             const bars = [...state.bars]
 
@@ -102,6 +59,9 @@ export default function reserverReducer(state, action) {
 
         case actionTypes.mouseDragOver: {
             return { ...state }
+        }
+        case actionTypes.setBars: {
+            return { ...action.bars }
         }
 
         default: {

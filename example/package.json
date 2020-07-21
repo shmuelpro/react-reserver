@@ -10,10 +10,12 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
+    "bulma": "^0.9.0",
     "moment": "^2.27.0",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-reserver": "link:..",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "link:../node_modules/react-scripts"
   },
   "devDependencies": {

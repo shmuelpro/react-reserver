@@ -15,9 +15,9 @@ import Bar from './Bar'
 import Head from './Head'
 
 /* TODO:
-
-Temp item while dragging
-Collision detection
+Resize bar if at end of area
+drag backwards
+build resolver for date and time
 Test accessibility
 */
 
@@ -81,27 +81,27 @@ export default function Reserver(props) {
                   aria-colindex={c}
                   onDragOver={(e) => {
                     e.preventDefault()
-                    props.mouseDragOverCell({ cell: { row: r, column: c } })
+                    props.mouseDragOverCell({ cell: { row: r, column: c } },e)
                   }}
                   className={styles.row_cell}
-                  onMouseEnter={() => {
+                  onMouseEnter={(e) => {
                     props.mouseEnterCell({
                       dimension: props.dimension,
                       cell: { row: r, column: c }
-                    })
+                    },e)
                   }}
-                  onMouseDown={() => {
+                  onMouseDown={(e) => {
                     props.mouseDownCell({
                       dimension: props.dimension,
                       cell: { row: r, column: c }
-                    })
+                    },e)
                   }}
-                  onMouseUp={() => {
-                    console.log('mouseup')
-                    props.mouseUpCell({ cell: { row: r, column: c } })
+                  onMouseUp={(e) => {
+                    
+                    props.mouseUpCell({ cell: { row: r, column: c } },e)
                   }}
-                  onDrop={() => {
-                    props.mouseCellDrop({ cell: { row: r, column: c } })
+                  onDrop={(e) => {
+                    props.mouseCellDrop({ cell: { row: r, column: c } },e)
                   }}
                   style={{
                     width: props.dimension + 'px',
