@@ -6,12 +6,12 @@ export default function Bar(props) {
       role='listitem'
       onDragStart={props.onDragStart}
       onClick={(e) => {
-        props.onClick(e,props)
+        props.onClick(e, props)
       }}
       onMouseOver={(e) => {
-        props.onMouseOver(e,props)
+        props.onMouseOver(e, props)
       }}
-      onContextMenu={(e)=>{
+      onContextMenu={(e) => {
         props.onContextMenu(e)
       }}
       draggable={props.draggable}
@@ -47,5 +47,5 @@ Bar.defaultProps = {
   onClick: () => {},
   onMouseOver: () => {},
   onDragStart: () => {},
-  onContextMenu:()=>{}
+  onContextMenu: () => {}
 }

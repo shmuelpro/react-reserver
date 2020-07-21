@@ -12,7 +12,7 @@ import Reserver, { Bar, useReserver, reserverReducer, getPosition, createBar, re
 import SimpleContextMenu, { ContextMenuItem } from './SimpleContextMenu'
 
 import { bars as testBars } from './testData'
-import moment from 'moment';
+//import moment from 'moment';
 
 import 'react-reserver/dist/index.css'
 import './SimpleContextMenu/cmenu.css'
@@ -26,7 +26,7 @@ const App = () => {
   useEffect(() => {
     console.log(testBars)
 
-  }, [testBars])
+  }, [])
 
   //const [headRow, setHeadRow] = useState([123, 1, 2, null, null, 123]);
   const [content, setContent] = useState({
@@ -44,7 +44,7 @@ const App = () => {
 
   const [height] = useState(500)
   const [dimension] = useState(25);
-  const [startDate, setStartDate] = useState(moment())
+  //const [startDate, setStartDate] = useState(moment())
 
 
 

@@ -9,11 +9,11 @@ export function makeId(length = 15) {
   return text
 }
 export const isBetween = (min, max, num) => {
-  const states = num >= min && max >= num;
-  if(states){
-    console.log(min,max,num);
+  const states = num >= min && max >= num
+  if (states) {
+    console.log(min, max, num)
   }
-  return states;
+  return states
 }
 
 export function validForBar(number) {
@@ -73,5 +73,3 @@ export function resizeBar(bars, newLocation) {
 
   return newBars
 }
-
-

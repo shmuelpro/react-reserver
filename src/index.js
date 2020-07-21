@@ -81,27 +81,32 @@ export default function Reserver(props) {
                   aria-colindex={c}
                   onDragOver={(e) => {
                     e.preventDefault()
-                    props.mouseDragOverCell({ cell: { row: r, column: c } },e)
+                    props.mouseDragOverCell({ cell: { row: r, column: c } }, e)
                   }}
                   className={styles.row_cell}
                   onMouseEnter={(e) => {
-                    props.mouseEnterCell({
-                      dimension: props.dimension,
-                      cell: { row: r, column: c }
-                    },e)
+                    props.mouseEnterCell(
+                      {
+                        dimension: props.dimension,
+                        cell: { row: r, column: c }
+                      },
+                      e
+                    )
                   }}
                   onMouseDown={(e) => {
-                    props.mouseDownCell({
-                      dimension: props.dimension,
-                      cell: { row: r, column: c }
-                    },e)
+                    props.mouseDownCell(
+                      {
+                        dimension: props.dimension,
+                        cell: { row: r, column: c }
+                      },
+                      e
+                    )
                   }}
                   onMouseUp={(e) => {
-                    
-                    props.mouseUpCell({ cell: { row: r, column: c } },e)
+                    props.mouseUpCell({ cell: { row: r, column: c } }, e)
                   }}
                   onDrop={(e) => {
-                    props.mouseCellDrop({ cell: { row: r, column: c } },e)
+                    props.mouseCellDrop({ cell: { row: r, column: c } }, e)
                   }}
                   style={{
                     width: props.dimension + 'px',
@@ -117,7 +122,7 @@ export default function Reserver(props) {
         )
       })}
 
-      <div role='list'>        
+      <div role='list'>
         {typeof props.children === 'function' &&
           props.children({
             rowCount: rowCount,
