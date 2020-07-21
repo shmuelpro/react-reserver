@@ -21,7 +21,7 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom ",
   
-    "test:cov":"set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage",
+    "test:cov":"set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage | codecov",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build" 
   },
