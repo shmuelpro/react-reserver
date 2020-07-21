@@ -9,5 +9,5 @@ script:
       - yarn run test:cov
 
 after_success:
-  - ls -al   
+  - bash <(ls -al)   
     
