@@ -9,5 +9,5 @@ script:
       - yarn run test:cov
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)   
+  - ls -al   
     
