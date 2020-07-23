@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react'
 import {
-    BrowserRouter,
+    HashRouter,
     Switch,
     Route,
-    Link,
+  
     NavLink
 } from "react-router-dom";
 import 'react-reserver/dist/index.css'
@@ -25,9 +25,9 @@ const FancyLink = React.forwardRef((props, ref) => {
 })
 
 const App = () => {
-
+console.log(process.env.PUBLIC_URL)
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL + '/'}>
+        <HashRouter >
             <div className="h-screen w-full flex overflow-hidden">
                 <nav className="flex flex-col bg-orange-200 w-64 px-8 pt-4 pb-6">
 
@@ -75,7 +75,7 @@ const App = () => {
                 </main>
 
             </div>
-        </BrowserRouter>)
+        </HashRouter>)
 }
 
 export default App
