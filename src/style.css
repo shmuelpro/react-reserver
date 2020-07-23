@@ -10,7 +10,15 @@
     z-index: 1;
     background: white;
 }
+.row_cell_invisible{
+    display: none;
+}
 
 .row {
     line-height: 1;
+    display: flex;
+}
+
+.row_invisible {
+    display: none;
 }
