@@ -66,7 +66,7 @@ export default function Reserver(props) {
             style={{ height: props.dimension, display: 'flex' }}
           >
             <div
-              className={styles.row_cell}
+              className={rowTitles.length>0?styles.row_cell:styles.row_cell_invisible}
               style={{
                 width: props.rowTitleWidth,
                 height: props.dimension + 'px'
@@ -130,6 +130,7 @@ export default function Reserver(props) {
             rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension
           })}
+        {Array.isArray(props.children) && props.children}
       </div>
     </div>
   )
@@ -138,7 +139,7 @@ function createBar(dimension, startLocation) {
   return {
     id: makeId(),
     dimension: dimension,
-    style: { background: 'orange', pointerEvents: 'none' },
+
     editing: true,
     ...startLocation,
     length: 1
