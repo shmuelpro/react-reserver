@@ -46,8 +46,8 @@ export function evaluatePosition(firstPosition, secondPosition) {
   }
 }
 
-export function getPosition(titleWidth, row, column, dimension) {
-  return { left: titleWidth + column * dimension, top: (row + 1) * dimension }
+export function getPosition( row, column, dimension,leftTitleWidth=0,topTitleHeight=0) {
+  return { left: leftTitleWidth + column * dimension, top: row  * dimension + topTitleHeight}
 }
 
 export function getColumnCount(dimension, width, rowTitleWidth) {
