@@ -24,7 +24,8 @@
     "test:cov": "set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commit":"npx git-cz"
   },
   "peerDependencies": {
     "react": "^16.0.0"
