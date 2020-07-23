@@ -59,17 +59,14 @@ export function getRowCount(dimension, height) {
 }
 
 export function resizeBar(bars, newLocation) {
-  const editing = bars.filter((bar) => {
-    return bar.editing
+  return bars.map((bar) => {
+    if (bar.editing) {
+      const nPosition = evaluatePosition(
+        { column: bar.column, row: bar.row },
+        newLocation.cell
+      )
+      return { ...bar, ...nPosition }
+    }
+    return bar
   })
-
-  const newBars = editing.map((bar) => {
-    const nPosition = evaluatePosition(
-      { column: bar.column, row: bar.row },
-      newLocation.cell
-    )
-    return { ...bar, ...nPosition }
-  })
-
-  return newBars
 }
