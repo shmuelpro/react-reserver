@@ -127,8 +127,9 @@ export default function Reserver(props) {
           props.children({
             rowCount: rowCount,
             columnCount: columnCount,
-            rowTitleWidth: props.rowTitleWidth,
-            dimension: props.dimension
+            rowTitleWidth: props.rowTitleWidth,            
+            dimension: props.dimension,
+            rowTitleHeight:rowTitles.length>0?props.dimension:0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
