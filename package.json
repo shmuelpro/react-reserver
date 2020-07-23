@@ -1,6 +1,6 @@
 {
   "name": "react-reserver",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "A grid component allowing to block out time slots. Built to visualize reservations in a hotel managment system.",
   "author": "shmuelpro",
   "license": "MIT",
@@ -20,10 +20,11 @@
     "test:lint": "eslint . --format tap",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom ",
-    "test:codecov":"codecov",
-    "test:cov":"set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage",
+    "test:codecov": "codecov",
+    "test:cov": "set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build" 
+    "deploy": "gh-pages -d example/build",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "react": "^16.0.0"
@@ -50,13 +51,13 @@
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "semantic-release": "^17.1.1"
   },
   "files": [
     "dist"
   ],
   "jest": {
-
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
