@@ -1,10 +1,10 @@
 import React from 'react'
-import Reserver, { Bar, useReserver, reserverReducer, createBar,getPosition } from 'react-reserver'
+import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
 
 
 export default function Basic(props) {
 
-    const { bars, addBar,setBars } = useReserver(reserverReducer, [])
+    const { bars, addBar } = useReserver(reserverReducer, [])
     console.log(bars)
     return <Reserver
 
@@ -13,13 +13,13 @@ export default function Basic(props) {
             addBar(newbar)
         }
 
-        
+
         }
 
     >
         {
 
-            bars.map((bar) => { return <Bar key={bar.id} {...bar}  style={{  ...getPosition(0, bar.row, bar.column, bar.dimension) }} /> })
+            bars.map((bar) => { return <Bar key={bar.id} {...bar} style={{ ...getPosition( bar.row, bar.column, bar.dimension) }} /> })
         }
     </Reserver>
 
