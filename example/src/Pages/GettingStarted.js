@@ -1,23 +1,15 @@
 import React from 'react'
+import basicExampleCode from './code/basicExampleCode'
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 import githubtheme from "prism-react-renderer/themes/github";
+import DocPar from './sections/DocPar'
+import DocTitle from './sections/DocTitle'
 export default function GettingStarted(props) {
 
-    const exampleCode = `
-    import React, { Component } from 'react'
-
-    import Reserver from 'react-reserver'
-    import 'react-reserver/dist/index.css'
-    
-    function App(){
-    //What is this
-      return <Reserver />
-    }
-`;
 
 
-    const install= `
+    const install = `
     yarn add react-reserver
     or
     npm install react-reserver
@@ -25,14 +17,13 @@ export default function GettingStarted(props) {
 
 
     return (<div>
-        
-        <h1 className="text-5xl mx-10 my-5">Getting Started</h1>
-        <p className="p-5"
-        >
-            So you want to add the component to your project. Like all components you got to start with the installation
-        </p>
+
+        <DocTitle>Getting Started</DocTitle>
+        <DocPar >
+            So you want to <b>add</b> the component to your project. Like all components start with installation.
+        </DocPar>
         <div>
-            <Highlight {...defaultProps}  theme={githubtheme} code={install} language="bash">
+            <Highlight {...defaultProps} theme={githubtheme} code={install} language="bash">
                 {({ className, style, tokens, getLineProps, getTokenProps }) => (
                     <pre className={className} style={style}>
                         {tokens.map((line, i) => (
@@ -46,8 +37,11 @@ export default function GettingStarted(props) {
                 )}
             </Highlight>
         </div>
-     
-        <div style={{ marginBottom: "10px" }}><Highlight {...defaultProps} theme={theme} code={exampleCode} language="jsx">
+        <DocPar
+        >
+           Add the following code
+        </DocPar>
+        <div style={{ marginBottom: "10px" }}><Highlight {...defaultProps} theme={theme} code={basicExampleCode} language="jsx">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre className={className} style={style}>
                     {tokens.map((line, i) => (
