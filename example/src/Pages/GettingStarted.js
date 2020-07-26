@@ -19,6 +19,7 @@ export default function GettingStarted(props) {
 
     const install= `
     yarn add react-reserver
+    or
     npm install react-reserver
     `
 
