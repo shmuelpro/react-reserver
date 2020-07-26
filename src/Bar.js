@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Bar(props) {
+  console.log(props)
   return (
     <div
       role='listitem'
@@ -17,6 +18,8 @@ export default function Bar(props) {
       draggable={props.draggable}
       style={{
         ...props.style,
+        pointerEvents: props.style.pointerEvents || 'none',
+        background: props.style.background || '#0E6BA8',
         display: 'flex',
         position: 'absolute',
         zIndex: props.zIndex || '100'
@@ -31,7 +34,7 @@ export default function Bar(props) {
               style={{
                 width: props.dimension,
                 height: props.dimension,
-                pointerEvents: props.style.pointerEvents
+                pointerEvents: 'none' || props.style.pointerEvents
               }}
             />
           )
@@ -43,6 +46,7 @@ export default function Bar(props) {
 }
 
 Bar.defaultProps = {
+  style: {},
   dimension: 20,
   onClick: () => {},
   onMouseOver: () => {},
