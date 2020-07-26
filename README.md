@@ -18,12 +18,40 @@ npm install --save react-reserver
 ```jsx
 import React, { Component } from 'react'
 
-import Reserver from 'react-reserver'
+import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
 import 'react-reserver/dist/index.css'
 
 function App(){
 
-  return <Reserver />
+   const { bars, addBar, setBars } = useReserver(reserverReducer, [])
+  
+    return <Reserver       
+        mouseDownCell={(props) => {
+            const newbar = createBar(props.dimension, props.cell);
+            addBar(newbar)
+        }}
+
+        mouseEnterCell={(props) => {
+            const nBars = resizeBar(bars, props)
+            setBars(nBars)
+        }}
+
+        mouseUpCell={() => {  
+            const dBars = bars.map((bar) => {
+                if (bar.editing) {
+                    return { ...bar, editing: false }
+                }
+                return bar;
+            })
+            setBars(dBars)
+        }}
+
+    >
+        {
+
+            bars.map((bar) => { return <Bar key={bar.id} {...bar} style={{ ...getPosition(bar.row, bar.column, bar.dimension) }} /> })
+        }
+    </Reserver>
 }
 ```
 

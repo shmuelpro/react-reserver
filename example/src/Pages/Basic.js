@@ -7,7 +7,7 @@ export default function Basic(props) {
     const { bars, addBar, setBars } = useReserver(reserverReducer, [])
     console.log(bars)
     return <Reserver
-
+        style={{ margin:"0 auto" }}
         mouseDownCell={(props) => {
             const newbar = createBar(props.dimension, props.cell);
             addBar(newbar)
