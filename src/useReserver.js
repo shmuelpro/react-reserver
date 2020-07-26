@@ -18,8 +18,13 @@ function useReserver(reducer, initialState) {
     return dispatch({ payload: props, type: actionTypes.delete })
   }
 
-  const doneEditing = (props) => {
-    return dispatch({ type: actionTypes.doneEditing })
+  const setBars = (props) => {
+    console.log(props)
+    return dispatch({ payload: props, type: actionTypes.setBars })
+  }
+
+  const setIsEditing = (props) => {
+    return dispatch({ payload: props, type: actionTypes.setEditing })
   }
 
   const addToEditing = (props) => {
@@ -27,13 +32,13 @@ function useReserver(reducer, initialState) {
   }
 
   return {
-    bars,
     isEditing,
+    setIsEditing,
+    bars,
     addBar,
     editBar,
-    doneEditing,
     deleteBar,
-    addToEditing
+    setBars
   }
 }
 export default useReserver
