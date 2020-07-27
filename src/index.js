@@ -20,6 +20,7 @@ drag backwards
 build resolver for date and time
 Test accessibility
 Assign content to top left area
+make dimention of grid not necessarily square
 */
 
 export default function Reserver(props) {
