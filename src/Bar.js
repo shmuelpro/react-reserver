@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Bar(props) {
-  console.log(props)
+  
   return (
     <div
       role='listitem'
@@ -12,7 +12,7 @@ export default function Bar(props) {
       onMouseOver={(e) => {
         props.onMouseOver(e, props)
       }}
-      onContextMenu={(e) => {
+      onContextMenu={(e) => {        
         props.onContextMenu(e)
       }}
       draggable={props.draggable}
@@ -34,7 +34,7 @@ export default function Bar(props) {
               style={{
                 width: props.dimension,
                 height: props.dimension,
-                pointerEvents: 'none' || props.style.pointerEvents
+                pointerEvents:  props.style.pointerEvents || 'none'
               }}
             />
           )
@@ -51,5 +51,6 @@ Bar.defaultProps = {
   onClick: () => {},
   onMouseOver: () => {},
   onDragStart: () => {},
-  onContextMenu: () => {}
+  onContextMenu: () => {},
+  length:1
 }
