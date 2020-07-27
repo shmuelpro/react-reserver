@@ -10,6 +10,7 @@ import {
 import 'react-reserver/dist/index.css'
 import GettingStarted from './Pages/GettingStarted'
 import Basic from './Pages/Basic'
+import ColumnTitle from './Pages/ColumnTitle'
 import Full from './Pages/Full'
 
 const FancyLink = React.forwardRef((props, ref) => {
@@ -42,6 +43,7 @@ const App = () => {
                         <MenuTitle>Examples</MenuTitle>
                         <NavLink exact={true} to="/" activeClassName={aClassName} component={FancyLink}>Get Started</NavLink>
                         <NavLink to="/basic" activeClassName={aClassName} component={FancyLink}>Basic</NavLink>
+                        <NavLink to="/column-title" activeClassName={aClassName} component={FancyLink}>Column Title</NavLink>
                         <NavLink to="/full" activeClassName={aClassName} component={FancyLink}>Full</NavLink>
                         <MenuTitle>Docs</MenuTitle>
                       
@@ -53,6 +55,9 @@ const App = () => {
                     <Switch>
                         <Route path={'/full'}>
                             <Full />
+                        </Route>
+                        <Route path={'/column-title'}>
+                            <ColumnTitle />
                         </Route>
                         <Route path={'/basic'}>
                             <Basic />

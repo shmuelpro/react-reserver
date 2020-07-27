@@ -1,7 +1,6 @@
 import React from 'react'
 import DocPar from './sections/DocPar'
 import DocTitle from './sections/DocTitle'
-import basicgif from '../gifs/basic.gif'
 import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
 
 
@@ -14,7 +13,7 @@ export default function Basic(props) {
     return (
 
         <div>
-            <DocTitle>Basic Example</DocTitle>
+            <DocTitle>Column Title Example</DocTitle>
             < DocPar>
                 This is the most basic example.
               <br />
@@ -49,7 +48,6 @@ export default function Basic(props) {
                     }
                 </Reserver>
             </div>
-            
         </div>)
 
 }

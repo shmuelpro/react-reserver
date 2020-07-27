@@ -5,14 +5,18 @@
 
 > A grid allowing to visualize reservations in a system
 
-<a href="https://shmuelpro.github.io/react-reserver/">Working Example and Docs</a>
-
 [![NPM](https://img.shields.io/npm/v/react-reserver.svg)](https://www.npmjs.com/package/react-reserver) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)[![Build Status](https://travis-ci.org/shmuelpro/react-reserver.svg?branch=master)](https://travis-ci.org/shmuelpro/react-reserver)[![codecov](https://codecov.io/gh/shmuelpro/react-reserver/branch/master/graph/badge.svg)](https://codecov.io/gh/shmuelpro/react-reserver) [![npm version](https://badge.fury.io/js/react-reserver.svg)](https://badge.fury.io/js/react-reserver) ![GitHub All Releases](https://img.shields.io/github/downloads/shmuelpro/react-reserver/total) ![npm](https://img.shields.io/npm/dw/react-reserver)
+
+<a href="https://shmuelpro.github.io/react-reserver/">Working Example and Docs</a>
 
 ## Install
 
 ```bash
 npm install --save react-reserver
+
+or 
+
+yarn add react-reserver
 ```
 
 ## Usage

@@ -5,6 +5,8 @@ import theme from "prism-react-renderer/themes/nightOwl";
 import githubtheme from "prism-react-renderer/themes/github";
 import DocPar from './sections/DocPar'
 import DocTitle from './sections/DocTitle'
+import BottomNavigation from './sections/BottomNavigation'
+import basicgif from '../gifs/basic.gif'
 export default function GettingStarted(props) {
 
 
@@ -39,7 +41,7 @@ export default function GettingStarted(props) {
         </div>
         <DocPar
         >
-           Add the following code
+            Add the following code
         </DocPar>
         <div style={{ marginBottom: "10px" }}><Highlight {...defaultProps} theme={theme} code={basicExampleCode} language="jsx">
             {({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -55,7 +57,14 @@ export default function GettingStarted(props) {
             )}
         </Highlight>
         </div>
-
+        <DocPar
+        >
+            And thats it!
+           <br />
+           Now you should be able to click and drag across the grid to create new bars
+           <img src={basicgif} />
+        </DocPar>
+      <BottomNavigation next={{name:"Basic",href:"/basic"}}/>
     </div>)
 
 }

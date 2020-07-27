@@ -6,8 +6,7 @@ import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, re
 export default function Basic(props) {
 
     const { bars, addBar, setBars } = useReserver(reserverReducer, [])    
-    return <Reserver
-        style={{ margin:"0 auto" }}
+    return <Reserver style={{ margin:"0 auto" }}
         mouseDownCell={(props) => {
             const newbar = createBar(props.dimension, props.cell);
             addBar(newbar)
