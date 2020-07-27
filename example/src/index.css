@@ -26,3 +26,8 @@ code {
 .language-jsx{
   padding:20px
 }
+
+.copy-code-button{
+  right:20px;
+  top:5px;
+}

@@ -14,8 +14,6 @@ import ColumnTitle from './Pages/ColumnTitle'
 import Full from './Pages/Full'
 
 const FancyLink = React.forwardRef((props, ref) => {
-    console.log(props);
-    //
     return <li className={`${props.className} mt-4 `}>
         <a href={props.href} ref={ref} className={`flex  `}>
             <span className="ml-2 capitalize font-medium text-black dark:text-gray-300">
@@ -25,11 +23,10 @@ const FancyLink = React.forwardRef((props, ref) => {
     </li>
 })
 
-const MenuTitle = (props)=>{ return <li className="mt-8">{props.children}</li> }
+const MenuTitle = (props) => { return <li className="mt-8">{props.children}</li> }
 
 const aClassName = "bg-white dark:bg-gray-200 rounded-lg";
 const App = () => {
-    console.log(process.env.PUBLIC_URL)
     return (
         <HashRouter >
             <div className="h-screen w-full flex overflow-hidden">
@@ -46,25 +43,23 @@ const App = () => {
                         <NavLink to="/column-title" activeClassName={aClassName} component={FancyLink}>Column Title</NavLink>
                         <NavLink to="/full" activeClassName={aClassName} component={FancyLink}>Full</NavLink>
                         <MenuTitle>Docs</MenuTitle>
-                      
+
                     </ul>
                 </nav>
                 <main
                     className="flex-1 flex flex-col bg-white transition
                 duration-500 ease-in-out overflow-y-auto">
                     <Switch>
-                        <Route path={'/full'}>
-                            <Full />
-                        </Route>
-                        <Route path={'/column-title'}>
+                        <Route path={'/full'} component={(props) => { return <Full /> }} />
+                            <Route path={'/column-title'}>
                             <ColumnTitle />
                         </Route>
                         <Route path={'/basic'}>
-                            <Basic />
+                            <Basic previous={{ name: "Getting Started", href: "/" }} next={{ name: "Column Title", href: "/column-title" }}/>
                         </Route>
-                        <Route path={'/'}>
-                            <GettingStarted />
-                        </Route>
+                        <Route component={(props) => { return <GettingStarted next={{ name: "Basic", href: "/basic" }} {...props} /> }} path={'/'} />
+
+
                     </Switch>
                 </main>
 

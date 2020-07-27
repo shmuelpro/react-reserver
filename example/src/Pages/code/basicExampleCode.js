@@ -1,12 +1,12 @@
 const basicExampleCode = `import React from 'react'
 import 'react-reserver/dist/index.css'
-import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
+import Reserver, { Bar, useReserver, reserverReducer,createBar, getPosition, resizeBar } from 'react-reserver'
 
 
 export default function Basic(props) {
 
     const { bars, addBar, setBars } = useReserver(reserverReducer, [])    
-    return <Reserver style={{ margin:"0 auto" }}
+    return <Reserver 
         mouseDownCell={(props) => {
             const newbar = createBar(props.dimension, props.cell);
             addBar(newbar)

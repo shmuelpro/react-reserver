@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Reserver, { Bar, useReserver, reserverReducer, getPosition, createBar, resizeBar } from 'react-reserver'
 import { bars as testBars } from '../testData'
+import DocPar from './sections/DocPar'
+import DocTitle from './sections/DocTitle'
 import SimpleContextMenu, { ContextMenuItem } from '../SimpleContextMenu'
 
 import {useInterval } from '../helpers'
