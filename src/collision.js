@@ -18,6 +18,8 @@ export default function checkCollision(bars, eBar) {
         const [bar1, bar2] = collided(b, editingBar)
         editingBar = bar2
         return bar1
+      } else {
+        return b;
       }
     } else {
       const [bar1, bar2] = removeCollision(b, editingBar)
@@ -25,12 +27,15 @@ export default function checkCollision(bars, eBar) {
       return bar1
     }
 
-    return b
+    
+
+
+
   })
 
   return [oBars, editingBar]
 }
-const collided = (bar1, bar2) => {
+export const collided = (bar1, bar2) => {
   bar1 = checkHasCollisionObject(bar1)
   bar1.collisions[bar2.id] = ''
 
@@ -40,7 +45,7 @@ const collided = (bar1, bar2) => {
   return [bar1, bar2]
 }
 
-const checkHasCollisionObject = (bar) => {
+export const checkHasCollisionObject = (bar) => {
   if (!bar.collisions) {
     bar.collisions = {}
   }
