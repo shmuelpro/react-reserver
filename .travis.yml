@@ -9,6 +9,6 @@ script:
       - yarn run test:cov
 
 after_success:
-  - yarn run test:codecov
+  - bash <(curl -s https://codecov.io/bash) 
   - yarn run semantic-release  
     
