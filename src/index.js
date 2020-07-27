@@ -15,10 +15,11 @@ import Bar from './Bar'
 import Head from './Head'
 
 /* TODO:
-Resize bar if at end of area
+Resize bar if at end of visible area
 drag backwards
 build resolver for date and time
 Test accessibility
+Assign content to top left area
 */
 
 export default function Reserver(props) {
