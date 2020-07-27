@@ -10,9 +10,6 @@ export function makeId(length = 15) {
 }
 export const isBetween = (min, max, num) => {
   const states = num >= min && max >= num
-  if (states) {
-    console.log(min, max, num)
-  }
   return states
 }
 
