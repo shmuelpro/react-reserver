@@ -19,16 +19,11 @@ function useReserver(reducer, initialState) {
   }
 
   const setBars = (props) => {
-    console.log(props)
     return dispatch({ payload: props, type: actionTypes.setBars })
   }
 
   const setIsEditing = (props) => {
-    return dispatch({ payload: props, type: actionTypes.setEditing })
-  }
-
-  const addToEditing = (props) => {
-    return dispatch({ payload: props, type: actionTypes.addToEditing })
+    return dispatch({ payload: props, type: actionTypes.setIsEditing })
   }
 
   return {
