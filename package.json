@@ -24,10 +24,10 @@
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
     "test:lint": "eslint . --format tap",
-    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:unit": "cross-env CI=1 react-scripts test -u --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom ",
     "test:codecov": "codecov",
-    "test:cov": "set CI=true && react-scripts test --env=jsdom --watchAll=false --coverage",
+    "test:cov": "set CI=true && react-scripts test -u --env=jsdom --watchAll=false --coverage",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
     "semantic-release": "semantic-release",
@@ -60,6 +60,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "react-test-renderer": "^16.13.1",
     "semantic-release": "^17.1.1"
   },
   "files": [
