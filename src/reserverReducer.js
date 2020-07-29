@@ -3,6 +3,9 @@ import checkCollision from './collision'
 
 export default function reserverReducer(state, action) {
   switch (action.type) {
+    case actionTypes.setBars: {
+      return { ...state, bars: action.payload }
+    }
     case actionTypes.edit: {
       const nBars = [...state.bars]
       const bIndex = nBars.findIndex((bar) => {
@@ -23,9 +26,6 @@ export default function reserverReducer(state, action) {
 
       return { ...state, bars: bars, isEditing: true }
     }
-    case actionTypes.setBars: {
-      return { ...state, bars: action.payload }
-    }
 
     case actionTypes.delete: {
       const nBars = [...state.bars]
@@ -37,27 +37,8 @@ export default function reserverReducer(state, action) {
 
       return { ...state, bars: nBars }
     }
-    case actionTypes.doneEditing: {
-      if (state.isEditing) {
-        let nBars = [...state.bars]
-        nBars = nBars.map((bar) => {
-          if (bar.editing) {
-            const barStyle = { ...bar.style }
-            barStyle.pointerEvents = 'auto'
-
-            return { ...bar, editing: false, style: barStyle }
-          }
-          return bar
-        })
-
-        return { ...state, bars: nBars, isEditing: false }
-      }
-
-      return state
-    }
-
-    case actionTypes.mouseDragOver: {
-      return { ...state }
+    case actionTypes.setIsEditing: {
+      return { ...state, isEditing: action.payload }
     }
 
     default: {
