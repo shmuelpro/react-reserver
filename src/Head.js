@@ -14,7 +14,7 @@ export default function Head(props) {
   return (
     <div
       role='columnheader'
-      className={headRow.length>0?styles.row:styles.row_invisible}
+      className={headRow.length > 0 ? styles.row : styles.row_invisible}
       style={{ height: props.dimension }}
     >
       <div

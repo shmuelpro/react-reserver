@@ -19,18 +19,13 @@ export default function checkCollision(bars, eBar) {
         editingBar = bar2
         return bar1
       } else {
-        return b;
+        return b
       }
     } else {
       const [bar1, bar2] = removeCollision(b, editingBar)
       editingBar = bar2
       return bar1
     }
-
-    
-
-
-
   })
 
   return [oBars, editingBar]

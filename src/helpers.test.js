@@ -26,7 +26,7 @@ test('makeid returns 15 characters', () => {
 test('make sure the position is correct', () => {
   const fPosition = { row: 3, column: 3 }
   const sPosition = { row: 4, column: 6 }
-  const badPos = { row: "f", column: 5 }
+  const badPos = { row: 'f', column: 5 }
   const secbadPos = { row: 1, column: 3.2 }
 
   const position = evaluatePosition(fPosition, sPosition)
@@ -47,22 +47,26 @@ test('get correct number of rows', () => {
   expect(getRowCount(20, 300)).toBe(15)
 })
 
-
 test('Calculate position using getPosition', () => {
   const firstpos = getPosition(0, 2, 20)
   expect(firstpos).toMatchObject({ left: 40, top: 0 })
-  const secondpos = getPosition(0, 2, 20,40)
+  const secondpos = getPosition(0, 2, 20, 40)
   expect(secondpos).toMatchObject({ left: 80, top: 0 })
-  const thirdpos = getPosition(0, 2, 20,40,23)
+  const thirdpos = getPosition(0, 2, 20, 40, 23)
   expect(thirdpos).toMatchObject({ left: 80, top: 23 })
- 
 })
 
 test('resizeBars', () => {
-  const bars = [{ row: 3, column: 3,editing:true,length:2 },{ row: 4, column: 3,length:6 }]
-  const changedBars = resizeBar(bars,{cell:{row:3,column:6}})
-  expect(changedBars[0]).toMatchObject({ row: 3, column: 3, editing: true, length: 4 })
+  const bars = [
+    { row: 3, column: 3, editing: true, length: 2 },
+    { row: 4, column: 3, length: 6 }
+  ]
+  const changedBars = resizeBar(bars, { cell: { row: 3, column: 6 } })
+  expect(changedBars[0]).toMatchObject({
+    row: 3,
+    column: 3,
+    editing: true,
+    length: 4
+  })
   expect(changedBars[1]).toMatchObject({ row: 4, column: 3, length: 6 })
-  
- 
 })
