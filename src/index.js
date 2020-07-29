@@ -49,6 +49,8 @@ export default function Reserver(props) {
 
   return (
     <div
+      id={props.id}
+      className={props.className}
       role='grid'
       onMouseLeave={props.mouseLeaveGrid}
       style={{ ...props.style, position: 'relative' }}
@@ -68,7 +70,11 @@ export default function Reserver(props) {
             style={{ height: props.dimension, display: 'flex' }}
           >
             <div
-              className={rowTitles.length>0?styles.row_cell:styles.row_cell_invisible}
+              className={
+                rowTitles.length > 0
+                  ? styles.row_cell
+                  : styles.row_cell_invisible
+              }
               style={{
                 width: props.rowTitleWidth,
                 height: props.dimension + 'px'
@@ -129,9 +135,9 @@ export default function Reserver(props) {
           props.children({
             rowCount: rowCount,
             columnCount: columnCount,
-            rowTitleWidth: props.rowTitleWidth,            
+            rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension,
-            rowTitleHeight:rowTitles.length>0?props.dimension:0
+            rowTitleHeight: rowTitles.length > 0 ? props.dimension : 0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
