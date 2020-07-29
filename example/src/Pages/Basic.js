@@ -8,15 +8,15 @@ import CodeHighlighter from '../CodeHighlighter'
 import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
 
 
-function Highlight(props){
+function Highlight(props) {
 
-    return <span style={{background:"#011627",color:"#ff585b",padding:"4px",borderRadius:"8px"}}> {props.children}</span>
+    return <span style={{ background: "#011627", color: "#ff585b", padding: "4px", borderRadius: "8px" }}> {props.children}</span>
 }
 
 
 export default function Basic(props) {
 
-    const { bars, addBar, setBars } = useReserver(reserverReducer, [])
+    const { bars, isEditing, setIsEditing, addBar, setBars, editBar } = useReserver(reserverReducer, [])
 
 
 
@@ -34,38 +34,42 @@ export default function Basic(props) {
 
             <div style={{ display: "flex" }}>
                 <Reserver
-                    onContextMenu={()=>{
-                        console.log("ass")
-                    }}
                     mouseDownCell={(props) => {
                         const newbar = createBar(props.dimension, props.cell);
                         addBar(newbar)
                     }}
                     mouseEnterCell={(props) => {
-                        const nBars = resizeBar(bars, props)
-                        setBars(nBars)
+                        if (isEditing) {
+                            const nBars = resizeBar(bars, props)
+                            setBars(nBars)
+                        }
+
                     }}
                     mouseUpCell={() => {
                         const dBars = bars.map((bar) => {
                             if (bar.editing) {
-                                return { ...bar, editing: false }
+                                return { ...bar, editing: false, style: { ...bar.style, pointerEvents: "auto" } }
                             }
                             return bar;
                         })
+
                         setBars(dBars)
+                        setIsEditing(false)
                     }}
                 >
                     {
-                        bars.map((bar) => { return <Bar key={bar.id} {...bar} style={{ ...getPosition(bar.row, bar.column, bar.dimension) }} /> })
+                        bars.map((bar) => {
+                            return <Bar onMouseLeave={(e, props) => { editBar({ ...props, style: { ...props.style, background: "red" } }) }} key={bar.id} {...bar} style={{ ...bar.style, ...getPosition(bar.row, bar.column, bar.dimension) }} />
+                        })
                     }
                 </Reserver>
             </div>
             <CodeHighlighter language="jsx" code={basicExampleCode} />
             < DocPar>
-            So what are we seeing here? (toggle the line codes to follow)
-            <br/>
-            On line 3 we import <Highlight>Reserver</Highlight> which is our main component,<br/>
-             <Highlight>useReserver</Highlight>
+                So what are we seeing here? (toggle the line codes to follow)
+            <br />
+            On line 3 we import <Highlight>Reserver</Highlight> which is our main component,<br />
+                <Highlight>useReserver</Highlight>
 
             </ DocPar>
             <BottomNavigation previous={props.previous} next={props.next} />
