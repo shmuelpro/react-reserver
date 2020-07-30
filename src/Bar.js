@@ -31,7 +31,7 @@ export default function Bar(props) {
       }}
       className={props.className}
     >
-      {[...Array(props.length && props.length > 0 ? props.length : 1)].map(
+      {[...Array(props.length)].map(
         (notUsed, i) => {
           return (
             <div
