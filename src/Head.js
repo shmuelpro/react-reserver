@@ -18,7 +18,7 @@ export default function Head(props) {
       style={{ height: props.dimension }}
     >
       <div
-        className={styles.row_cell}
+        className={`${props.rowTitleWidth>0?styles.row_cell:styles.row_invisible}`}
         style={{ width: props.rowTitleWidth, height: props.dimension + 'px' }}
       />
       {columnTitleRow.map((headitem, i) => {
