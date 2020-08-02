@@ -47,12 +47,12 @@ export function getPosition(
   row,
   column,
   dimension,
-  leftTitleWidth = 0,
-  topTitleHeight = 0
+  rowTitleWidth = 0,
+  columnTitleHeight = 0
 ) {
   return {
-    left: leftTitleWidth + column * dimension,
-    top: row * dimension + topTitleHeight
+    left: rowTitleWidth + column * dimension,
+    top: row * dimension + columnTitleHeight
   }
 }
 
