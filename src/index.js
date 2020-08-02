@@ -167,10 +167,7 @@ export {
   Reserver
 }
 
-Reserver.defaultProps = {
-  initBars: [],
-  bars: [],
-  tags: [],
+Reserver.defaultProps = {   
   headRow: [],
   rowTitles: [],
   content: {},
