@@ -1,39 +1,35 @@
 {
-  "name": "react-reserver-example",
-  "homepage": "https://shmuelpro.github.io/react-reserver/",
+  "name": "react-reserver",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ../node_modules/react-scripts/bin/react-scripts.js start",
-    "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
-    "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
-    "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject",
-    "build:css": "postcss src/tailwind.css -o src/tw.css"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve"
   },
   "dependencies": {
-    "copy-to-clipboard": "^3.3.1",
-    "moment": "^2.27.0",
-    "prism-react-renderer": "^1.1.1",
+    "@docusaurus/core": "^2.0.0-alpha.60",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.60",
+    "@mdx-js/react": "^1.5.8",
+    "clsx": "^1.1.1",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-reserver": "link:..",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "link:../node_modules/react-scripts",
-    "tailwind": "^4.0.0"
+    "remark-code-import": "^0.2.0"
   },
-  "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3",
-    "autoprefixer": "^9.8.5",
-    "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.5.2"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
