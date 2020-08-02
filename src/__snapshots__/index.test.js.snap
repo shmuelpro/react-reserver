@@ -8,18 +8,6 @@ exports[`Reserver adds, removes, edits and setsBars 1`] = `
   [36m<div[39m
     [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: none;\\"[39m
   [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: none;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: none;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: none;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: none;\\"[39m
-  [36m/>[39m
   [0mTest[0m
 [36m</div>[39m"
 `;
@@ -32,18 +20,6 @@ exports[`Reserver adds, removes, edits and setsBars 2`] = `
   [36m<div[39m
     [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
   [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
   [0mTest[0m
 [36m</div>[39m"
 `;
@@ -53,18 +29,6 @@ exports[`Reserver adds, removes, edits and setsBars 3`] = `
   [33mrole[39m=[32m\\"listitem\\"[39m
   [33mstyle[39m=[32m\\"left: 0px; top: 0px; pointer-events: auto; display: flex; position: absolute; z-index: 100; background: red;\\"[39m
 [36m>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
-  [36m<div[39m
-    [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
-  [36m/>[39m
   [36m<div[39m
     [33mstyle[39m=[32m\\"width: 20px; height: 20px; pointer-events: auto;\\"[39m
   [36m/>[39m
