@@ -150,8 +150,8 @@ function createBar(dimension, startLocation) {
     dimension: dimension,
 
     editing: true,
-    ...startLocation,
-    length: 1
+    ...startLocation
+  
   }
 }
 export {
@@ -163,7 +163,8 @@ export {
   getPosition,
   evaluatePosition,
   createBar,
-  resizeBar
+  resizeBar,
+  Reserver
 }
 
 Reserver.defaultProps = {
