@@ -4,18 +4,22 @@ module.exports = {
     {
       type: 'category',
       label: 'Examples',
-      items: [ 'basic','basicplusplus', 'columntitle','rowtitle','full', 'doc2', 'doc3'],
+      items: [
+        'basic',
+        'basicplusplus',
+        'columntitle',
+        'rowtitle',
+        'full',
+        'doc2',
+        'doc3'
+      ]
     },
     {
       type: 'category',
       label: 'Documentation',
       collapsed: false,
-      items: [ 'reserver', 'bar','helperfunctions'],
+      items: ['reserver', 'bar', 'helperfunctions']
     },
-    'todo',
- 
-
-
-
+    'todo'
   ]
-};
+}

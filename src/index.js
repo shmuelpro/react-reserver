@@ -29,7 +29,7 @@ export default function Reserver(props) {
   const [rowCount, setRowCount] = useState(0)
   const [columnCount, setColumnCount] = useState(0)
 
-  useEffect(() => {    
+  useEffect(() => {
     setColumnCount(
       getColumnCount(props.dimension, props.width, props.rowTitleWidth)
     )
@@ -46,8 +46,6 @@ export default function Reserver(props) {
       setRowTitles(props.rowTitles)
     }
   }, [props.rowTitles])
-
-  
 
   useEffect(() => {
     if (typeof props.columnTitleRow === 'function') {
@@ -160,7 +158,6 @@ function createBar(dimension, startLocation) {
     dimension: dimension,
     editing: true,
     ...startLocation
-  
   }
 }
 export {
@@ -176,7 +173,7 @@ export {
   Reserver
 }
 
-Reserver.defaultProps = {   
+Reserver.defaultProps = {
   columnTitleRow: [],
   rowTitles: [],
   content: {},

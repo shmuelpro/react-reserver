@@ -13,4 +13,3 @@ test('columnTitleRow receives array ', () => {
   )
   screen.getByText('1')
 })
-

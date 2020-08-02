@@ -31,20 +31,18 @@ export default function Bar(props) {
       }}
       className={props.className}
     >
-      {[...Array(props.length)].map(
-        (notUsed, i) => {
-          return (
-            <div
-              key={i}
-              style={{
-                width: props.dimension,
-                height: props.dimension,
-                pointerEvents: props.style.pointerEvents || 'none'
-              }}
-            />
-          )
-        }
-      )}
+      {[...Array(props.length)].map((notUsed, i) => {
+        return (
+          <div
+            key={i}
+            style={{
+              width: props.dimension,
+              height: props.dimension,
+              pointerEvents: props.style.pointerEvents || 'none'
+            }}
+          />
+        )
+      })}
       {props.children}
     </div>
   )

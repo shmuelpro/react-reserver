@@ -1,4 +1,4 @@
-const remarkcodeimport = require('remark-code-import');
+const remarkcodeimport = require('remark-code-import')
 
 module.exports = {
   title: 'React Reserver',
@@ -14,52 +14,52 @@ module.exports = {
       title: 'React Reserver',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.png',
+        src: 'img/logo.png'
       },
       items: [
         {
           to: 'docs/',
           activeBasePath: 'docs',
           label: 'Docs',
-          position: 'left',
+          position: 'left'
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        { to: 'blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/shmuelpro/react-reserver',
           label: 'GitHub',
-          position: 'right',
-        },
-      ],
+          position: 'right'
+        }
+      ]
     },
     footer: {
       style: 'dark',
-    
-      copyright: `Copyright © ${new Date().getFullYear()} shmuelpro. Built with Docusaurus.`,
-    },
+
+      copyright: `Copyright © ${new Date().getFullYear()} shmuelpro. Built with Docusaurus.`
+    }
   },
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
-          remarkPlugins: [remarkcodeimport ],
+          remarkPlugins: [remarkcodeimport],
           // It is recommended to set document id as docs home page (`docs/` path).
           homePageId: 'gettingstarted',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/shmuelpro/react-reserver/tree/master/example/',
+            'https://github.com/shmuelpro/react-reserver/tree/master/example/'
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/facebook/docusaurus/edit/master/website/blog/'
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      },
-    ],
-  ],
-};
+          customCss: require.resolve('./src/css/custom.css')
+        }
+      }
+    ]
+  ]
+}

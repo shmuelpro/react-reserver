@@ -111,9 +111,8 @@ test('headrow receives function ', () => {
 */
 
 test('Reserver adds, removes, edits and setsBars', () => {
-  
   const dom = render(<Basic />)
-  
+
   const square = getAllByRole(dom.container, 'gridcell')
 
   act(() => {

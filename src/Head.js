@@ -1,16 +1,18 @@
 import React from 'react'
 import styles from './style.css'
 export default function Head(props) {
- 
-
   return (
     <div
       role='columnheader'
-      className={props.columnTitleRow.length > 0 ? styles.row : styles.row_invisible}
+      className={
+        props.columnTitleRow.length > 0 ? styles.row : styles.row_invisible
+      }
       style={{ height: props.dimension }}
     >
       <div
-        className={`${props.rowTitleWidth>0?styles.row_cell:styles.row_invisible}`}
+        className={`${
+          props.rowTitleWidth > 0 ? styles.row_cell : styles.row_invisible
+        }`}
         style={{ width: props.rowTitleWidth, height: props.dimension + 'px' }}
       />
       {props.columnTitleRow.map((headitem, i) => {
