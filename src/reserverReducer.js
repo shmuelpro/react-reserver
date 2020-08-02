@@ -24,7 +24,7 @@ export default function reserverReducer(state, action) {
 
       bars.push(action.payload)
 
-      return { ...state, bars: bars, isEditing: true }
+      return { ...state, bars: bars }
     }
 
     case actionTypes.delete: {
