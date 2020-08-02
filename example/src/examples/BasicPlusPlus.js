@@ -13,7 +13,7 @@ export default function BasicPlusPlus(props) {
         mouseEnterCell={(props) => {
 
             if (isEditing) {
-                const nBars = resizeBar(bars, props)``
+                const nBars = resizeBar(bars, props)
                 setBars(nBars)
             }
 
@@ -32,7 +32,6 @@ export default function BasicPlusPlus(props) {
         }}
     >
         {() => {
-
             return bars.map((bar) => {
                 return <Bar key={bar.id} {...bar} style={{ ...bar.style, ...getPosition(bar.row, bar.column, bar.dimension) }} />
             })

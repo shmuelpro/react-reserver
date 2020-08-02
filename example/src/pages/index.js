@@ -66,7 +66,7 @@ function Home() {
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle" ><span style={{background:"red",padding:"10px",borderRadius:"10px"}}>{siteConfig.tagline}</span></p>
           <div className={styles.buttons}>
-            <Link
+            <Link 
               className={clsx(
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
