@@ -25,11 +25,11 @@ make dimention of grid not necessarily square
 
 export default function Reserver(props) {
   const [rowTitles, setRowTitles] = useState([])
-
+  const [columnTitleRow, setColumnTitleRow] = useState([])
   const [rowCount, setRowCount] = useState(0)
   const [columnCount, setColumnCount] = useState(0)
 
-  useEffect(() => {
+  useEffect(() => {    
     setColumnCount(
       getColumnCount(props.dimension, props.width, props.rowTitleWidth)
     )
@@ -47,6 +47,16 @@ export default function Reserver(props) {
     }
   }, [props.rowTitles])
 
+  
+
+  useEffect(() => {
+    if (typeof props.columnTitleRow === 'function') {
+      setColumnTitleRow(props.columnTitleRow(columnCount))
+    } else if (Array.isArray(props.columnTitleRow)) {
+      setColumnTitleRow(props.columnTitleRow)
+    }
+  }, [props.columnTitleRow, columnCount])
+
   return (
     <div
       id={props.id}
@@ -56,7 +66,7 @@ export default function Reserver(props) {
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
-        columnTitleRow={props.columnTitleRow}
+        columnTitleRow={columnTitleRow}
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
@@ -137,7 +147,7 @@ export default function Reserver(props) {
             columnCount: columnCount,
             rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension,
-            columnTitleHeight: columnCount > 0 ? props.dimension : 0
+            columnTitleHeight: columnTitleRow.length > 0 ? props.dimension : 0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
