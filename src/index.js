@@ -56,7 +56,7 @@ export default function Reserver(props) {
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
-        headRow={props.headRow}
+        columnTitleRow={props.columnTitleRow}
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
@@ -168,7 +168,7 @@ export {
 }
 
 Reserver.defaultProps = {   
-  headRow: [],
+  columnTitleRow: [],
   rowTitles: [],
   content: {},
   dimension: 20,
