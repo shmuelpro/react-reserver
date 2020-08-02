@@ -151,7 +151,6 @@ function createBar(dimension, startLocation) {
 
     editing: true,
     ...startLocation
-  
   }
 }
 export {
