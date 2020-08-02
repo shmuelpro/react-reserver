@@ -25,7 +25,7 @@ make dimention of grid not necessarily square
 
 export default function Reserver(props) {
   const [rowTitles, setRowTitles] = useState([])
-
+  const [columnTitleRow, setColumnTitleRow] = useState([])
   const [rowCount, setRowCount] = useState(0)
   const [columnCount, setColumnCount] = useState(0)
 
@@ -47,6 +47,14 @@ export default function Reserver(props) {
     }
   }, [props.rowTitles])
 
+  useEffect(() => {
+    if (typeof props.columnTitleRow === 'function') {
+      setColumnTitleRow(props.columnTitleRow(columnCount))
+    } else if (Array.isArray(props.columnTitleRow)) {
+      setColumnTitleRow(props.columnTitleRow)
+    }
+  }, [props.columnTitleRow, columnCount])
+
   return (
     <div
       id={props.id}
@@ -56,7 +64,7 @@ export default function Reserver(props) {
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
-        headRow={props.headRow}
+        columnTitleRow={columnTitleRow}
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
@@ -137,7 +145,7 @@ export default function Reserver(props) {
             columnCount: columnCount,
             rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension,
-            rowTitleHeight: rowTitles.length > 0 ? props.dimension : 0
+            columnTitleHeight: columnTitleRow.length > 0 ? props.dimension : 0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
@@ -148,7 +156,6 @@ function createBar(dimension, startLocation) {
   return {
     id: makeId(),
     dimension: dimension,
-
     editing: true,
     ...startLocation
   }
@@ -167,10 +174,7 @@ export {
 }
 
 Reserver.defaultProps = {
-  initBars: [],
-  bars: [],
-  tags: [],
-  headRow: [],
+  columnTitleRow: [],
   rowTitles: [],
   content: {},
   dimension: 20,

@@ -22,7 +22,7 @@ export default function BasicPlusPlus(props) {
       }}
       mouseEnterCell={(props) => {
         if (isEditing) {
-          const nBars = resizeBar(bars, props)``
+          const nBars = resizeBar(bars, props)
           setBars(nBars)
         }
       }}

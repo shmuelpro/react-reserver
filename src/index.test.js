@@ -91,10 +91,28 @@ function Basic(props) {
   )
 }
 
+/*
+Need to add this to tests
+test('headrow receives function ', () => {
+  render(
+    <Head
+      dimension='20'
+      rowTitleWidth='20px'
+      columnTitleRow={(c) => {
+        return [...Array(c)].map((x, i) => {
+          return <div key={i}>{i}</div>
+        })
+      }}
+      columnCount={4}
+    />
+  )
+  screen.getByText('1')
+})
+*/
+
 test('Reserver adds, removes, edits and setsBars', () => {
-  // const getById = queryByAttribute.bind(null, 'id')
   const dom = render(<Basic />)
-  // const reserver = getById(dom.container, 'reserver');
+
   const square = getAllByRole(dom.container, 'gridcell')
 
   act(() => {

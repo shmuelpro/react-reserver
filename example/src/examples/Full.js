@@ -22,7 +22,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min // The maximum is exclusive and the minimum is inclusive
 }
 export default function Full(props) {
-  // const [headRow, setHeadRow] = useState([123, 1, 2, null, null, 123]);
+  // const [columnTitleRow, setcolumnTitleRow] = useState([123, 1, 2, null, null, 123]);
   const [content, setContent] = useState({
     r0c0: (
       <span
@@ -108,7 +108,7 @@ export default function Full(props) {
           })
         }}
         rowTitleWidth={widthtitle}
-        headRow={(columnCount) => {
+        columnTitleRow={(columnCount) => {
           console.log()
           var z = []
           var x = new Date()
@@ -120,7 +120,7 @@ export default function Full(props) {
 
           return z
 
-          /* return headRow.map((r) => {
+          /* return columnTitleRow.map((r) => {
                return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
        
              }) */

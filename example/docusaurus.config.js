@@ -14,7 +14,7 @@ module.exports = {
       title: 'React Reserver',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg'
+        src: 'img/logo.png'
       },
       items: [
         {
@@ -33,51 +33,6 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Style Guide',
-              to: 'docs/'
-            },
-            {
-              label: 'Second Doc',
-              to: 'docs/doc2/'
-            }
-          ]
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus'
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus'
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus'
-            }
-          ]
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'blog'
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/shmuelpro/react-reserver'
-            }
-          ]
-        }
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} shmuelpro. Built with Docusaurus.`
     }
   },
@@ -91,7 +46,8 @@ module.exports = {
           homePageId: 'gettingstarted',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/'
+          editUrl:
+            'https://github.com/shmuelpro/react-reserver/tree/master/example/'
         },
         blog: {
           showReadingTime: true,

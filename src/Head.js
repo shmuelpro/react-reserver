@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './style.css'
 export default function Head(props) {
-  const [headRow, setHeadRow] = useState([])
-
-  useEffect(() => {
-    if (typeof props.headRow === 'function') {
-      setHeadRow(props.headRow(props.columnCount))
-    } else if (Array.isArray(props.headRow)) {
-      setHeadRow(props.headRow)
-    }
-  }, [props.headRow, props.columnCount])
-
   return (
     <div
       role='columnheader'
-      className={headRow.length > 0 ? styles.row : styles.row_invisible}
+      className={
+        props.columnTitleRow.length > 0 ? styles.row : styles.row_invisible
+      }
       style={{ height: props.dimension }}
     >
       <div
-        className={styles.row_cell}
+        className={`${
+          props.rowTitleWidth > 0 ? styles.row_cell : styles.row_invisible
+        }`}
         style={{ width: props.rowTitleWidth, height: props.dimension + 'px' }}
       />
-      {headRow.map((headitem, i) => {
+      {props.columnTitleRow.map((headitem, i) => {
         return (
           <div
             aria-colindex={i}
