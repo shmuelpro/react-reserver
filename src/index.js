@@ -137,7 +137,7 @@ export default function Reserver(props) {
             columnCount: columnCount,
             rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension,
-            rowTitleHeight: rowTitles.length > 0 ? props.dimension : 0
+            columnTitleHeight: columnCount > 0 ? props.dimension : 0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
@@ -148,7 +148,6 @@ function createBar(dimension, startLocation) {
   return {
     id: makeId(),
     dimension: dimension,
-
     editing: true,
     ...startLocation
   
