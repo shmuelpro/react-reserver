@@ -13,6 +13,7 @@ import useReserver from './useReserver'
 import actionTypes from './actionTypes'
 import Bar from './Bar'
 import Head from './Head'
+import Cell from './Cell'
 
 /* TODO:
 Resize bar if at end of visible area
@@ -92,46 +93,19 @@ export default function Reserver(props) {
             </div>
             {[...Array(columnCount)].map((x, c) => {
               return (
-                <div
-                  role='gridcell'
-                  aria-colindex={c}
-                  onDragOver={(e) => {
-                    e.preventDefault()
-                    props.mouseDragOverCell({ cell: { row: r, column: c } }, e)
-                  }}
-                  className={styles.row_cell}
-                  onMouseEnter={(e) => {
-                    props.mouseEnterCell(
-                      {
-                        dimension: props.dimension,
-                        cell: { row: r, column: c }
-                      },
-                      e
-                    )
-                  }}
-                  onMouseDown={(e) => {
-                    props.mouseDownCell(
-                      {
-                        dimension: props.dimension,
-                        cell: { row: r, column: c }
-                      },
-                      e
-                    )
-                  }}
-                  onMouseUp={(e) => {
-                    props.mouseUpCell({ cell: { row: r, column: c } }, e)
-                  }}
-                  onDrop={(e) => {
-                    props.mouseCellDrop({ cell: { row: r, column: c } }, e)
-                  }}
-                  style={{
-                    width: props.dimension + 'px',
-                    height: props.dimension + 'px'
-                  }}
-                  key={c}
+                <Cell
+                  key={`r${r}c${c}`}
+                  onMouseDown={props.mouseDownCell}
+                  onMouseEnter={props.mouseEnterCell}
+                  onMouseUp={props.mouseUpCell}
+                  onDrop={props.mouseDropCell}
+                  onDragOver={props.mouseDragOverCell}
+                  dimension={props.dimension}
+                  column={c}
+                  row={r}
                 >
                   {props.content[`r${r}c${c}`]}
-                </div>
+                </Cell>
               )
             })}
           </div>
