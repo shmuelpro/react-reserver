@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useArrFunc } from './hooks'
 import styles from './style.css'
 import {
@@ -26,20 +26,15 @@ make dimention of grid not necessarily square
 */
 
 export default function Reserver(props) {
-  const [rowCount, setRowCount] = useState(0)
-  const [columnCount, setColumnCount] = useState(0)
+  const rowCount = useArrFunc(getRowCount, props.dimension, props.height)
+  const columnCount = useArrFunc(
+    getColumnCount,
+    props.dimension,
+    props.width,
+    props.rowTitleWidth
+  )
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
-
-  useEffect(() => {
-    setColumnCount(
-      getColumnCount(props.dimension, props.width, props.rowTitleWidth)
-    )
-  }, [props.width, props.dimension])
-
-  useEffect(() => {
-    setRowCount(getRowCount(props.dimension, props.height))
-  }, [props.height, props.dimension])
 
   return (
     <div
@@ -86,9 +81,9 @@ export default function Reserver(props) {
                   onDrop={props.mouseDropCell}
                   onDragOver={props.mouseDragOverCell}
                   dimension={props.dimension}
+                  className={props.cellClassName}
                   column={c}
                   row={r}
-                  className={props.cellClassName}
                 >
                   {props.content[`r${r}c${c}`]}
                 </Cell>
