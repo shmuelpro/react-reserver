@@ -144,6 +144,6 @@ Reserver.defaultProps = {
   mouseDownCell: () => {},
   mouseUpCell: () => {},
   mouseDragOverCell: () => {},
-  mouseCellDrop: () => {},
+  mouseDropCell: () => {},
   mouseLeaveGrid: () => {}
 }
