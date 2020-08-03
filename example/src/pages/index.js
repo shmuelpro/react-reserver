@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css'
-import Full from '../examples/Full'
+import ColumnTitle from '../examples/ColumnTitle'
 const features = [
   {
     title: <>Easy to Use</>,
@@ -101,7 +101,7 @@ function Home() {
             </div>
           </section>
         )}
-        <Full />
+        <ColumnTitle />
       </main>
     </Layout>
   )

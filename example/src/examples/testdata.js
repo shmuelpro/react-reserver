@@ -1,4 +1,4 @@
-export const bars = [
+export const barData = [
   {
     draggable: true,
     id: 'xx',

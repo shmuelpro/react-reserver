@@ -28,7 +28,6 @@ export default function ColumnTitle(props) {
         columnTitles={(columnCount) => {
           return dateRange(new Date(), columnCount, 'days').map(
             (val, index) => {
-              console.log(val)
               return (
                 <div
                   style={{

@@ -9,7 +9,6 @@ import Reserver, {
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
 import { names } from './testdata'
-import { resolveDate, dateRange } from './helpers'
 
 export default function RowTitle(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(

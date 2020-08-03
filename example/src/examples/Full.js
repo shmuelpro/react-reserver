@@ -7,7 +7,7 @@ import Reserver, {
   createBar,
   resizeBar
 } from 'react-reserver'
-import { bars as testBars } from './testData'
+import { barData } from './testdata'
 
 import {
   SimpleContextMenu,
@@ -22,7 +22,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min // The maximum is exclusive and the minimum is inclusive
 }
 export default function Full(props) {
-  // const [columnTitleRow, setcolumnTitleRow] = useState([123, 1, 2, null, null, 123]);
+  // const [columnTitles, setcolumnTitles] = useState([123, 1, 2, null, null, 123]);
   const [content, setContent] = useState({
     r0c0: (
       <span
@@ -49,7 +49,7 @@ export default function Full(props) {
 
   const { addBar, editBar, isEditing, deleteBar, bars, setBars } = useReserver(
     reserverReducer,
-    testBars
+    barData
   )
   const [selectedBar, setSelectedBar] = useState({})
   const [contextMenuState, setContextMenuState] = useState({
@@ -108,7 +108,7 @@ export default function Full(props) {
           })
         }}
         rowTitleWidth={widthtitle}
-        columnTitleRow={(columnCount) => {
+        columnTitles={(columnCount) => {
           console.log()
           var z = []
           var x = new Date()
@@ -120,7 +120,7 @@ export default function Full(props) {
 
           return z
 
-          /* return columnTitleRow.map((r) => {
+          /* return columnTitles.map((r) => {
                return <div onClick={() => { setWidthtitle(widthtitle + 10) }}>{r}</div>
        
              }) */

@@ -13,7 +13,7 @@ Click on a title to see what happens!
 <ColumnTitle />
 
 
-```jsx {23-27,57-62} file=../src/examples/ColumnTitle.js
+```jsx {28-54,57-62,95} file=../src/examples/ColumnTitle.js
 ```
 
 [columnTitles](./reserver#columnTitles) takes either an array or a function and builds the top row. 

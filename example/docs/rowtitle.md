@@ -5,9 +5,15 @@ sidebar_label: Row Title
 ---
 import RowTitle from '../src/examples/RowTitle'
 
-So we want to give each column a title, it could be a date or time. 
-In this example I use the library [moment](https://momentjs.com/) in order to generate the array of dates but you can use any library you want or you can just use a static array. 
-
-Click on a title to see what happens!
+How about giving each row a title. Maybe it represents a room, a vehicle or person. 
+So here we are going to create a list of people so we can assign their work times
 
 <RowTitle />
+
+We are going to use the prop rowTitles which takes an array or a function that returns an array. 
+The function 
+
+```jsx {28-54,57-62,95} file=../src/examples/RowTitle.js
+```
+
+
