@@ -29,7 +29,7 @@ export default function Reserver(props) {
   const [rowCount, setRowCount] = useState(0)
   const [columnCount, setColumnCount] = useState(0)
   const rowTitles = useArrFunc(props.rowTitles)
-  const columnTitleRow = useArrFunc(props.columnTitleRow, columnCount)
+  const columnTitles = useArrFunc(props.columnTitles, columnCount)
 
   useEffect(() => {
     setColumnCount(
@@ -50,7 +50,7 @@ export default function Reserver(props) {
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
-        columnTitleRow={columnTitleRow}
+        columnTitles={columnTitles}
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
@@ -88,6 +88,7 @@ export default function Reserver(props) {
                   dimension={props.dimension}
                   column={c}
                   row={r}
+                  className={props.cellClassName}
                 >
                   {props.content[`r${r}c${c}`]}
                 </Cell>
@@ -104,7 +105,7 @@ export default function Reserver(props) {
             columnCount: columnCount,
             rowTitleWidth: props.rowTitleWidth,
             dimension: props.dimension,
-            columnTitleHeight: columnTitleRow.length > 0 ? props.dimension : 0
+            columnTitleHeight: columnTitles.length > 0 ? props.dimension : 0
           })}
         {Array.isArray(props.children) && props.children}
       </div>
@@ -133,7 +134,7 @@ export {
 }
 
 Reserver.defaultProps = {
-  columnTitleRow: [],
+  columnTitles: [],
   rowTitles: [],
   content: {},
   dimension: 20,

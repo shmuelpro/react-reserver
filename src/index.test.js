@@ -98,7 +98,7 @@ test('headrow receives function ', () => {
     <Head
       dimension='20'
       rowTitleWidth='20px'
-      columnTitleRow={(c) => {
+      columnTitles={(c) => {
         return [...Array(c)].map((x, i) => {
           return <div key={i}>{i}</div>
         })

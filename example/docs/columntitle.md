@@ -16,7 +16,7 @@ Click on a title to see what happens!
 ```jsx {23-27,57-62} file=../src/examples/ColumnTitle.js
 ```
 
-[columnTitleRow](./reserver#columntitlerow) takes either an array or a function and builds the top row. 
+[columnTitles](./reserver#columnTitles) takes either an array or a function and builds the top row. 
 The function passes columnCount as an argument and must return an array. 
 
 columnCount is necessary in order for you to generate the correct amount of columns for your array.

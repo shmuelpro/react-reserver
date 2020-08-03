@@ -25,10 +25,10 @@ export default function ColumnTitle(props) {
         </div>
       )}
       <Reserver
-        columnTitleRow={(columnCount) => {
+        columnTitles={(columnCount) => {
           return dateRange(new Date(), columnCount, 'days').map(
             (val, index) => {
-              console.log(index)
+              console.log(val)
               return (
                 <div
                   style={{

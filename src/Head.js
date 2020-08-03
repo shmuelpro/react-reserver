@@ -5,7 +5,7 @@ export default function Head(props) {
     <div
       role='columnheader'
       className={
-        props.columnTitleRow.length > 0 ? styles.row : styles.row_invisible
+        props.columnTitles.length > 0 ? styles.row : styles.row_invisible
       }
       style={{ height: props.dimension }}
     >
@@ -15,7 +15,7 @@ export default function Head(props) {
         }`}
         style={{ width: props.rowTitleWidth, height: props.dimension + 'px' }}
       />
-      {props.columnTitleRow.map((headitem, i) => {
+      {props.columnTitles.map((headitem, i) => {
         return (
           <div
             aria-colindex={i}

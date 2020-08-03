@@ -2,12 +2,12 @@ import React from 'react'
 import Head from './Head'
 import { render, screen } from '@testing-library/react'
 
-test('columnTitleRow receives array ', () => {
+test('columnTitles receives array ', () => {
   render(
     <Head
       dimension='20'
       rowTitleWidth='20px'
-      columnTitleRow={[1, 2, 3, 4]}
+      columnTitles={[1, 2, 3, 4]}
       columnCount={4}
     />
   )
