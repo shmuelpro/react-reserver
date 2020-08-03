@@ -10,7 +10,7 @@ export default function Cell(props) {
         e.preventDefault()
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
       }}
-      className={styles.row_cell}
+      className={props.className || styles.row_cell}
       onMouseEnter={(e) => {
         props.onMouseEnter(
           {
