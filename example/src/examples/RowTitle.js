@@ -8,7 +8,7 @@ import Reserver, {
   resizeBar
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
-
+import { names } from './testdata'
 import { resolveDate, dateRange } from './helpers'
 
 export default function RowTitle(props) {
@@ -16,15 +16,35 @@ export default function RowTitle(props) {
     reserverReducer,
     []
   )
-  const [selectedDate, setSelectedDate] = useState('')
+
+  const [selectedWorker, setSelectedWorker] = useState('')
   return (
     <>
-      {selectedDate !== '' && (
+      {selectedWorker !== '' && (
         <div className='alert alert--success' role='alert'>
-          You selected <strong>{selectedDate}</strong>
+          <strong>{selectedWorker}'s</strong> Card
         </div>
       )}
       <Reserver
+        rowTitles={() => {
+          return names.map((val, index) => {
+            return (
+              <div
+                style={{
+                  background: '#12D3CF',
+                  height: '100%',
+                  textAlign: 'center'
+                }}
+                onClick={() => {
+                  setSelectedWorker(val)
+                }}
+              >
+                {val}
+              </div>
+            )
+          })
+        }}
+        rowTitleWidth={140}
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
@@ -52,8 +72,7 @@ export default function RowTitle(props) {
           setIsEditing(false)
         }}
       >
-        {({ columnTitleHeight }) => {
-          console.log(columnTitleHeight)
+        {({ columnTitleHeight, rowTitleWidth }) => {
           return bars.map((bar) => {
             return (
               <Bar
@@ -65,7 +84,7 @@ export default function RowTitle(props) {
                     bar.row,
                     bar.column,
                     bar.dimension,
-                    0,
+                    rowTitleWidth,
                     columnTitleHeight
                   )
                 }}

@@ -24,10 +24,8 @@ export default function Basic(props) {
         addBar(newbar)
       }}
       mouseEnterCell={(props) => {
-        if (isEditing) {
-          const nBars = resizeBar(bars, props)
-          setBars(nBars)
-        }
+        const nBars = resizeBar(bars, props)
+        setBars(nBars)
       }}
       mouseUpCell={() => {
         const dBars = bars.map((bar) => {
@@ -35,7 +33,7 @@ export default function Basic(props) {
             return {
               ...bar,
               editing: false,
-              style: { ...bar.style, pointerEvents: 'auto' }
+              style: { pointerEvents: 'auto' }
             }
           }
           return bar

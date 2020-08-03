@@ -151,7 +151,7 @@ export default function Full(props) {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
         }}
-        mouseCellDrop={(props) => {
+        mouseDropCell={(props) => {
           moveBar(props.cell)
         }}
         width={
