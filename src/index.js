@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useArrFunc } from './hooks'
 import styles from './style.css'
 import {
   makeId,
@@ -25,10 +26,10 @@ make dimention of grid not necessarily square
 */
 
 export default function Reserver(props) {
-  const [rowTitles, setRowTitles] = useState([])
-  const [columnTitleRow, setColumnTitleRow] = useState([])
   const [rowCount, setRowCount] = useState(0)
   const [columnCount, setColumnCount] = useState(0)
+  const rowTitles = useArrFunc(props.rowTitles)
+  const columnTitleRow = useArrFunc(props.columnTitleRow, columnCount)
 
   useEffect(() => {
     setColumnCount(
@@ -39,22 +40,6 @@ export default function Reserver(props) {
   useEffect(() => {
     setRowCount(getRowCount(props.dimension, props.height))
   }, [props.height, props.dimension])
-
-  useEffect(() => {
-    if (typeof props.rowTitles === 'function') {
-      setRowTitles(props.rowTitles())
-    } else if (Array.isArray(props.rowTitles)) {
-      setRowTitles(props.rowTitles)
-    }
-  }, [props.rowTitles])
-
-  useEffect(() => {
-    if (typeof props.columnTitleRow === 'function') {
-      setColumnTitleRow(props.columnTitleRow(columnCount))
-    } else if (Array.isArray(props.columnTitleRow)) {
-      setColumnTitleRow(props.columnTitleRow)
-    }
-  }, [props.columnTitleRow, columnCount])
 
   return (
     <div
