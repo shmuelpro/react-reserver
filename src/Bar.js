@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Bar(props) {
+  
   return (
     <div
       role='listitem'
@@ -31,7 +32,7 @@ export default function Bar(props) {
       }}
       className={props.className}
     >
-      {[...Array(props.length)].map((notUsed, i) => {
+      {[...Array(props.length>0?props.length:1)].map((notUsed, i) => {
         return (
           <div
             key={i}
