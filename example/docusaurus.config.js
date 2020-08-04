@@ -7,7 +7,7 @@ module.exports = {
   baseUrl: '/react-reserver/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: '', // Usually your GitHub org/user name.
+  organizationName: 'shmuelpro', // Usually your GitHub org/user name.
   projectName: 'react-reserver', // Usually your repo name.
   themeConfig: {
     navbar: {
@@ -41,19 +41,12 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          remarkPlugins: [remarkcodeimport],
-          // It is recommended to set document id as docs home page (`docs/` path).
+          remarkPlugins: [remarkcodeimport],       
           homePageId: 'gettingstarted',
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/shmuelpro/react-reserver/tree/master/example/'
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
