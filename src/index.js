@@ -65,6 +65,7 @@ export default function Reserver(props) {
                   ? styles.row_cell
                   : styles.row_cell_invisible
               }
+             
               style={{
                 width: props.rowTitleWidth,
                 height: props.dimension + 'px',
@@ -118,7 +119,10 @@ function createBar(dimension, startLocation) {
     ...startLocation
   }
 }
+
+const Tag = (props)=><span style={props.style} className={styles.tag_content}>{props.children}</span>
 export {
+  Tag,
   Bar,
   reserverReducer,
   actionTypes,
@@ -138,7 +142,7 @@ Reserver.defaultProps = {
   dimension: 20,
   width: 500,
   height: 500,
-  rowTitleWidth: 20,
+  rowTitleWidth: 0,
   mouseEnterCell: () => { },
   mouseDownCell: () => { },
   mouseUpCell: () => { },
