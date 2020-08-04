@@ -67,7 +67,9 @@ export default function Reserver(props) {
               }
               style={{
                 width: props.rowTitleWidth,
-                height: props.dimension + 'px'
+                height: props.dimension + 'px',
+                overflow:"hidden"
+                
               }}
             >
               {rowTitles[r]}
@@ -136,7 +138,7 @@ Reserver.defaultProps = {
   dimension: 20,
   width: 500,
   height: 500,
-  rowTitleWidth: 0,
+  rowTitleWidth: 20,
   mouseEnterCell: () => { },
   mouseDownCell: () => { },
   mouseUpCell: () => { },
