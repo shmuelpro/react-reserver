@@ -36,6 +36,7 @@ export default function Cell(props) {
         props.onDrop({ cell: { row: props.row, column: props.column } }, e)
       }}
       style={{
+        overflow:"hidden",
         width: props.dimension + 'px',
         height: props.dimension + 'px'
       }}
