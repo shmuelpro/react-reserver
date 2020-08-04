@@ -43,18 +43,22 @@ export default function RowTitle(props) {
             )
           })
         }}
+
         rowTitleWidth={140}
+        
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
           setIsEditing(true)
         }}
+
         mouseEnterCell={(props) => {
           if (isEditing) {
             const nBars = resizeBar(bars, props)
             setBars(nBars)
           }
         }}
+        
         mouseUpCell={() => {
           const dBars = bars.map((bar) => {
             if (bar.editing) {

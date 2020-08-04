@@ -8,24 +8,23 @@ import Reserver, {
   resizeBar
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
-export default function Basic(props) {
-  const {
-    bars,
-    isEditing,
-    setIsEditing,
-    addBar,
-    setBars,
-    editBar
-  } = useReserver(reserverReducer, [])
+export default function BasicBar(props) {
+  const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
+    reserverReducer,
+    []
+  )
   return (
     <Reserver
       mouseDownCell={(props) => {
         const newbar = createBar(props.dimension, props.cell)
         addBar(newbar)
+        setIsEditing(true)
       }}
       mouseEnterCell={(props) => {
-        const nBars = resizeBar(bars, props)
-        setBars(nBars)
+        if (isEditing) {
+          const nBars = resizeBar(bars, props)
+          setBars(nBars)
+        }
       }}
       mouseUpCell={() => {
         const dBars = bars.map((bar) => {
@@ -33,7 +32,7 @@ export default function Basic(props) {
             return {
               ...bar,
               editing: false,
-              style: { pointerEvents: 'auto' }
+              style: { ...bar.style, pointerEvents: 'auto' }
             }
           }
           return bar
@@ -43,18 +42,20 @@ export default function Basic(props) {
         setIsEditing(false)
       }}
     >
-      {bars.map((bar) => {
-        return (
-          <Bar
-            key={bar.id}
-            {...bar}
-            style={{
-              ...bar.style,
-              ...getPosition(bar.row, bar.column, bar.dimension)
-            }}
-          />
-        )
-      })}
+      {() => {
+        return bars.map((bar) => {
+          return (
+            <Bar
+              key={bar.id}
+              {...bar}
+              style={{
+                ...bar.style,
+                ...getPosition(bar.row, bar.column, bar.dimension)
+              }}
+            />
+          )
+        })
+      }}
     </Reserver>
   )
 }

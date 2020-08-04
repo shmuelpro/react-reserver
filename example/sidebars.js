@@ -9,9 +9,9 @@ module.exports = {
         'basicplusplus',
         'columntitle',
         'rowtitle',
+        'basicbar',
         'full',
-        'doc2',
-        'doc3'
+      
       ]
     },
     {
