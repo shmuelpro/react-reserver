@@ -1,5 +1,5 @@
-import React from 'react'
-import { useArrFunc } from './hooks'
+import React, { useEffect } from 'react'
+import { useArrFunc, useFunction } from './hooks'
 import styles from './style.css'
 import {
   makeId,
@@ -26,13 +26,14 @@ make dimention of grid not necessarily square
 */
 
 export default function Reserver(props) {
-  const rowCount = useArrFunc(getRowCount, props.dimension, props.height)
-  const columnCount = useArrFunc(
+  const rowCount = useFunction(getRowCount, props.dimension, props.height)
+  const columnCount =useFunction(
     getColumnCount,
     props.dimension,
     props.width,
     props.rowTitleWidth
   )
+ 
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
 
@@ -136,10 +137,10 @@ Reserver.defaultProps = {
   width: 500,
   height: 500,
   rowTitleWidth: 0,
-  mouseEnterCell: () => {},
-  mouseDownCell: () => {},
-  mouseUpCell: () => {},
-  mouseDragOverCell: () => {},
-  mouseDropCell: () => {},
-  mouseLeaveGrid: () => {}
+  mouseEnterCell: () => { },
+  mouseDownCell: () => { },
+  mouseUpCell: () => { },
+  mouseDragOverCell: () => { },
+  mouseDropCell: () => { },
+  mouseLeaveGrid: () => { }
 }
