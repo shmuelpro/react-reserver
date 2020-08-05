@@ -10,6 +10,7 @@ module.exports = {
         'columntitle',
         'rowtitle',
         'basicbar',
+        'draganddelete',
         'full',
       
       ]

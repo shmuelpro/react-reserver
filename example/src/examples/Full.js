@@ -151,18 +151,20 @@ export default function Full(props) {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
         }}
-        mouseDropCell={(props) => {
-          moveBar(props.cell)
-        }}
+     
         width={
           typeof window !== 'undefined' && document.documentElement.clientWidth
         }
+        mouseDropCell={(props) => {
+          moveBar(props.cell)
+      }}
+      mouseDragOverCell={(props) => {
+          hoverBar(props.cell)
+      }}
         height={height}
         content={content}
         dimension={dimension}
-        mouseDragOverCell={(props) => {
-          hoverBar(props.cell)
-        }}
+       
       >
         {({ rowCount, rowTitleWidth, dimension }) => {
           return bars.map((bar) => {
