@@ -114,6 +114,7 @@ export default function Reserver(props) {
 function createBar(dimension, startLocation) {
   return {
     id: makeId(),
+    length:1,
     dimension: dimension,
     editing: true,
     ...startLocation
