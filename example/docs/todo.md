@@ -5,5 +5,3 @@ sidebar_label: Todo
 ---
 
 
-- [ ] Column Title Example
-- [ ] Row Title Example

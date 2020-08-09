@@ -11,6 +11,7 @@ module.exports = {
         'rowtitle',
         'basicbar',
         'draganddelete',
+        'resolvedatetime',
         'full',
       
       ]

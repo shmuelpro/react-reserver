@@ -11,6 +11,7 @@ export function resolveDate(start, count, unit, format) {
 }
 
 
+
 export function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';

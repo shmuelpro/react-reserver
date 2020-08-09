@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Reserver, {
     Tag,
     Bar,
@@ -59,6 +59,8 @@ export default function DragBar(props) {
             left: event.clientX
         })
     }
+
+
 
     return (
         <>
