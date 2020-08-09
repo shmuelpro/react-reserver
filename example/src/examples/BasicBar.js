@@ -47,6 +47,7 @@ export default function BasicPlusPlus(props) {
         >
             {({ dimension }) => {
                 return bars.map((bar) => {
+                    console.log(  <Tag style={{ color: "#fff", width: dimension * bar.length }}>{bar.length} Days</Tag>)
                     return (
                         <Bar
                             key={bar.id}

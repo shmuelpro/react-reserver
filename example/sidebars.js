@@ -12,6 +12,7 @@ module.exports = {
         'basicbar',
         'draganddelete',
         'resolvedatetime',
+        'righttoleft',
         'full',
       
       ]

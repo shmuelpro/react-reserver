@@ -66,7 +66,7 @@ function positionToDate( bar,startDate, unit = "unit", format = "DD-MM-YYYY") {
 
 }
 
-export default function ResolveDateTime(props) {
+export default function DateOverflow(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars, editBar } = useReserver(
     reserverReducer,
     []

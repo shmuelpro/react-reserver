@@ -38,3 +38,16 @@ export const names = [
   'Francis Hodges',
   'Clifford Campbell'
 ]
+
+export const hebnames = [
+  'אבגיל',
+  'אביאור',
+  'אביאל',
+  'אליעד',
+  'אליאל',
+
+]
+
+
+
+
