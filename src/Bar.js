@@ -1,11 +1,23 @@
 import React from 'react'
+function getContent(index, length, content, firstContent, lastContent) {
+  if (index === 0) {
+    return firstContent || content[index] || <div />;
+  }
+  else if (length - 1 === index) {
+    return lastContent || content[length - 1] || <div />;
+  }
+  return content[index] || <div />;
+}
+
 
 export default function Bar(props) {
-  
+
   return (
     <div
       role='listitem'
-      onDragStart={props.onDragStart}
+      onDragStart={(e) => {
+        props.onDragStart(e, props)
+      }}
       onClick={(e) => {
         props.onClick(e, props)
       }}
@@ -32,31 +44,32 @@ export default function Bar(props) {
       }}
       className={props.className}
     >
-      {[...Array(props.length>0?props.length:1)].map((notUsed, i) => {
-        return (
-          <div
-            key={i}
-            style={{
-              width: props.dimension,
-              height: props.dimension,
-              pointerEvents: props.style.pointerEvents || 'none'
-            }}
-          />
-        )
+      {[...Array(props.length > 0 ? props.length : 1)].map((notUsed, i) => {
+
+        const content = getContent(i, props.length, props.content, props.firstContent, props.lastContent);
+
+        const style = Object.assign({
+          width: props.dimension,
+          height: props.dimension,
+          pointerEvents: props.style.pointerEvents || 'none'
+        }, content.props.style || {})
+
+        return (<React.Fragment key={i}>
+          {React.cloneElement(content, { ...content.props, style }, content.children)}
+        </React.Fragment>)
       })}
-      {props.children}
-    </div>
-  )
+    </div>)
 }
 
 Bar.defaultProps = {
   style: {},
   dimension: 20,
-  onClick: () => {},
-  onMouseOver: () => {},
-  onDragStart: () => {},
-  onContextMenu: () => {},
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
-  length: 1
+  onClick: () => { },
+  onMouseOver: () => { },
+  onDragStart: () => { },
+  onContextMenu: () => { },
+  onMouseEnter: () => { },
+  onMouseLeave: () => { },
+  length: 1,
+  content: {}
 }
