@@ -7,9 +7,11 @@ import {
   getColumnCount,
   getRowCount,
   evaluatePosition,
-  resizeBar
+  resizeBar,
+  finishEditingBars
 } from './helpers'
 import reserverReducer from './reserverReducer'
+import RowTitle from './RowTitle'
 import useReserver from './useReserver'
 import actionTypes from './actionTypes'
 import Bar from './Bar'
@@ -25,17 +27,22 @@ Assign content to top left area
 make dimention of grid not necessarily square
 */
 
+
+
+
 export default function Reserver(props) {
   const rowCount = useFunction(getRowCount, props.dimension, props.height)
-  const columnCount =useFunction(
+  const columnCount = useFunction(
     getColumnCount,
     props.dimension,
     props.width,
     props.rowTitleWidth
   )
- 
+
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
+
+
 
   return (
     <div
@@ -59,22 +66,13 @@ export default function Reserver(props) {
             key={r}
             style={{ height: props.dimension, display: 'flex' }}
           >
-            <div
-              className={
-                rowTitles.length > 0
-                  ? styles.row_cell
-                  : styles.row_cell_invisible
-              }
-             
-              style={{
-                width: props.rowTitleWidth,
-                height: props.dimension + 'px',
-                overflow:"hidden"
-                
-              }}
+            {props.dir === "ltr" && <RowTitle
+              isVisible={rowTitles.length > 0}
+              width={props.rowTitleWidth}
+              dimension={props.dimension}
             >
               {rowTitles[r]}
-            </div>
+            </RowTitle>}
             {[...Array(columnCount)].map((x, c) => {
               return (
                 <Cell
@@ -93,6 +91,13 @@ export default function Reserver(props) {
                 </Cell>
               )
             })}
+              {props.dir === "rtl" && <RowTitle
+              isVisible={rowTitles.length > 0}
+              width={props.rowTitleWidth}
+              dimension={props.dimension}
+            >
+              {rowTitles[r]}
+            </RowTitle>}
           </div>
         )
       })}
@@ -114,14 +119,14 @@ export default function Reserver(props) {
 function createBar(dimension, startLocation) {
   return {
     id: makeId(),
-    length:1,
+    length: 1,
     dimension: dimension,
     editing: true,
     ...startLocation
   }
 }
 
-const Tag = (props)=><span style={props.style} className={styles.tag_content}>{props.children}</span>
+const Tag = (props) => <span style={props.style} className={styles.tag_content}>{props.children}</span>
 export {
   Tag,
   Bar,
@@ -133,7 +138,8 @@ export {
   evaluatePosition,
   createBar,
   resizeBar,
-  Reserver
+  Reserver,
+  finishEditingBars
 }
 
 Reserver.defaultProps = {
@@ -144,6 +150,7 @@ Reserver.defaultProps = {
   width: 500,
   height: 500,
   rowTitleWidth: 0,
+  dir: "ltr",
   mouseEnterCell: () => { },
   mouseDownCell: () => { },
   mouseUpCell: () => { },
