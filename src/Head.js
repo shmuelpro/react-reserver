@@ -9,12 +9,12 @@ export default function Head(props) {
       }
       style={{ height: props.dimension }}
     >
-      <div
-        className={`${
-          props.rowTitleWidth > 0 ? styles.row_cell : styles.row_invisible
-        }`}
-        style={{ width: props.rowTitleWidth, height: props.dimension + 'px' }}
-      />
+      {props.dir === "ltr" && <RowTitle
+        isVisible={rowTitles.length > 0}
+        width={props.rowTitleWidth}
+        dimension={props.dimension}
+      >
+      </RowTitle>}
       {props.columnTitles.map((headitem, i) => {
         return (
           <div
@@ -30,6 +30,13 @@ export default function Head(props) {
           </div>
         )
       })}
+
+      {props.dir === "rtl" && <RowTitle
+        isVisible={rowTitles.length > 0}
+        width={props.rowTitleWidth}
+        dimension={props.dimension}
+      >
+      </RowTitle>}
     </div>
   )
 }
