@@ -47,8 +47,7 @@ export default function Bar(props) {
       {[...Array(props.length > 0 ? props.length : 1)].map((notUsed, i) => {
 
         const content = getContent(i, props.length, props.content, props.firstContent, props.lastContent);
-
-        const style = Object.assign({
+          const style = Object.assign({
           width: props.dimension,
           height: props.dimension,
           pointerEvents: props.style.pointerEvents || 'none'
@@ -58,6 +57,7 @@ export default function Bar(props) {
           {React.cloneElement(content, { ...content.props, style }, content.children)}
         </React.Fragment>)
       })}
+      {props.children}
     </div>)
 }
 
