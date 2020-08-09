@@ -35,6 +35,16 @@ export function evaluatePosition(firstPosition, secondPosition) {
       `secondPosition.column expected an integer received ${secondPosition.column}`
     )
   }
+  console.log("firstPosition", firstPosition)
+  console.log("secondPosition", secondPosition)
+  if (firstPosition.column > secondPosition.column) {
+    return {
+      row: secondPosition.row,
+      column: secondPosition.column,
+      length: firstPosition.column - secondPosition.column + 1
+    }
+  }
+
 
   return {
     row: firstPosition.row,
@@ -64,15 +74,52 @@ export function getRowCount(dimension, height) {
   return Math.floor(height / dimension)
 }
 
-export function resizeBar(bars, newLocation) {
+export function resizeBar(bars, newLocation, resolver) {
   return bars.map((bar) => {
     if (bar.editing) {
-      const nPosition = evaluatePosition(
-        { column: bar.column, row: bar.row },
+
+      let nBar = evaluatePositionWithBar(
+        bar,
         newLocation.cell
       )
-      return { ...bar, ...nPosition }
+      if (typeof resolver === "function") {
+        nBar = resolver(nBar)
+      }
+
+
+
+
+      return nBar;
     }
     return bar
   })
 }
+
+export function evaluatePositionWithBar(bar, newLocation) {
+
+
+
+  if (bar.column > newLocation.column || bar.stick === "right" && bar.length > 1) {
+    bar.stick = "right"
+    const locationForRight = {
+      row: bar.row,
+      column: newLocation.column,
+      length: bar.column - newLocation.column + bar.length
+    }
+
+
+
+    return { ...bar, ...locationForRight }
+  }
+
+  bar.stick = "left"
+  const locationForLeft = {
+
+    row: bar.row,
+    column: bar.column,
+    length: newLocation.column - bar.column + 1
+  }
+  return { ...bar, ...locationForLeft}
+}
+
+
