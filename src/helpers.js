@@ -95,6 +95,22 @@ export function resizeBar(bars, newLocation, resolver) {
   })
 }
 
+export function finishEditingBars(bars) {
+  console.log(bars)
+  return bars.map((bar) => {
+    if (bar.editing) {
+
+      return {
+        ...bar,
+        editing: false,
+
+
+      }
+    }
+    return bar
+  })
+}
+
 export function evaluatePositionWithBar(bar, newLocation) {
 
 
@@ -119,7 +135,7 @@ export function evaluatePositionWithBar(bar, newLocation) {
     column: bar.column,
     length: newLocation.column - bar.column + 1
   }
-  return { ...bar, ...locationForLeft}
+  return { ...bar, ...locationForLeft }
 }
 
 
