@@ -6,6 +6,9 @@ export default function Cell(props) {
     <div
       role='gridcell'
       aria-colindex={props.column}
+      onDragStart={(e)=>{
+        e.preventDefault()       
+      }}
       onDragOver={(e) => {
         e.preventDefault()
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
