@@ -17,7 +17,7 @@ import {
 
 import '../components/SimpleContextMenu/menuStyle.css'
 
-import { usePrevious } from '../components/hooks'
+import { usePrevious } from './hooks'
 
 
 export default function DragBar(props) {

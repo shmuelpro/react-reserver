@@ -8,7 +8,7 @@ import Reserver, {
   resizeBar
 } from 'react-reserver'
 import { barData } from './testdata'
-
+import {getRandomInt} from './helpers'
 import {
   SimpleContextMenu,
   ContextMenuItem
@@ -16,11 +16,7 @@ import {
 
 import '../components/SimpleContextMenu/menuStyle.css'
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min)
-  max = Math.floor(max)
-  return Math.floor(Math.random() * (max - min)) + min // The maximum is exclusive and the minimum is inclusive
-}
+
 export default function Full(props) {
   // const [columnTitles, setcolumnTitles] = useState([123, 1, 2, null, null, 123]);
   const [content, setContent] = useState({
@@ -36,16 +32,16 @@ export default function Full(props) {
     ),
     r2c1: <span style={{ fontSize: '10px' }}>150</span>
   })
-
-  const [titles, setTitles] = useState(['Golf Cart 1', null, 'Golf Cart 2'])
-  // const [resWidth, setResWidth] = useState(600);
-
   /* useInterval(()=>{
         let c = {...content}
         c[`r${getRandomInt(0,10)}c${getRandomInt(0,10)}`] =  <span style={{ fontSize: "10px" }}>{getRandomInt(0,250)}</span>;
         console.log(c)
         setContent(c)
     },50) */
+  const [titles, setTitles] = useState(['Golf Cart 1', null, 'Golf Cart 2'])
+  // const [resWidth, setResWidth] = useState(600);
+
+
 
   const { addBar, editBar, isEditing, deleteBar, bars, setBars } = useReserver(
     reserverReducer,

@@ -12,8 +12,11 @@ module.exports = {
         'basicbar',
         'draganddelete',
         'resolvedatetime',
+        'dateoverflow',
+        'baradvanced',
+        'content',
         'righttoleft',
-        'full',
+                'full',
       
       ]
     },

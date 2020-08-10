@@ -1,7 +1,7 @@
 ---
 id: basicbar
-title: Basic Bar
-sidebar_label: Basic Bar
+title:  Bar Basics
+sidebar_label: Bar Basics
 ---
 
 import BasicBar from '../src/examples/BasicBar'

@@ -6,11 +6,41 @@ export function dateRange(start, length, unit, format = 'D') {
   })
 }
 
+export function getRandomInt(min, max) {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min)) + min // The maximum is exclusive and the minimum is inclusive
+}
+
 export function resolveDate(start, count, unit, format) {
   return moment(start).add(count, unit).format(format)
 }
 
+export function resolveColumnStart(startDate, date, format = "DD-MM-YYYY") {
 
+  var a = moment(startDate, format).startOf('day');
+  var b = moment(date, format).startOf('day');
+  return b.diff(a, 'days')
+}
+
+export function resolveRow(rooms, roomId) {
+
+  return rooms[roomId].row;
+}
+
+export function positionToDate(bar, startDate, unit = "unit", format = "DD-MM-YYYY") {
+  bar.start = startDate.clone().add(bar.column, unit).format(format);
+  bar.end = startDate.clone().add(bar.column + bar.length, unit).format(format);
+  return bar;
+
+}
+
+export function resolveLength(start, end, format = "DD-MM-YYYY") {
+
+  var a = moment(start, format).startOf('day');
+  var b = moment(end, format).startOf('day');
+  return b.diff(a, 'days')
+}
 
 export function getRandomColor() {
   var letters = '0123456789ABCDEF';
