@@ -70,6 +70,6 @@ describe('useFunction ', function () {
 
   it('When its given anything else', () => {
  
-       expect(test).toThrow("useFunction takes first argument as a function")
-  })
+    expect(test).toThrow("useFunction takes first argument as a function")
+})
 })
