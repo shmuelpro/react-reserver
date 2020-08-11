@@ -1,5 +1,4 @@
 import actionTypes from './actionTypes'
-import checkCollision from './collision'
 
 export default function reserverReducer(state, action) {
   switch (action.type) {
@@ -11,13 +10,10 @@ export default function reserverReducer(state, action) {
       const bIndex = nBars.findIndex((bar) => {
         return action.payload.id === bar.id
       })
-      const otherBars = [...nBars]
 
-      otherBars.splice(bIndex, 1)
-      const [oBars, editingBar] = checkCollision(otherBars, action.payload)
+      nBars[bIndex] = action.payload
 
-      oBars.push(editingBar)
-      return { ...state, bars: oBars }
+      return { ...state, bars: nBars }
     }
     case actionTypes.add: {
       const bars = [...state.bars]
@@ -39,11 +35,6 @@ export default function reserverReducer(state, action) {
     }
     case actionTypes.setIsEditing: {
       return { ...state, isEditing: action.payload }
-    }
-
-    default: {
-      console.log(`Unhandled type: ${action.type}`)
-      return state
     }
   }
 }
