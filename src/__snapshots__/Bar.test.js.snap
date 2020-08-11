@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders content 1`] = `
+<div
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onDragStart={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  role="listitem"
+  style={
+    Object {
+      "background": "#0E6BA8",
+      "display": "flex",
+      "pointerEvents": "auto",
+      "position": "absolute",
+      "zIndex": "100",
+    }
+  }
+>
+  <myComp
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    cool
+  </div>
+  <myComp
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    hobo
+  </myComp>
+</div>
+`;
+
+exports[`renders content only body 1`] = `
+<div
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onDragStart={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  role="listitem"
+  style={
+    Object {
+      "background": "#0E6BA8",
+      "display": "flex",
+      "pointerEvents": "auto",
+      "position": "absolute",
+      "zIndex": "100",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    great
+  </div>
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    cool
+  </div>
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    meh
+  </div>
+</div>
+`;
+
+exports[`renders content only last  1`] = `
+<div
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onDragStart={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  role="listitem"
+  style={
+    Object {
+      "background": "#0E6BA8",
+      "display": "flex",
+      "pointerEvents": "auto",
+      "position": "absolute",
+      "zIndex": "100",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  >
+    horror
+  </div>
+  <div
+    style={
+      Object {
+        "height": "20",
+        "pointerEvents": "auto",
+        "width": "20",
+      }
+    }
+  />
+</div>
+`;
