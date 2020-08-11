@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useArrFunc, useFunction } from './hooks'
 import styles from './style.css'
 import {
@@ -7,9 +7,10 @@ import {
   getColumnCount,
   getRowCount,
   evaluatePosition,
-  resizeBar,
+  resizeBars,
   finishEditingBars
 } from './helpers'
+import { checkCollisions } from './collision'
 import reserverReducer from './reserverReducer'
 import RowTitle from './RowTitle'
 import useReserver from './useReserver'
@@ -17,18 +18,14 @@ import actionTypes from './actionTypes'
 import Bar from './Bar'
 import Head from './Head'
 import Cell from './Cell'
+import Peg from './Peg'
+import Tag from './Tag'
 
 /* TODO:
-Resize bar if at end of visible area
-drag backwards
-build resolver for date and time
 Test accessibility
 Assign content to top left area
 make dimention of grid not necessarily square
 */
-
-
-
 
 export default function Reserver(props) {
   const rowCount = useFunction(getRowCount, props.dimension, props.height)
@@ -41,8 +38,6 @@ export default function Reserver(props) {
 
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
-
-
 
   return (
     <div
@@ -57,6 +52,8 @@ export default function Reserver(props) {
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
+        showCanton={rowTitles.length > 0}
+        dir={props.dir}
       />
       {[...Array(rowCount)].map((x, r) => {
         return (
@@ -66,13 +63,15 @@ export default function Reserver(props) {
             key={r}
             style={{ height: props.dimension, display: 'flex' }}
           >
-            {props.dir === "ltr" && <RowTitle
-              isVisible={rowTitles.length > 0}
-              width={props.rowTitleWidth}
-              dimension={props.dimension}
-            >
-              {rowTitles[r]}
-            </RowTitle>}
+            {props.dir === 'ltr' && (
+              <RowTitle
+                isVisible={rowTitles.length > 0}
+                width={props.rowTitleWidth}
+                dimension={props.dimension}
+              >
+                {rowTitles[r]}
+              </RowTitle>
+            )}
             {[...Array(columnCount)].map((x, c) => {
               return (
                 <Cell
@@ -91,13 +90,15 @@ export default function Reserver(props) {
                 </Cell>
               )
             })}
-              {props.dir === "rtl" && <RowTitle
-              isVisible={rowTitles.length > 0}
-              width={props.rowTitleWidth}
-              dimension={props.dimension}
-            >
-              {rowTitles[r]}
-            </RowTitle>}
+            {props.dir === 'rtl' && (
+              <RowTitle
+                isVisible={rowTitles.length > 0}
+                width={props.rowTitleWidth}
+                dimension={props.dimension}
+              >
+                {rowTitles[r]}
+              </RowTitle>
+            )}
           </div>
         )
       })}
@@ -126,10 +127,10 @@ function createBar(dimension, startLocation) {
   }
 }
 
-const Tag = (props) => <span style={props.style} className={styles.tag_content}>{props.children}</span>
 export {
   Tag,
   Bar,
+  Peg,
   reserverReducer,
   actionTypes,
   makeId,
@@ -137,9 +138,10 @@ export {
   getPosition,
   evaluatePosition,
   createBar,
-  resizeBar,
+  resizeBars,
   Reserver,
-  finishEditingBars
+  finishEditingBars,
+  checkCollisions
 }
 
 Reserver.defaultProps = {
@@ -150,11 +152,11 @@ Reserver.defaultProps = {
   width: 500,
   height: 500,
   rowTitleWidth: 0,
-  dir: "ltr",
-  mouseEnterCell: () => { },
-  mouseDownCell: () => { },
-  mouseUpCell: () => { },
-  mouseDragOverCell: () => { },
-  mouseDropCell: () => { },
-  mouseLeaveGrid: () => { }
+  dir: 'ltr',
+  mouseEnterCell: () => {},
+  mouseDownCell: () => {},
+  mouseUpCell: () => {},
+  mouseDragOverCell: () => {},
+  mouseDropCell: () => {},
+  mouseLeaveGrid: () => {}
 }
