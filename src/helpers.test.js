@@ -6,7 +6,9 @@ import {
   getRowCount,
   isBetween,
   getPosition,
-  resizeBar
+  resizeBars,
+  finishEditingBars,
+  isObjectEmpty
 } from './helpers'
 
 test('calculate number of columns based on width ', () => {
@@ -23,19 +25,57 @@ test('makeid returns 15 characters', () => {
   expect(newid.length).toBe(15)
 })
 
-test('make sure the position is correct', () => {
-  const fPosition = { row: 3, column: 3 }
-  const sPosition = { row: 4, column: 6 }
-  const badPos = { row: 'f', column: 5 }
-  const secbadPos = { row: 1, column: 3.2 }
+describe('evaluatePosition ', () => {
+  test('moving right (stick:left) ', () => {
+    const fPosition = { row: 3, column: 3 }
+    const sPosition = { row: 4, column: 6 }
 
-  const position = evaluatePosition(fPosition, sPosition)
-  expect(() => evaluatePosition(badPos, sPosition)).toThrow()
-  expect(() => evaluatePosition(secbadPos, sPosition)).toThrow()
-  expect(() => evaluatePosition(fPosition, secbadPos)).toThrow()
-  expect(position.column).toBe(3)
-  expect(position.row).toBe(3)
-  expect(position.length).toBe(4)
+    const position = evaluatePosition(fPosition, sPosition)
+
+    expect(position.column).toBe(3)
+    expect(position.row).toBe(3)
+    expect(position.length).toBe(4)
+  })
+
+  test('moving left ', () => {
+    const bar = { row: 4, column: 6, length: 1 }
+    const newLoc = { row: 3, column: 5 }
+
+    const position = evaluatePosition(bar, newLoc)
+    expect(position.column).toBe(5)
+    expect(position.row).toBe(4)
+    expect(position.length).toBe(2)
+  })
+
+  test('moving left with stick right ', () => {
+    const bar = { row: 4, column: 6, length: 2, stick: 'right' }
+    const newLoc = { row: 3, column: 5 }
+
+    const position = evaluatePosition(bar, newLoc)
+    expect(position.column).toBe(5)
+    expect(position.row).toBe(4)
+    expect(position.length).toBe(3)
+  })
+
+  test('moving left with stick right ', () => {
+    const bar = { row: 4, column: 6, length: 2, stick: 'right' }
+    const newLoc = { row: 3, column: 5 }
+
+    const position = evaluatePosition(bar, newLoc)
+    expect(position.column).toBe(5)
+    expect(position.row).toBe(4)
+    expect(position.length).toBe(3)
+  })
+
+  test('moving right with stick right ', () => {
+    const bar = { row: 4, column: 6, length: 1, stick: 'right' }
+    const newLoc = { row: 3, column: 7 }
+
+    const position = evaluatePosition(bar, newLoc)
+    expect(position.column).toBe(6)
+    expect(position.row).toBe(4)
+    expect(position.length).toBe(2)
+  })
 })
 
 test('number needs to be valid for bar', () => {
@@ -56,17 +96,61 @@ test('Calculate position using getPosition', () => {
   expect(thirdpos).toMatchObject({ left: 80, top: 23 })
 })
 
-test('resizeBars', () => {
-  const bars = [
-    { row: 3, column: 3, editing: true, length: 2 },
-    { row: 4, column: 3, length: 6 }
-  ]
-  const changedBars = resizeBar(bars, { cell: { row: 3, column: 6 } })
-  expect(changedBars[0]).toMatchObject({
-    row: 3,
-    column: 3,
-    editing: true,
-    length: 4
+describe('resizeBars', () => {
+  test('without resolver', () => {
+    const bars = [
+      { row: 3, column: 3, editing: true, length: 2 },
+      { row: 4, column: 3, length: 6 }
+    ]
+    const changedBars = resizeBars(bars, { cell: { row: 3, column: 6 } })
+    expect(changedBars[0]).toMatchObject({
+      row: 3,
+      column: 3,
+      editing: true,
+      length: 4
+    })
+    expect(changedBars[1]).toMatchObject({ row: 4, column: 3, length: 6 })
   })
-  expect(changedBars[1]).toMatchObject({ row: 4, column: 3, length: 6 })
+
+  test('with resolver', () => {
+    const bars = [
+      { row: 3, column: 3, editing: true, length: 2 },
+      { row: 4, column: 3, length: 6 }
+    ]
+    const changedBars = resizeBars(
+      bars,
+      { cell: { row: 3, column: 6 } },
+      (props) => {
+        props.name = 'dave'
+        return props
+      }
+    )
+    expect(changedBars[0]).toMatchObject({
+      row: 3,
+      column: 3,
+      editing: true,
+      length: 4,
+      name: 'dave'
+    })
+    expect(changedBars[1]).toMatchObject({ row: 4, column: 3, length: 6 })
+  })
+})
+
+test('finishEditingBars', () => {
+  const bars = [
+    { id: 1, editing: true },
+    { id: 2, editing: false }
+  ]
+
+  const ebars = finishEditingBars(bars)
+
+  expect(ebars[0].editing).toBe(false)
+  expect(ebars[0].id).toBe(1)
+  expect(ebars[1].editing).toBe(false)
+  expect(ebars[1].id).toBe(2)
+})
+
+test('isObjectEmpty', () => {
+  expect(isObjectEmpty({ hello: 'yest' })).toBe(false)
+  expect(isObjectEmpty({})).toBe(true)
 })
