@@ -5,7 +5,7 @@ import Reserver, {
   reserverReducer,
   createBar,
   getPosition,
-  resizeBar
+  resizeBars
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
 import { names } from './testdata'
@@ -29,6 +29,7 @@ export default function RowTitle(props) {
           return names.map((val, index) => {
             return (
               <div
+                key={index}
                 style={{
                   background: '#12D3CF',
                   height: '100%',
@@ -43,22 +44,18 @@ export default function RowTitle(props) {
             )
           })
         }}
-
         rowTitleWidth={140}
-        
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
           setIsEditing(true)
         }}
-
         mouseEnterCell={(props) => {
           if (isEditing) {
-            const nBars = resizeBar(bars, props)
+            const nBars = resizeBars(bars, props)
             setBars(nBars)
           }
         }}
-        
         mouseUpCell={() => {
           const dBars = bars.map((bar) => {
             if (bar.editing) {

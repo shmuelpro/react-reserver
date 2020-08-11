@@ -5,7 +5,8 @@ import Reserver, {
   reserverReducer,
   createBar,
   getPosition,
-  resizeBar
+  resizeBar,
+  finishEditingBars
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
 export default function BasicBar(props) {
@@ -27,17 +28,7 @@ export default function BasicBar(props) {
         }
       }}
       mouseUpCell={() => {
-        const dBars = bars.map((bar) => {
-          if (bar.editing) {
-            return {
-              ...bar,
-              editing: false,
-              style: { ...bar.style, pointerEvents: 'auto' }
-            }
-          }
-          return bar
-        })
-
+        const dBars = finishEditingBars(bars)
         setBars(dBars)
         setIsEditing(false)
       }}

@@ -16,42 +16,46 @@ export function resolveDate(start, count, unit, format) {
   return moment(start).add(count, unit).format(format)
 }
 
-export function resolveColumnStart(startDate, date, format = "DD-MM-YYYY") {
-
-  var a = moment(startDate, format).startOf('day');
-  var b = moment(date, format).startOf('day');
+export function resolveColumnStart(startDate, date, format = 'DD-MM-YYYY') {
+  var a = moment(startDate, format).startOf('day')
+  var b = moment(date, format).startOf('day')
   return b.diff(a, 'days')
 }
 
 export function resolveRow(rooms, roomId) {
-
-  return rooms[roomId].row;
+  return rooms[roomId].row
 }
 
-export function positionToDate(bar, startDate, unit = "unit", format = "DD-MM-YYYY") {
-  bar.start = startDate.clone().add(bar.column, unit).format(format);
-  bar.end = startDate.clone().add(bar.column + bar.length, unit).format(format);
-  return bar;
-
+export function positionToDate(
+  bar,
+  startDate,
+  unit = 'unit',
+  format = 'DD-MM-YYYY'
+) {
+  bar.start = startDate.clone().add(bar.column, unit).format(format)
+  bar.end = startDate
+    .clone()
+    .add(bar.column + bar.length, unit)
+    .format(format)
+  return bar
 }
 
-export function resolveLength(start, end, format = "DD-MM-YYYY") {
-
-  var a = moment(start, format).startOf('day');
-  var b = moment(end, format).startOf('day');
+export function resolveLength(start, end, format = 'DD-MM-YYYY') {
+  var a = moment(start, format).startOf('day')
+  var b = moment(end, format).startOf('day')
   return b.diff(a, 'days')
 }
 
 export function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
+  var letters = '0123456789ABCDEF'
+  var color = '#'
   for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(Math.random() * 16)]
   }
-  return color;
+  return color
 }
 
 export function isObjectEmpty(obj) {
-  for(var i in obj) return false; 
-  return true;
+  for (var i in obj) return false
+  return true
 }

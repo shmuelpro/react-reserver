@@ -5,17 +5,16 @@ import Reserver, {
   reserverReducer,
   getPosition,
   createBar,
-  resizeBar
+  resizeBars
 } from 'react-reserver'
 import { barData } from './testdata'
-import {getRandomInt} from './helpers'
+import { getRandomInt } from './helpers'
 import {
   SimpleContextMenu,
   ContextMenuItem
 } from '../components/SimpleContextMenu'
 
 import '../components/SimpleContextMenu/menuStyle.css'
-
 
 export default function Full(props) {
   // const [columnTitles, setcolumnTitles] = useState([123, 1, 2, null, null, 123]);
@@ -40,8 +39,6 @@ export default function Full(props) {
     },50) */
   const [titles, setTitles] = useState(['Golf Cart 1', null, 'Golf Cart 2'])
   // const [resWidth, setResWidth] = useState(600);
-
-
 
   const { addBar, editBar, isEditing, deleteBar, bars, setBars } = useReserver(
     reserverReducer,
@@ -137,7 +134,7 @@ export default function Full(props) {
         }}
         mouseEnterCell={(props) => {
           console.log(bars)
-          const nBars = resizeBar(bars, props)
+          const nBars = resizeBars(bars, props)
           console.log(nBars)
           setBars(nBars)
         }}
@@ -147,20 +144,18 @@ export default function Full(props) {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
         }}
-     
         width={
           typeof window !== 'undefined' && document.documentElement.clientWidth
         }
         mouseDropCell={(props) => {
           moveBar(props.cell)
-      }}
-      mouseDragOverCell={(props) => {
+        }}
+        mouseDragOverCell={(props) => {
           hoverBar(props.cell)
-      }}
+        }}
         height={height}
         content={content}
         dimension={dimension}
-       
       >
         {({ rowCount, rowTitleWidth, dimension }) => {
           return bars.map((bar) => {

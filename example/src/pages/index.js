@@ -17,16 +17,7 @@ const features = [
       </>
     )
   },
-  {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    )
-  },
+
   {
     title: <>Powered by React</>,
     imageUrl: 'img/undraw_docusaurus_react.svg',
@@ -57,6 +48,7 @@ function Feature({ imageUrl, title, description }) {
 function Home() {
   const context = useDocusaurusContext()
   const { siteConfig = {} } = context
+  console.log(styles)
   return (
     <Layout
       title={`Docs for ${siteConfig.title}`}
@@ -79,8 +71,8 @@ function Home() {
           <div className={styles.buttons}>
             <Link
               className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted
+                'button button--outline  button--lg',
+                styles.getStartedButton
               )}
               to={useBaseUrl('docs/')}
             >

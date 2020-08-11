@@ -23,6 +23,18 @@
   align-items: center;
   justify-content: center;
  
+ 
+}
+
+.getStartedButton{
+  color:#fff;
+  font-weight: 400;
+  
+}
+.getStartedButton:hover{
+  background:#fff;
+  color:#000
+
 }
 
 .features {

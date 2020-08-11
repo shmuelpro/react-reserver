@@ -5,37 +5,26 @@ import Reserver, {
   reserverReducer,
   createBar,
   getPosition,
-  resizeBar,
+  resizeBars,
   finishEditingBars,
   Tag
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
 import moment from 'moment'
-import { resolveColumnStart, resolveRow, resolveLength, positionToDate } from './helpers'
+import { resolveColumnStart, resolveRow, resolveLength } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 import './example.css'
 
-
-
-
-
-
-
-
-
 export default function DateOverflow(props) {
-  const { bars, isEditing, setIsEditing, addBar, setBars, editBar } = useReserver(
+  const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
     []
   )
-  const [startDate, setStartDate] = useState(moment("01-08-2020", "DD-MM-YYYY"))
-
+  const [startDate] = useState(moment('01-08-2020', 'DD-MM-YYYY'))
 
   useEffect(() => {
-
     const nBars = preMadeReservations.map((bar) => {
       if (bar.start && bar.end) {
-
         bar.length = resolveLength(bar.start, bar.end)
       }
 
@@ -45,34 +34,31 @@ export default function DateOverflow(props) {
 
       if (bar.roomId) {
         bar.row = resolveRow(rooms, bar.roomId)
-
       }
-      return bar;
+      return bar
     })
 
-
     setBars(nBars)
-
   }, [preMadeReservations])
-
-
-
-
 
   return (
     <React.Fragment>
-      <div style={{ marginBottom: "10px" }}>Start date: <span className="button button--success"> {startDate.format("LL")}</span></div>
+      <div style={{ marginBottom: '10px' }}>
+        Start date:{' '}
+        <span className='button button--success'>
+          {' '}
+          {startDate.format('LL')}
+        </span>
+      </div>
       <Reserver
         mouseDownCell={(props) => {
-
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
           setIsEditing(true)
         }}
         mouseEnterCell={(props) => {
           if (isEditing) {
-
-            const nBars = resizeBar(bars, props)
+            const nBars = resizeBars(bars, props)
             setBars(nBars)
           }
         }}
@@ -84,19 +70,15 @@ export default function DateOverflow(props) {
       >
         {({ dimension, columnCount }) => {
           return bars.map((bar) => {
-
-
-
             if (bar.column < 0) {
-              bar.leftOverflow = true;
-              bar.length = bar.length + bar.column;
-              bar.column = 0;
+              bar.leftOverflow = true
+              bar.length = bar.length + bar.column
+              bar.column = 0
             }
 
             if (columnCount < bar.column + bar.length) {
-              bar.rightOverflow = true;
+              bar.rightOverflow = true
               bar.length = columnCount - bar.column
-
             }
 
             return (
@@ -104,19 +86,26 @@ export default function DateOverflow(props) {
                 key={bar.id}
                 {...bar}
                 style={{
-                  overflow: "hidden",
-                  pointerEvents: bar.editing ? "none" : "auto",
+                  overflow: 'hidden',
+                  pointerEvents: bar.editing ? 'none' : 'auto',
                   ...bar.style,
                   ...getPosition(bar.row, bar.column, dimension)
                 }}
-
               >
-                <Tag style={{ pointerEvents: "none", color: "#fff", width: dimension * bar.length }}>{bar.guestName}</Tag>
+                <Tag
+                  style={{
+                    pointerEvents: 'none',
+                    color: '#fff',
+                    width: dimension * bar.length
+                  }}
+                >
+                  {bar.guestName}
+                </Tag>
               </Bar>
             )
           })
         }}
-      </Reserver >
+      </Reserver>
     </React.Fragment>
   )
 }

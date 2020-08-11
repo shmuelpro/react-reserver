@@ -41,12 +41,12 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          remarkPlugins: [remarkcodeimport],       
+          remarkPlugins: [remarkcodeimport],
           homePageId: 'gettingstarted',
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./sidebars.js')
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: true
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')

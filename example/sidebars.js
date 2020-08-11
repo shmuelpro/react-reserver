@@ -15,9 +15,9 @@ module.exports = {
         'dateoverflow',
         'baradvanced',
         'content',
+        'contentcrosshairs',
         'righttoleft',
-                'full',
-      
+        'full'
       ]
     },
     {
