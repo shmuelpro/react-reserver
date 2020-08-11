@@ -23,18 +23,11 @@ function ArrFunc() {
 }
 
 function JustFunc() {
-
-
-
   const result = useFunction(myadd, 2, 3)
-
-
 
   return (
     <div className='App'>
       <h1>{result}</h1>
-
-
     </div>
   )
 }
@@ -42,21 +35,14 @@ function JustFunc() {
 function ProblemFunction() {
   const result = useFunction('sd')
 
-
-
-
   return (
     <div className='App'>
       <h1>{result}</h1>
-
-
     </div>
   )
 }
 
 describe('useArrFunc', function () {
-
-
   it('When its given a function', () => {
     const { getByText } = render(<ArrFunc />)
 
@@ -74,11 +60,8 @@ describe('useArrFunc', function () {
   })
 })
 
-
 const test = () => render(<ProblemFunction />)
 describe('useFunction ', function () {
-
-
   it('When its given a function', () => {
     const { getByText } = render(<JustFunc />)
 
@@ -86,16 +69,11 @@ describe('useFunction ', function () {
   })
 
   it('When its given anything else', () => {
-    try{
-      test();
-    }catch(err){
-      expect(err).toBe("useFunction takes first argument as a function")
+    try {
+      test()
+    } catch (err) {
+      expect(err).toBe('useFunction takes first argument as a function')
     }
- //   expect(test).toThrow("useFunction takes first argument as a function")
-
+    //   expect(test).toThrow("useFunction takes first argument as a function")
   })
-
-
-
 })
-
