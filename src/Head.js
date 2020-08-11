@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './style.css'
+import RowTitle from './RowTitle'
 export default function Head(props) {
   return (
     <div
@@ -9,12 +10,13 @@ export default function Head(props) {
       }
       style={{ height: props.dimension }}
     >
-      {props.dir === "ltr" && <RowTitle
-        isVisible={rowTitles.length > 0}
-        width={props.rowTitleWidth}
-        dimension={props.dimension}
-      >
-      </RowTitle>}
+      {props.dir === 'ltr' && (
+        <RowTitle
+          isVisible={props.showCanton}
+          width={props.rowTitleWidth}
+          dimension={props.dimension}
+        />
+      )}
       {props.columnTitles.map((headitem, i) => {
         return (
           <div
@@ -31,12 +33,13 @@ export default function Head(props) {
         )
       })}
 
-      {props.dir === "rtl" && <RowTitle
-        isVisible={rowTitles.length > 0}
-        width={props.rowTitleWidth}
-        dimension={props.dimension}
-      >
-      </RowTitle>}
+      {props.dir === 'rtl' && (
+        <RowTitle
+          isVisible={props.showCanton}
+          width={props.rowTitleWidth}
+          dimension={props.dimension}
+        />
+      )}
     </div>
   )
 }
