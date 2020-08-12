@@ -17,6 +17,7 @@ module.exports = {
         'content',
         'contentcrosshairs',
         'righttoleft',
+        'designedproject',
         'full'
       ]
     },
