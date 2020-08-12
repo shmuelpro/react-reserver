@@ -5,7 +5,7 @@ import Reserver, {
   reserverReducer,
   createBar,
   getPosition,
-  resizeBar,
+  resizeBars,
   finishEditingBars
 } from 'react-reserver'
 import 'react-reserver/dist/index.css'
@@ -23,7 +23,7 @@ export default function BasicBar(props) {
       }}
       mouseEnterCell={(props) => {
         if (isEditing) {
-          const nBars = resizeBar(bars, props)
+          const nBars = resizeBars(bars, props)
           setBars(nBars)
         }
       }}

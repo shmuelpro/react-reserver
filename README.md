@@ -24,7 +24,7 @@ yarn add react-reserver
 ```jsx
 import React, { Component } from 'react'
 
-import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBar } from 'react-reserver'
+import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBars} from 'react-reserver'
 import 'react-reserver/dist/index.css'
 
 function App(){

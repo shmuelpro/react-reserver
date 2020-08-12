@@ -26,7 +26,7 @@ useReserver,
 reserverReducer,
 createBar, 
 getPosition, 
-resizeBar } from 'react-reserver'
+resizeBars } from 'react-reserver'
 
 export default function Basic(props) {
     const { bars, addBar, setBars } = useReserver(reserverReducer, [])    
