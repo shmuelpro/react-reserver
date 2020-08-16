@@ -26,7 +26,8 @@ export default function Head(props) {
               width: props.dimension + 'px',
               height: props.dimension + 'px'
             }}
-            className={styles.row_cell}
+            className={props.headCellClassName  || styles.row_cell}
+            onMouseOver={(e)=>{props.onMouseOverCell(e,i)}} 
           >
             {headitem}
           </div>
@@ -42,4 +43,8 @@ export default function Head(props) {
       )}
     </div>
   )
+}
+
+Head.defaultProps = {
+  onMouseOverCell:()=>{}
 }
