@@ -1,4 +1,6 @@
 import React from 'react'
+import useFuncOrObj from './hooks/useFuncOrObj'
+
 function getContent(index, length, content, firstContent, lastContent) {
   if (index === 0) {
     return firstContent || content[index] || <div />
@@ -9,6 +11,8 @@ function getContent(index, length, content, firstContent, lastContent) {
 }
 
 export default function Bar(props) {
+
+  const content = useFuncOrObj(props.content)
   return (
     <div
       role='listitem'
