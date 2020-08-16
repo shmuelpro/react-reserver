@@ -20,6 +20,7 @@ import Head from './Head'
 import Cell from './Cell'
 import Peg from './Peg'
 import Tag from './Tag'
+import useFuncOrObj from './hooks/useFuncOrObj'
 
 /* TODO:
 Test accessibility
@@ -27,7 +28,7 @@ Assign content to top left area
 make dimention of grid not necessarily square
 */
 
-export default function Reserver(props) {
+const Reserver = React.forwardRef((props, ref) => {
   const rowCount = useFunction(getRowCount, props.dimension, props.height)
   const columnCount = useFunction(
     getColumnCount,
@@ -38,9 +39,11 @@ export default function Reserver(props) {
 
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
-
+  const content = useFuncOrObj(props.content, columnCount, rowCount)
+  console.log(ref)
   return (
     <div
+      ref={ref}
       id={props.id}
       className={props.className}
       role='grid'
@@ -53,7 +56,9 @@ export default function Reserver(props) {
         rowTitleWidth={props.rowTitleWidth}
         dimension={props.dimension}
         showCanton={rowTitles.length > 0}
+        headCellClassName={props.headCellClassName}
         dir={props.dir}
+        onMouseOverCell={props.mouseOverCellHead}
       />
       {[...Array(rowCount)].map((x, r) => {
         return (
@@ -86,7 +91,7 @@ export default function Reserver(props) {
                   column={c}
                   row={r}
                 >
-                  {props.content[`r${r}c${c}`]}
+                  {content[`r${r}c${c}`]}
                 </Cell>
               )
             })}
@@ -116,7 +121,7 @@ export default function Reserver(props) {
       </div>
     </div>
   )
-}
+})
 function createBar(dimension, startLocation) {
   return {
     id: makeId(),
@@ -126,6 +131,8 @@ function createBar(dimension, startLocation) {
     ...startLocation
   }
 }
+
+export default Reserver;
 
 export {
   Tag,
@@ -153,10 +160,10 @@ Reserver.defaultProps = {
   height: 500,
   rowTitleWidth: 0,
   dir: 'ltr',
-  mouseEnterCell: () => {},
-  mouseDownCell: () => {},
-  mouseUpCell: () => {},
-  mouseDragOverCell: () => {},
-  mouseDropCell: () => {},
-  mouseLeaveGrid: () => {}
+  mouseEnterCell: () => { },
+  mouseDownCell: () => { },
+  mouseUpCell: () => { },
+  mouseDragOverCell: () => { },
+  mouseDropCell: () => { },
+  mouseLeaveGrid: () => { }
 }
