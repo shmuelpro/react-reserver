@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import isObject from '../utils/isObject'
-export function useFuncOrObj(...args) {
+export default function useFuncOrObj(...args) {
     const [results, setResults] = useState({})
     useEffect(() => {
         if (isObject(args[0])) {
