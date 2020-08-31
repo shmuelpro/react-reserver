@@ -11,13 +11,16 @@ function getContent(index, length, content, firstContent, lastContent) {
 }
 
 export default function Bar(props) {
-
-  const content = useFuncOrObj(props.content)
+  
+  const content = useFuncOrObj(props.content, props.length)
   return (
     <div
       role='listitem'
       onDragStart={(e) => {
         props.onDragStart(e, props)
+      }}
+      onDragEnd={(e) => {
+        props.onDragEnd(e, props)
       }}
       onClick={(e) => {
         props.onClick(e, props)
@@ -34,41 +37,50 @@ export default function Bar(props) {
       onMouseLeave={(e) => {
         props.onMouseLeave(e, props)
       }}
+      onMouseMove={(e) => {
+        props.onMouseMove(e, props)
+      }}
+      onMouseDown={(e) => {
+        props.onMouseDown(e, props)
+      }}
+      onMouseUp={(e) => {
+        props.onMouseUp(e, props)
+      }}
       draggable={props.draggable}
       style={{
         ...props.style,
         pointerEvents: props.style.pointerEvents || 'none',
         background: props.style.background || '#0E6BA8',
-        display: 'flex',
-        position: 'absolute',
-        zIndex: props.zIndex || '100'
+        display: props.style.display || 'flex',
+        position: props.style.position || 'absolute',
+        zIndex: props.style.zIndex || '100'
       }}
       className={props.className}
     >
       {[...Array(props.length)].map((notUsed, i) => {
-        const content = getContent(
+        const processedContent = getContent(
           i,
           props.length,
-          props.content,
+          content,
           props.firstContent,
           props.lastContent
         )
 
         const style = Object.assign(
           {
-            width: props.dimension,
-            height: props.dimension,
+            width: props.dimension.width,
+            height: props.dimension.height,
             pointerEvents: props.style.pointerEvents || 'none'
           },
-          content.props.style || {}
+          processedContent.props.style || {}
         )
 
         return (
           <React.Fragment key={i}>
             {React.cloneElement(
-              content,
-              { ...content.props, style },
-              content.props.children
+              processedContent,
+              { ...processedContent.props, style },
+              processedContent.props.children
             )}
           </React.Fragment>
         )
@@ -81,6 +93,16 @@ export default function Bar(props) {
 Bar.defaultProps = {
   style: {},
   dimension: { width: 20, height: 20 },
+  onClick: () => { },
+  onMouseOver: () => { },
+  onDragStart: () => { },
+  onDragEnd: () => { },
+  onContextMenu: () => { },
+  onMouseDown: () => { },
+  onMouseUp: () => { },
+  onMouseEnter: () => { },
+  onMouseLeave: () => { },
+  onMouseMove: () => { },
   length: 1,
   content: {}
 }
