@@ -1,8 +1,6 @@
 import React from 'react'
-import { useArrFunc, useFunction } from './hooks'
-import styles from './style.css'
+import { useFunction } from './hooks'
 import {
-  makeId,
   getPosition,
   getColumnCount,
   getRowCount,

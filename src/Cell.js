@@ -1,6 +1,4 @@
 import React from 'react'
-import styles from './style.css'
-
 export default function Cell(props) {
   return (
     <div
@@ -13,7 +11,7 @@ export default function Cell(props) {
         e.preventDefault()
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
       }}
-      className={props.className || styles.row_cell}
+      className={props.className}
       onMouseEnter={(e) => {
         props.onMouseEnter(
           {

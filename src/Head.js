@@ -5,10 +5,7 @@ export default function Head(props) {
   return (
     <div
       role='columnheader'
-      className={
-        props.columnTitles.length > 0 ? styles.row : styles.row_invisible
-      }
-      style={{ height: props.dimension }}
+      className={props.rowTitleClassName}
     >
         dimension={{ height: props.dimension.height, width: props.rowTitleWidth }}
       )}
