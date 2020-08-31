@@ -1,16 +1,16 @@
-export function makeId(length = 15) {
-  let text = ''
-  const possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
-  for (let i = 0; i < length; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-
-  return text
-}
 export const isBetween = (min, max, num) => {
   const states = num >= min && max >= num
   return states
+}
+
+function numToObj(item) {
+
+  if (!isNaN(item)) {
+    return { width: item, height: item }
+  }
+
+  return item;
 }
 
 export function validForBar(number) {
@@ -24,18 +24,23 @@ export function getPosition(
   rowTitleWidth = 0,
   columnTitleHeight = 0
 ) {
+
+  dimension = numToObj(dimension)
+
   return {
-    left: rowTitleWidth + column * dimension,
-    top: row * dimension + columnTitleHeight
+    left: rowTitleWidth + column * dimension.width,
+    top: row * dimension.height + columnTitleHeight
   }
 }
 
 export function getColumnCount(dimension, width, rowTitleWidth) {
-  return Math.floor((width - rowTitleWidth) / dimension)
+  dimension = numToObj(dimension)
+  return Math.floor((width - rowTitleWidth) / dimension.width)
 }
 
 export function getRowCount(dimension, height) {
-  return Math.floor(height / dimension)
+  dimension = numToObj(dimension)
+  return Math.floor(height / dimension.height)
 }
 
 export function resizeBars(bars, newLocation, resolver) {
@@ -52,6 +57,8 @@ export function resizeBars(bars, newLocation, resolver) {
     return bar
   })
 }
+
+
 
 export function finishEditingBars(bars) {
   return bars.map((bar) => {
@@ -72,14 +79,19 @@ export function evaluatePosition(bar, newLocation) {
     bar.column > newLocation.column ||
     (bar.stick === 'right' && bar.length > 1)
   ) {
+    console.log("bar right")
+    console.log(newLocation)
     bar.stick = 'right'
     const locationForRight = {
       row: bar.row,
       column: newLocation.column,
       length: bar.column - newLocation.column + bar.length
     }
+    console.log(locationForRight)
+    console.log(bar.length)
     return { ...bar, ...locationForRight }
   }
+  console.log("bar left")
 
   bar.stick = 'left'
   const locationForLeft = {
@@ -94,3 +106,8 @@ export function isObjectEmpty(obj) {
   for (var i in obj) return false
   return true
 }
+
+
+export function isObject(val) {
+  return val != null && typeof val === 'object' && Array.isArray(val) === false;
+};

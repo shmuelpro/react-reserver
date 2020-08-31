@@ -80,13 +80,7 @@ export default function Bar(props) {
 
 Bar.defaultProps = {
   style: {},
-  dimension: 20,
-  onClick: () => {},
-  onMouseOver: () => {},
-  onDragStart: () => {},
-  onContextMenu: () => {},
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
+  dimension: { width: 20, height: 20 },
   length: 1,
   content: {}
 }

@@ -40,7 +40,7 @@ const Reserver = React.forwardRef((props, ref) => {
   const rowTitles = useArrFunc(props.rowTitles)
   const columnTitles = useArrFunc(props.columnTitles, columnCount)
   const content = useFuncOrObj(props.content, columnCount, rowCount)
-  console.log(ref)
+  const dimension = useDimension(props.dimension)
   return (
     <div
       ref={ref}
@@ -54,9 +54,7 @@ const Reserver = React.forwardRef((props, ref) => {
         columnTitles={columnTitles}
         columnCount={columnCount}
         rowTitleWidth={props.rowTitleWidth}
-        dimension={props.dimension}
-        showCanton={rowTitles.length > 0}
-        headCellClassName={props.headCellClassName}
+        dimension={dimension}
         dir={props.dir}
         onMouseOverCell={props.mouseOverCellHead}
       />
@@ -69,10 +67,7 @@ const Reserver = React.forwardRef((props, ref) => {
             style={{ height: props.dimension, display: 'flex' }}
           >
             {props.dir === 'ltr' && (
-              <RowTitle
-                isVisible={rowTitles.length > 0}
-                width={props.rowTitleWidth}
-                dimension={props.dimension}
+                dimension={{ height: dimension.height, width: props.rowTitleWidth }}
               >
                 {rowTitles[r]}
               </RowTitle>
@@ -86,7 +81,7 @@ const Reserver = React.forwardRef((props, ref) => {
                   onMouseUp={props.mouseUpCell}
                   onDrop={props.mouseDropCell}
                   onDragOver={props.mouseDragOverCell}
-                  dimension={props.dimension}
+                  dimension={dimension}
                   className={props.cellClassName}
                   column={c}
                   row={r}
@@ -96,10 +91,7 @@ const Reserver = React.forwardRef((props, ref) => {
               )
             })}
             {props.dir === 'rtl' && (
-              <RowTitle
-                isVisible={rowTitles.length > 0}
-                width={props.rowTitleWidth}
-                dimension={props.dimension}
+                dimension={{ height: dimension.height, width: props.rowTitleWidth }}
               >
                 {rowTitles[r]}
               </RowTitle>
@@ -114,8 +106,7 @@ const Reserver = React.forwardRef((props, ref) => {
             rowCount: rowCount,
             columnCount: columnCount,
             rowTitleWidth: props.rowTitleWidth,
-            dimension: props.dimension,
-            columnTitleHeight: columnTitles.length > 0 ? props.dimension : 0
+            dimension: dimension,
           })}
         {Array.isArray(props.children) && props.children}
       </div>

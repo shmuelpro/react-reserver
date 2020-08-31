@@ -40,8 +40,8 @@ export default function Cell(props) {
       }}
       style={{
         overflow: 'hidden',
-        width: props.dimension + 'px',
-        height: props.dimension + 'px'
+        width: props.dimension.width,
+        height: props.dimension.height,
       }}
     >
       {props.children}

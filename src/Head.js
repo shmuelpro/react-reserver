@@ -10,24 +10,14 @@ export default function Head(props) {
       }
       style={{ height: props.dimension }}
     >
-      {props.dir === 'ltr' && (
-        <RowTitle
-          isVisible={props.showCanton}
-          width={props.rowTitleWidth}
-          dimension={props.dimension}
-        />
+        dimension={{ height: props.dimension.height, width: props.rowTitleWidth }}
       )}
       {props.columnTitles.map((headitem, i) => {
         return (
           <div
             aria-colindex={i}
             key={i}
-            style={{
-              width: props.dimension + 'px',
-              height: props.dimension + 'px'
-            }}
-            className={props.headCellClassName  || styles.row_cell}
-            onMouseOver={(e)=>{props.onMouseOverCell(e,i)}} 
+            dimension={props.dimension}
           >
             {headitem}
           </div>
@@ -35,11 +25,7 @@ export default function Head(props) {
       })}
 
       {props.dir === 'rtl' && (
-        <RowTitle
-          isVisible={props.showCanton}
-          width={props.rowTitleWidth}
-          dimension={props.dimension}
-        />
+          dimension={{ height: props.dimension.height, width: props.rowTitleWidth }}
       )}
     </div>
   )
