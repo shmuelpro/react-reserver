@@ -11,7 +11,6 @@ function getContent(index, length, content, firstContent, lastContent) {
 }
 
 export default function Bar(props) {
-  
   const content = useFuncOrObj(props.content, props.length)
   return (
     <div
@@ -93,16 +92,16 @@ export default function Bar(props) {
 Bar.defaultProps = {
   style: {},
   dimension: { width: 20, height: 20 },
-  onClick: () => { },
-  onMouseOver: () => { },
-  onDragStart: () => { },
-  onDragEnd: () => { },
-  onContextMenu: () => { },
-  onMouseDown: () => { },
-  onMouseUp: () => { },
-  onMouseEnter: () => { },
-  onMouseLeave: () => { },
-  onMouseMove: () => { },
+  onClick: () => {},
+  onMouseOver: () => {},
+  onDragStart: () => {},
+  onDragEnd: () => {},
+  onContextMenu: () => {},
+  onMouseDown: () => {},
+  onMouseUp: () => {},
+  onMouseEnter: () => {},
+  onMouseLeave: () => {},
+  onMouseMove: () => {},
   length: 1,
   content: {}
 }

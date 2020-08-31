@@ -10,7 +10,7 @@ import renderer from 'react-test-renderer'
 expect.extend({ toBeInTheDocument, toHaveStyle })
 
 test('Bar props changes color ', () => {
-  render(<Bar dimension={{width:20,height:20}} background='red' />)
+  render(<Bar dimension={{ width: 20, height: 20 }} background='red' />)
 
   expect(screen.getByRole('listitem')).toHaveStyle(
     'background:rgb(14, 107, 168)'
@@ -21,7 +21,7 @@ test('Bar props changes color ', () => {
 
 test('onClick event fires', () => {
   const onClick = jest.fn()
-  render(<Bar dimension={{width:20,height:20}} onClick={onClick} />)
+  render(<Bar dimension={{ width: 20, height: 20 }} onClick={onClick} />)
   fireEvent.click(screen.getByRole('listitem'))
 
   expect(onClick).toHaveBeenCalled()
@@ -32,7 +32,7 @@ test('onContextMenu event fires', () => {
   render(
     <Bar
       style={{ pointerEvents: 'auto' }}
-      dimension={{width:20,height:20}}
+      dimension={{ width: 20, height: 20 }}
       onContextMenu={onClick}
     />
   )
@@ -46,7 +46,7 @@ test('onDragStart event fires', () => {
   render(
     <Bar
       style={{ pointerEvents: 'auto' }}
-      dimension={{width:20,height:20}}
+      dimension={{ width: 20, height: 20 }}
       onDragStart={dragMe}
     />
   )
@@ -60,7 +60,7 @@ test('onContextMenu event fires', () => {
   render(
     <Bar
       style={{ pointerEvents: 'auto' }}
-      dimension={{width:20,height:20}}
+      dimension={{ width: 20, height: 20 }}
       onContextMenu={onClick}
     />
   )
@@ -74,7 +74,7 @@ test('onMouseOver event fires', () => {
   render(
     <Bar
       style={{ pointerEvents: 'auto' }}
-      dimension={{width:20,height:20}}
+      dimension={{ width: 20, height: 20 }}
       onMouseOver={onClick}
     />
   )
@@ -99,7 +99,7 @@ test('renders content', () => {
     .create(
       <Bar
         style={{ pointerEvents: 'auto' }}
-        dimension={{width:20,height:20}}
+        dimension={{ width: 20, height: 20 }}
         length={4}
         content={{ 2: <div>cool</div> }}
         firstContent={<myComp />}
@@ -115,7 +115,7 @@ test('renders content only body', () => {
     .create(
       <Bar
         style={{ pointerEvents: 'auto' }}
-        dimension={{width:20,height:20}}
+        dimension={{ width: 20, height: 20 }}
         length={4}
         content={{ 0: <div>great</div>, 2: <div>cool</div>, 3: <div>meh</div> }}
       />
@@ -129,7 +129,7 @@ test('renders content only last ', () => {
     .create(
       <Bar
         style={{ pointerEvents: 'auto' }}
-        dimension={{width:20,height:20}}
+        dimension={{ width: 20, height: 20 }}
         length={4}
         content={{ 2: <div>horror</div> }}
       />
@@ -140,7 +140,12 @@ test('renders content only last ', () => {
 
 test('has default values', () => {
   // doesnt test anything just for codecov
-  render(<Bar style={{ pointerEvents: 'auto' }}  dimension={{width:20,height:20}} />)
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+    />
+  )
   fireEvent.contextMenu(screen.getByRole('listitem'))
   fireEvent.mouseLeave(screen.getByRole('listitem'))
   fireEvent.dragStart(screen.getByRole('listitem'))
