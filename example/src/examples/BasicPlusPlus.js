@@ -8,7 +8,7 @@ import Reserver, {
   resizeBars,
   finishEditingBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 export default function BasicPlusPlus(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
@@ -16,6 +16,7 @@ export default function BasicPlusPlus(props) {
   )
   return (
     <Reserver
+      cellClassName={styles.row_cell}
       mouseDownCell={(props) => {
         const newbar = createBar(props.dimension, props.cell)
         addBar(newbar)

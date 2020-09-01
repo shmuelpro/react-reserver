@@ -9,12 +9,12 @@ import Reserver, {
   finishEditingBars,
   Tag
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+
 import moment from 'moment'
 import { resolveColumnStart, resolveRow, resolveLength } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 import './example.css'
-
+import styles from './basicexamples.module.css'
 export default function DateOverflow(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
@@ -51,6 +51,7 @@ export default function DateOverflow(props) {
         </span>
       </div>
       <Reserver
+        cellClassName={styles.row_cell}
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)
@@ -96,7 +97,7 @@ export default function DateOverflow(props) {
                   style={{
                     pointerEvents: 'none',
                     color: '#fff',
-                    width: dimension * bar.length
+                    width: dimension.width * bar.length
                   }}
                 >
                   {bar.guestName}

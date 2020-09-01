@@ -19,8 +19,27 @@ import {
 } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 import moment from 'moment'
-
+import styles from './basicexamples.module.css'
 import './example.css'
+
+const LastContent = (props) => {
+  return (
+    <div
+      onMouseDown={() => {
+        props.editBar({ ...props.bar, stick: 'left', editing: true })
+        props.setIsEditing(true)
+      }}
+      style={{
+        borderLeft: '3px solid red',
+        background: '#F2545B',
+        zIndex: '100000',
+        ...props.style
+      }}
+    >
+      {' '}
+    </div>
+  )
+}
 
 const FirstContent = (props) => {
   return (
@@ -69,6 +88,7 @@ export default function AdvancedBars(props) {
 
   return (
     <Reserver
+      cellClassName={styles.row_cell}
       mouseDownCell={(props) => {
         const newbar = createBar(props.dimension, props.cell)
         addBar(newbar)
@@ -125,7 +145,11 @@ export default function AdvancedBars(props) {
                 bar.rightOverflow ? (
                   <div style={{ background: 'purple' }} />
                 ) : (
-                  <div style={{ background: '#F2545B' }} />
+                  <LastContent
+                    bar={bar}
+                    setIsEditing={setIsEditing}
+                    editBar={editBar}
+                  />
                 )
               }
               content={{

@@ -17,8 +17,8 @@ export function resolveDate(start, count, unit, format) {
 }
 
 export function resolveColumnStart(startDate, date, format = 'DD-MM-YYYY') {
-  var a = moment(startDate, format).startOf('day')
-  var b = moment(date, format).startOf('day')
+  const a = moment(startDate, format).startOf('day')
+  const b = moment(date, format).startOf('day')
   return b.diff(a, 'days')
 }
 
@@ -41,21 +41,21 @@ export function positionToDate(
 }
 
 export function resolveLength(start, end, format = 'DD-MM-YYYY') {
-  var a = moment(start, format).startOf('day')
-  var b = moment(end, format).startOf('day')
+  const a = moment(start, format).startOf('day')
+  const b = moment(end, format).startOf('day')
   return b.diff(a, 'days')
 }
 
 export function getRandomColor() {
-  var letters = '0123456789ABCDEF'
-  var color = '#'
-  for (var i = 0; i < 6; i++) {
+  const letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)]
   }
   return color
 }
 
 export function isObjectEmpty(obj) {
-  for (var i in obj) return false
+  for (const i in obj) return false
   return true
 }

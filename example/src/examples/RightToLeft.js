@@ -7,7 +7,7 @@ import Reserver, {
   getPosition,
   resizeBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 import { hebnames } from './testdata'
 import { dateRange } from './helpers'
 
@@ -26,6 +26,8 @@ export default function RightToLeft(props) {
         </div>
       )}
       <Reserver
+        cellClassName={styles.row_cell}
+        columnTitleClassName={styles.row}
         dir='rtl'
         columnTitles={(columnCount) => {
           return dateRange(new Date(), columnCount, 'days').map(
@@ -36,6 +38,7 @@ export default function RightToLeft(props) {
                   style={{
                     background: '#12D3CF',
                     height: '100%',
+                    width: '100%',
                     textAlign: 'center'
                   }}
                 >
@@ -50,6 +53,7 @@ export default function RightToLeft(props) {
             return (
               <div
                 key={val}
+                className={styles.simple_cell}
                 style={{
                   background: '#12D3CF',
                   height: '100%',

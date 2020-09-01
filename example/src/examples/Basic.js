@@ -8,12 +8,13 @@ import Reserver, {
   resizeBars,
   finishEditingBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 export default function BasicBar(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
     []
   )
+
   return (
     <Reserver
       mouseDownCell={(props) => {
@@ -32,6 +33,7 @@ export default function BasicBar(props) {
         setBars(dBars)
         setIsEditing(false)
       }}
+      cellClassName={styles.row_cell}
     >
       {() => {
         return bars.map((bar) => {

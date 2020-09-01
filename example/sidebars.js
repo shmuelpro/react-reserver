@@ -3,7 +3,7 @@ module.exports = {
     'gettingstarted',
     {
       type: 'category',
-      label: 'Examples',
+      label: 'Tutorial',
       items: [
         'basic',
         'basicplusplus',
@@ -16,10 +16,13 @@ module.exports = {
         'baradvanced',
         'content',
         'contentcrosshairs',
-        'righttoleft',
-        'designedproject',
-        'full'
+        'righttoleft'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Show Case',
+      items: ['designedproject']
     },
     {
       type: 'category',

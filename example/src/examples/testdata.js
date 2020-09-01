@@ -42,6 +42,44 @@ export const preMadeReservations = [
   }
 ]
 
+export const projectUnits = [
+  {
+    id: 1,
+    type: 'full',
+    to: 2,
+    from: 4,
+    start: '26-04-2019',
+    end: '28-04-2019',
+    img: '32.jpg',
+    text: 'Reach out to potention guest speakers',
+    row: 3
+  },
+  {
+    id: 2,
+    type: 'empty',
+    from: 1,
+    start: '28-04-2019',
+    end: '30-04-2019',
+    img: '46.jpg',
+    title: 'Propose 3 conference keynotes',
+    subtitle: 'Due Today',
+
+    row: 5
+  },
+  {
+    id: 4,
+    type: 'empty',
+    to: 1,
+    start: '27-04-2019',
+    end: '01-05-2019',
+    img: '46.jpg',
+    title: 'Propose 3 conference keynotes',
+    subtitle: 'Due Today',
+
+    row: 8
+  }
+]
+
 export const rooms = {
   4: { id: 4, name: 'Deluxe', hosts: '4 People', row: 3 },
   10: { id: 10, name: 'Basic', hosts: '2 People', row: 8 },

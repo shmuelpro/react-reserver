@@ -8,7 +8,7 @@ import Reserver, {
   getPosition,
   resizeBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 import { getRandomColor, isObjectEmpty } from './helpers'
 import {
   SimpleContextMenu,
@@ -59,6 +59,7 @@ export default function DragBar(props) {
   return (
     <>
       <Reserver
+        cellClassName={styles.row_cell}
         mouseDropCell={(props) => {
           // moveBar(props.cell)
         }}

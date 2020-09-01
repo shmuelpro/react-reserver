@@ -8,7 +8,7 @@ import Reserver, {
   resizeBars,
   finishEditingBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 
 import { resolveDate, dateRange } from './helpers'
 
@@ -26,6 +26,8 @@ export default function ColumnTitle(props) {
         </div>
       )}
       <Reserver
+        cellClassName={styles.row_cell}
+        columnTitleClassName={styles.row}
         columnTitles={(columnCount) => {
           return dateRange(new Date(), columnCount, 'days').map(
             (val, index) => {
@@ -35,6 +37,7 @@ export default function ColumnTitle(props) {
                   style={{
                     background: '#12D3CF',
                     height: '100%',
+                    width: '100%',
                     textAlign: 'center'
                   }}
                   onClick={() => {

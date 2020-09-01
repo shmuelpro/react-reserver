@@ -7,7 +7,7 @@ import Reserver, {
   getPosition,
   resizeBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 import { getRandomColor, getRandomInt } from './helpers'
 import { useInterval } from './hooks'
 export default function Content(props) {
@@ -20,7 +20,6 @@ export default function Content(props) {
 
   useInterval(() => {
     const c = { ...content }
-
     c[`r${getRandomInt(0, 25)}c${getRandomInt(0, 25)}`] = (
       <span
         style={{
@@ -43,6 +42,7 @@ export default function Content(props) {
 
   return (
     <Reserver
+      cellClassName={styles.row_cell}
       content={content}
       mouseDownCell={(props) => {
         const newbar = createBar(props.dimension, props.cell)

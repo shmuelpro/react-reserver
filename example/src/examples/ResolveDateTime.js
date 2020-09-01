@@ -9,10 +9,9 @@ import Reserver, {
   finishEditingBars,
   Tag
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
 
 import moment from 'moment'
-
+import styles from './basicexamples.module.css'
 import { resolveColumnStart, resolveRow, resolveLength } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 
@@ -54,6 +53,7 @@ export default function ResolveDateTime(props) {
         </span>
       </div>
       <Reserver
+        cellClassName={styles.row_cell}
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)
           addBar(newbar)

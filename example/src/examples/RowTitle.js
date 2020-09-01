@@ -7,9 +7,9 @@ import Reserver, {
   getPosition,
   resizeBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
-import { names } from './testdata'
 
+import { names } from './testdata'
+import styles from './basicexamples.module.css'
 export default function RowTitle(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
@@ -25,6 +25,7 @@ export default function RowTitle(props) {
         </div>
       )}
       <Reserver
+        cellClassName={styles.row_cell}
         rowTitles={() => {
           return names.map((val, index) => {
             return (

@@ -1,0 +1,27 @@
+.row_cell {
+    border: 1px solid #eaeaea;
+    color: hsl(0, 0%, 0%);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: white;
+}
+
+.simple_cell{
+    line-height: 1;
+    border: 1px solid rgb(240, 239, 239);
+}
+
+.row {
+    line-height: 1;
+    display: flex;
+}
+
+
+.tag_content{
+    text-align: center; position: absolute; white-space: nowrap; top: 0px; overflow: hidden; user-select: none; line-height: 1;height:100%;
+  }

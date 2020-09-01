@@ -9,8 +9,9 @@ import Reserver, {
   resizeBars,
   finishEditingBars
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+
 import { getRandomColor } from './helpers'
+import styles from './basicexamples.module.css'
 export default function BasicPlusPlus(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
@@ -18,6 +19,7 @@ export default function BasicPlusPlus(props) {
   )
   return (
     <Reserver
+      cellClassName={styles.row_cell}
       mouseDownCell={(props) => {
         const newbar = createBar(props.dimension, props.cell)
         newbar.style = { background: getRandomColor() }
@@ -38,22 +40,22 @@ export default function BasicPlusPlus(props) {
     >
       {({ dimension }) => {
         return bars.map((bar) => {
-          console.log(
-            <Tag style={{ color: '#fff', width: dimension * bar.length }}>
-              {bar.length} Days
-            </Tag>
-          )
           return (
             <Bar
               key={bar.id}
               {...bar}
               style={{
                 ...bar.style,
-
                 ...getPosition(bar.row, bar.column, bar.dimension)
               }}
             >
-              <Tag style={{ color: '#fff', width: dimension * bar.length }}>
+              <Tag
+                style={{
+                  color: '#fff',
+                  width: dimension.width * bar.length,
+                  textAlign: 'center'
+                }}
+              >
                 {bar.length} Days
               </Tag>
             </Bar>

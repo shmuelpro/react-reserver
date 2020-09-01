@@ -9,13 +9,13 @@ import Reserver, {
   Peg
 } from 'react-reserver'
 import moment from 'moment'
-import 'react-reserver/dist/index.css'
+
 import {
   SimpleContextMenu,
   ContextMenuItem
 } from '../components/SimpleContextMenu'
 import '../components/SimpleContextMenu/menuStyle.css'
-
+import styles from './basicexamples.module.css'
 import { usePrevious, useKeyPress } from './hooks'
 export default function ContentCrosshairs(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
@@ -44,6 +44,7 @@ export default function ContentCrosshairs(props) {
         </span>
       </div>
       <Reserver
+        cellClassName={styles.row_cell}
         content={content}
         mouseDownCell={(props) => {
           const newbar = createBar(props.dimension, props.cell)

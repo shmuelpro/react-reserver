@@ -440,7 +440,7 @@ function clearProps(props, template) {
   return finalObject
 }
 
-export default function DesignedProject(props) {
+export default function Resturaunt(props) {
   const {
     bars,
     isEditing,
