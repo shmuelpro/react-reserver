@@ -14,6 +14,7 @@ export default function Bar(props) {
   const content = useFuncOrObj(props.content, props.length)
   return (
     <div
+      id={props.id}
       role='listitem'
       onDragStart={(e) => {
         props.onDragStart(e, props)
