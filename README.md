@@ -22,7 +22,7 @@ yarn add react-reserver
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+![basic](https://user-images.githubusercontent.com/3017787/91833839-e5c9ca80-ec4f-11ea-8993-c33afcaceed1.gif)import React from 'react'
 
 import Reserver, { Bar, useReserver, reserverReducer, createBar, getPosition, resizeBars} from 'react-reserver'
 import 'react-reserver/dist/index.css'
@@ -60,6 +60,7 @@ function App(){
     </Reserver>
 }
 ```
+![basic](https://user-images.githubusercontent.com/3017787/91833839-e5c9ca80-ec4f-11ea-8993-c33afcaceed1.gif)
 
 ## License
 
