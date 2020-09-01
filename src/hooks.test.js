@@ -6,21 +6,6 @@ import { render } from '@testing-library/react'
 function myadd(add1, add2) {
   return add1 + add2
 }
-function ArrFunc() {
-  const result = useArrFunc(myadd, 8, 3)
-  const result2 = useArrFunc(['s'])
-  const result3 = useArrFunc('sd')
-  const result4 = useFunction(myadd, 2, 3)
-
-  return (
-    <div className='App'>
-      <h1>{result}</h1>
-      <h1>{result2}</h1>
-      <h1>{result4}</h1>
-      <h1>{result3.length === 0 ? 'empty' : 'oops'}</h1>
-    </div>
-  )
-}
 
 function JustFunc() {
   const result = useFunction(myadd, 2, 3)
@@ -38,6 +23,22 @@ function ProblemFunction() {
   return (
     <div className='App'>
       <h1>{result}</h1>
+    </div>
+  )
+}
+
+function ArrFunc() {
+  const result = useArrFunc(myadd, 8, 3)
+  const result2 = useArrFunc(['s'])
+  const result3 = useArrFunc('sd')
+  const result4 = useFunction(myadd, 2, 3)
+
+  return (
+    <div className='App'>
+      <h1>{result}</h1>
+      <h1>{result2}</h1>
+      <h1>{result4}</h1>
+      <h1>{result3.length === 0 ? 'empty' : 'oops'}</h1>
     </div>
   )
 }
@@ -69,7 +70,6 @@ describe('useFunction ', function () {
   })
 
   it('When its given anything else', () => {
- 
-    expect(test).toThrow("useFunction takes first argument as a function")
-})
+    expect(test).toThrow('useFunction takes first argument as a function')
+  })
 })

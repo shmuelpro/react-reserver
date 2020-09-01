@@ -55,6 +55,61 @@ test('onDragStart event fires', () => {
   expect(dragMe).toHaveBeenCalled()
 })
 
+test('onDragEnd event fires', () => {
+  const dragMe = jest.fn()
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+      onDragEnd={dragMe}
+    />
+  )
+  fireEvent.dragEnd(screen.getByRole('listitem'))
+
+  expect(dragMe).toHaveBeenCalled()
+})
+
+test('onMouseMove event fires', () => {
+  const dragMe = jest.fn()
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+      onMouseMove={dragMe}
+    />
+  )
+  fireEvent.mouseMove(screen.getByRole('listitem'))
+
+  expect(dragMe).toHaveBeenCalled()
+})
+
+test('onMouseDown event fires', () => {
+  const dragMe = jest.fn()
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+      onMouseDown={dragMe}
+    />
+  )
+  fireEvent.mouseDown(screen.getByRole('listitem'))
+
+  expect(dragMe).toHaveBeenCalled()
+})
+
+test('onMouseUp event fires', () => {
+  const dragMe = jest.fn()
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+      onMouseUp={dragMe}
+    />
+  )
+  fireEvent.mouseUp(screen.getByRole('listitem'))
+
+  expect(dragMe).toHaveBeenCalled()
+})
 test('onContextMenu event fires', () => {
   const onClick = jest.fn()
   render(
@@ -138,18 +193,25 @@ test('renders content only last ', () => {
   expect(bar).toMatchSnapshot()
 })
 
-test('has default values', () => {
-  // doesnt test anything just for codecov
-  render(
-    <Bar
-      style={{ pointerEvents: 'auto' }}
-      dimension={{ width: 20, height: 20 }}
-    />
-  )
-  fireEvent.contextMenu(screen.getByRole('listitem'))
-  fireEvent.mouseLeave(screen.getByRole('listitem'))
-  fireEvent.dragStart(screen.getByRole('listitem'))
-  fireEvent.click(screen.getByRole('listitem'))
-
-  expect(true).toBe(true)
+test('make sure default prop didnt change', () => {
+  expect(Bar.defaultProps.style).toMatchObject({})
+  expect(Bar.defaultProps.content).toMatchObject({})
+  expect(Bar.defaultProps.dimension).toMatchObject({ width: 20, height: 20 })
+  expect(Bar.defaultProps.length).toBe(1)
+  ;[
+    'onClick',
+    'onDragStart',
+    'onDragEnd',
+    'onMouseOver',
+    'onContextMenu',
+    'onMouseDown',
+    'onMouseUp',
+    'onMouseEnter',
+    'onMouseLeave',
+    'onMouseMove'
+  ].forEach((name) => {
+    const func = jest.spyOn(Bar.defaultProps, name)
+    Bar.defaultProps[name]()
+    expect(func).toHaveBeenCalled()
+  })
 })

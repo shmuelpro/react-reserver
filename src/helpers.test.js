@@ -1,5 +1,4 @@
 import {
-  makeId,
   getColumnCount,
   evaluatePosition,
   validForBar,
@@ -18,11 +17,6 @@ test('calculate number of columns based on width ', () => {
 test('number should be in between two other numbers ', () => {
   expect(isBetween(20, 500, 80)).toBe(true)
   expect(isBetween(20, 30, 280)).toBe(false)
-})
-
-test('makeid returns 15 characters', () => {
-  const newid = makeId()
-  expect(newid.length).toBe(15)
 })
 
 describe('evaluatePosition ', () => {

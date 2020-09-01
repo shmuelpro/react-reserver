@@ -96,7 +96,7 @@ Need to add this to tests
 test('headrow receives function ', () => {
   render(
     <Head
-      dimension='20'
+      dimension={{width:20,height:20}}
       rowTitleWidth='20px'
       columnTitles={(c) => {
         return [...Array(c)].map((x, i) => {

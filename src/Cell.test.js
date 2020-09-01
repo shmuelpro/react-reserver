@@ -57,3 +57,17 @@ test('onDragDrop event fires', () => {
   expect(cell.row).toBe(2)
   expect(cell.column).toBe(3)
 })
+
+test('make sure default prop didnt change', () => {
+  ;[
+    'onMouseEnter',
+    'onMouseDown',
+    'onMouseUp',
+    'onDrop',
+    'onMouseOver'
+  ].forEach((name) => {
+    const func = jest.spyOn(Cell.defaultProps, name)
+    Cell.defaultProps[name]()
+    expect(func).toHaveBeenCalled()
+  })
+})

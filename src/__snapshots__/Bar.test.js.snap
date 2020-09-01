@@ -4,10 +4,14 @@ exports[`renders content 1`] = `
 <div
   onClick={[Function]}
   onContextMenu={[Function]}
+  onDragEnd={[Function]}
   onDragStart={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  onMouseMove={[Function]}
   onMouseOver={[Function]}
+  onMouseUp={[Function]}
   role="listitem"
   style={
     Object {
@@ -22,38 +26,36 @@ exports[`renders content 1`] = `
   <myComp
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
-  >
-    cool
-  </div>
+  />
   <myComp
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   >
@@ -66,10 +68,14 @@ exports[`renders content only body 1`] = `
 <div
   onClick={[Function]}
   onContextMenu={[Function]}
+  onDragEnd={[Function]}
   onDragStart={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  onMouseMove={[Function]}
   onMouseOver={[Function]}
+  onMouseUp={[Function]}
   role="listitem"
   style={
     Object {
@@ -84,45 +90,39 @@ exports[`renders content only body 1`] = `
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
-      }
-    }
-  >
-    great
-  </div>
-  <div
-    style={
-      Object {
-        "height": "20",
-        "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
-  >
-    cool
-  </div>
+  />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
-  >
-    meh
-  </div>
+  />
+  <div
+    style={
+      Object {
+        "height": 20,
+        "pointerEvents": "auto",
+        "width": 20,
+      }
+    }
+  />
 </div>
 `;
 
@@ -130,10 +130,14 @@ exports[`renders content only last  1`] = `
 <div
   onClick={[Function]}
   onContextMenu={[Function]}
+  onDragEnd={[Function]}
   onDragStart={[Function]}
+  onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  onMouseMove={[Function]}
   onMouseOver={[Function]}
+  onMouseUp={[Function]}
   role="listitem"
   style={
     Object {
@@ -148,38 +152,36 @@ exports[`renders content only last  1`] = `
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
-  >
-    horror
-  </div>
+  />
   <div
     style={
       Object {
-        "height": "20",
+        "height": 20,
         "pointerEvents": "auto",
-        "width": "20",
+        "width": 20,
       }
     }
   />
