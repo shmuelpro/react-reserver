@@ -1,16 +1,14 @@
-
 export const isBetween = (min, max, num) => {
   const states = num >= min && max >= num
   return states
 }
 
 function numToObj(item) {
-
   if (!isNaN(item)) {
     return { width: item, height: item }
   }
 
-  return item;
+  return item
 }
 
 export function validForBar(number) {
@@ -24,7 +22,6 @@ export function getPosition(
   rowTitleWidth = 0,
   columnTitleHeight = 0
 ) {
-
   dimension = numToObj(dimension)
 
   return {
@@ -58,8 +55,6 @@ export function resizeBars(bars, newLocation, resolver) {
   })
 }
 
-
-
 export function finishEditingBars(bars) {
   return bars.map((bar) => {
     if (bar.editing) {
@@ -79,19 +74,14 @@ export function evaluatePosition(bar, newLocation) {
     bar.column > newLocation.column ||
     (bar.stick === 'right' && bar.length > 1)
   ) {
-    console.log("bar right")
-    console.log(newLocation)
     bar.stick = 'right'
     const locationForRight = {
       row: bar.row,
       column: newLocation.column,
       length: bar.column - newLocation.column + bar.length
     }
-    console.log(locationForRight)
-    console.log(bar.length)
     return { ...bar, ...locationForRight }
   }
-  console.log("bar left")
 
   bar.stick = 'left'
   const locationForLeft = {
@@ -106,8 +96,3 @@ export function isObjectEmpty(obj) {
   for (var i in obj) return false
   return true
 }
-
-
-export function isObject(val) {
-  return val != null && typeof val === 'object' && Array.isArray(val) === false;
-};

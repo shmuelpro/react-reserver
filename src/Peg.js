@@ -1,9 +1,7 @@
 import React from 'react'
 
 export default function Peg(props) {
-
-
-  const style ={
+  const style = {
     userSelect: 'none',
     pointerEvents: 'none',
     alignItems: 'center',
@@ -14,7 +12,5 @@ export default function Peg(props) {
     background: 'green'
   }
 
-  return <div style={Object.assign(style,props.style)}>{props.children}</div>
+  return <div style={Object.assign(style, props.style)}>{props.children}</div>
 }
-
-
