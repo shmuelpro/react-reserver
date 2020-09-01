@@ -12,6 +12,15 @@ export default function Cell(props) {
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
       }}
       className={props.className}
+      onMouseOver={(e) => {
+        props.onMouseOver(
+          {
+            dimension: props.dimension,
+            cell: { row: props.row, column: props.column }
+          },
+          e
+        )
+      }}
       onMouseEnter={(e) => {
         props.onMouseEnter(
           {
@@ -52,5 +61,6 @@ Cell.defaultProps = {
   onMouseEnter: () => {},
   onMouseDown: () => {},
   onMouseUp: () => {},
+  onMouseOver: () => {},
   onDrop: () => {}
 }
