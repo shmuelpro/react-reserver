@@ -31,7 +31,7 @@ test('columnTitles receives array righttoleft', () => {
 
 test('onMouseOver event fires', () => {
   const fn = jest.fn()
-  const { debug } = render(
+  render(
     <Head
       dimension='20'
       rowTitleWidth='20px'
@@ -41,8 +41,6 @@ test('onMouseOver event fires', () => {
       onMouseOverCell={fn}
     />
   )
-
-  debug()
 
   fireEvent.mouseOver(screen.getAllByRole('gridcell', { hidden: true })[0])
 
