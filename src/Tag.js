@@ -3,8 +3,8 @@ import styles from './style.css'
 
 export default function Tag(props) {
   return (
-    <span style={props.style} className={styles.tag_content}>
+    <div style={props.style} className={styles.tag_content || props.className}>
       {props.children}
-    </span>
+    </div>
   )
 }
