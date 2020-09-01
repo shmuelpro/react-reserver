@@ -1,9 +1,17 @@
 import React from 'react'
-import styles from './style.css'
-
 export default function Tag(props) {
+  const style = {
+    textAlign: 'center',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    top: '0px',
+    overflow: 'hidden',
+    userSelect: 'none',
+    lineHeight: 1,
+    height: '100%'
+  }
   return (
-    <div style={props.style} className={styles.tag_content || props.className}>
+    <div style={Object.assign(style, props.style)} className={props.className}>
       {props.children}
     </div>
   )

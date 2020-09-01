@@ -12,5 +12,9 @@ export default function Peg(props) {
     background: 'green'
   }
 
-  return <div style={Object.assign(style, props.style)}>{props.children}</div>
+  return (
+    <div className={props.className} style={Object.assign(style, props.style)}>
+      {props.children}
+    </div>
+  )
 }
