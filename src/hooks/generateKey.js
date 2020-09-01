@@ -15,10 +15,12 @@ export default function generateKey(param, level = 0, maxLevel = 4) {
     })
   }
   if (typeof param === 'function') {
-    return param.name
+    return param.name + 'function'
   }
 
   if (typeof param === 'string' || typeof param === 'number') {
     return param
   }
+
+  return JSON.stringify(param)
 }
