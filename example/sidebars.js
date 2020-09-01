@@ -28,7 +28,7 @@ module.exports = {
       type: 'category',
       label: 'Documentation',
       collapsed: false,
-      items: ['reserver', 'bar', 'helperfunctions']
+      items: ['reserver', 'bar', 'helpers', 'reducer']
     },
     'todo'
   ]

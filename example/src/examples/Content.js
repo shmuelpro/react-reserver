@@ -5,7 +5,8 @@ import Reserver, {
   reserverReducer,
   createBar,
   getPosition,
-  resizeBars
+  resizeBars,
+  Peg
 } from 'react-reserver'
 import styles from './basicexamples.module.css'
 import { getRandomColor, getRandomInt } from './helpers'
@@ -21,20 +22,7 @@ export default function Content(props) {
   useInterval(() => {
     const c = { ...content }
     c[`r${getRandomInt(0, 25)}c${getRandomInt(0, 25)}`] = (
-      <span
-        style={{
-          userSelect: 'none',
-          pointerEvents: 'none',
-          alignItems: 'center',
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          fontSize: '10px',
-          background: getRandomColor()
-        }}
-      >
-        {getRandomInt(0, 250)}
-      </span>
+      <Peg style={{ background: getRandomColor() }}>{getRandomInt(0, 250)}</Peg>
     )
 
     setContent(c)

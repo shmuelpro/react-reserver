@@ -2,7 +2,7 @@ const remarkcodeimport = require('remark-code-import')
 
 module.exports = {
   title: 'React Reserver',
-  tagline: 'Docs still under development',
+  tagline: 'for all your time based development needs',
   url: 'https://shmuelpro.github.io',
   baseUrl: '/react-reserver/',
   onBrokenLinks: 'throw',

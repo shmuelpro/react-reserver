@@ -5,28 +5,23 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css'
-import ColumnTitle from '../examples/ColumnTitle'
+import ColumnTitle from '../examples/DesignedProject'
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    )
+    title: <>Powerful</>,
+    imageUrl: 'img/undraw_Portfolio_update_re_jqnp.svg',
+    description: <>Can be used in multiple ways and multiple environments</>
   },
 
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    )
+    title: <>Versatile</>,
+    imageUrl: 'img/undraw_date_picker_gorr.svg',
+    description: <>Its not just a calender. It can be so much more.</>
+  },
+  {
+    title: <>Fantastic</>,
+    imageUrl: 'img/undraw_dev_productivity_umsq.svg',
+    description: <>Free, Open source with zero dependencies</>
   }
 ]
 
@@ -57,6 +52,7 @@ function Home() {
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className='container'>
           <h1 className='hero__title'>{siteConfig.title}</h1>
+          <p className='hero__subtitle'>{siteConfig.tagline}</p>
           <p className='hero__subtitle'>
             <span
               style={{
@@ -65,9 +61,10 @@ function Home() {
                 borderRadius: '10px'
               }}
             >
-              {siteConfig.tagline}
+              Docs stil under development
             </span>
           </p>
+
           <div className={styles.buttons}>
             <Link
               className={clsx(
