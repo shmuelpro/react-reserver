@@ -38,3 +38,7 @@ The first cell in the bar
 ### lastContent
 #### type: *any*
 The last cell in the bar
+
+### children
+#### type: *any*
+Pass any jsx in here I suggest to use [Tag](/docs/helpers#tag)
