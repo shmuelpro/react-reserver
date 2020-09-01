@@ -40,9 +40,17 @@ export default function Cell(props) {
         overflow: 'hidden',
         width: props.dimension.width,
         height: props.dimension.height,
+        ...props.style
       }}
     >
       {props.children}
     </div>
   )
+}
+
+Cell.defaultProps = {
+  onMouseEnter: () => {},
+  onMouseDown: () => {},
+  onMouseUp: () => {},
+  onDrop: () => {}
 }

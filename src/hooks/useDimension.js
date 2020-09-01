@@ -9,6 +9,8 @@ export default function useDimension(item) {
       setDimension({ width: item, height: item })
     } else if (isObject(item)) {
       setDimension(item)
+    } else {
+      setDimension({ width: -1, height: -1 })
     }
   }, [JSON.stringify(item)])
 
