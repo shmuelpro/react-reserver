@@ -6,8 +6,7 @@ sidebar_label: Hotel Reservation
 
 import HotelReservation from '../src/examples/HotelReservation'
 
-Ok so you ran the basic example and you want to see more.
-
-Here it is 
+This is a very rudimentary example shown on the front page.
+Click and drag on the cells in order to create a new reservation. 
 
 <HotelReservation />

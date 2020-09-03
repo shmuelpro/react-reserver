@@ -3,7 +3,17 @@
 </p>
 <h1 align="center">react-reserver</h1>
 
-> A grid allowing to visualize reservations in a system
+> The best time blocking solution
+Find yourself needing to add a way to reserve a conference room in your office?
+Schedule shifts for your employees?
+Hotel or restaurant reservations? 
+Project management?
+All of this but totally customizable???
+
+This is the solution you've been looking for!
+
+react-reserver is a time blocking solution. 
+It creates a grid which allows you block out different time slots. 
 
 [![NPM](https://img.shields.io/npm/v/react-reserver.svg)](https://www.npmjs.com/package/react-reserver) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)[![Build Status](https://travis-ci.org/shmuelpro/react-reserver.svg?branch=master)](https://travis-ci.org/shmuelpro/react-reserver)[![codecov](https://codecov.io/gh/shmuelpro/react-reserver/branch/master/graph/badge.svg)](https://codecov.io/gh/shmuelpro/react-reserver) [![npm version](https://badge.fury.io/js/react-reserver.svg)](https://badge.fury.io/js/react-reserver) ![GitHub All Releases](https://img.shields.io/github/downloads/shmuelpro/react-reserver/total) ![npm](https://img.shields.io/npm/dw/react-reserver)
 

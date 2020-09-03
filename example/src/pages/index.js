@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import styles from './styles.module.css'
-import ProjectTimeline from '../examples/ProjectTimeline'
+import HotelReservation from '../examples/HotelReservation'
 const features = [
   {
     title: <>Powerful</>,
@@ -51,19 +51,10 @@ function Home() {
     >
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className='container'>
+          <h1 className='hero__title'><img src="/static/img/logo.png"/></h1>
           <h1 className='hero__title'>{siteConfig.title}</h1>
           <p className='hero__subtitle'>{siteConfig.tagline}</p>
-          <p className='hero__subtitle'>
-            <span
-              style={{
-                background: 'red',
-                padding: '10px',
-                borderRadius: '10px'
-              }}
-            >
-              Docs stil under development
-            </span>
-          </p>
+
 
           <div className={styles.buttons}>
             <Link
@@ -79,20 +70,44 @@ function Home() {
         </div>
       </header>
       <main>
-        {features && features.length > 0 && (
-          <section className={styles.features}>
-            <div className='container'>
-              <div className='row'>
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
+        <section className={styles.featureText}>
+          <div className='container'>
+            <div className='row'>
+              <div style={{ width: "600px" }} >
+                <h1>Find yourself needing to build a reservation system?</h1><br />
+             Hotel or restaurant?<br />
+              Schedule shifts for your employees?<br />
+               reserve a conference room in your office?<br/>
+              Project management?<br /><br/>
+              <b><i>All of this but totally customizable???</i></b><br /><br />
+
+              This is the solution you've been looking for!<br />
+
+              react-reserver is a time blocking solution.<br />
+              It creates a grid which allows you to block out different time slots representing time ownership. 
+              Allowing you to build a wide variety of tools. <br />
+
+              <div style={{ background: "#3578e5", textAlign: "center", color: "#fff", padding: "4px 0", borderRadius: "14px",marginTop:"10px" }}> Checkout the example below or the <a style={{color:"#fff"}} href="./docs">docs</a></div>
+              <br />
+
             </div>
-          </section>
-        )}
-        <ProjectTimeline />
+          </div>
+          </div>
+        </section>
+      {features && features.length > 0 && (
+        <section className={styles.features}>
+          <div className='container'>
+            <div className='row'>
+              {features.map((props, idx) => (
+                <Feature key={idx} {...props} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+      <HotelReservation />
       </main>
-    </Layout>
+    </Layout >
   )
 }
 

@@ -163,7 +163,7 @@ function generateColumnTitles(props) {
       <div
         key={val}
         style={{
-          background: props.titleRange[index] ? 'red' : '#fff',
+          background: props.titleRange[index] ? '#1ca3f9' : '#fff',
           height: '100%',
           width: '100%',
           textAlign: 'center',

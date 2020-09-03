@@ -37,6 +37,14 @@
 
 }
 
+.featureText{
+  display: flex;
+  align-items: center;
+  padding: 7rem 0;
+  width: 100%;
+  background-image:url(/static/img/background.jpg);
+}
+
 .features {
   display: flex;
   align-items: center;

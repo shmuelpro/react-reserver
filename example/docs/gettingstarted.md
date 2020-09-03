@@ -18,7 +18,6 @@ Copy this code
 
 ``` jsx
 import React from 'react'
-import 'react-reserver/dist/index.css'
 import Reserver, 
 { Bar, 
 useReserver,

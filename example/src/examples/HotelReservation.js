@@ -13,8 +13,8 @@ import Reserver, {
 } from 'react-reserver'
 import moment from 'moment'
 import Modali, { useModali } from 'modali';
-
-import { projectUnits } from './testdata'
+import { isObjectEmpty } from './helpers'
+import { hotelReservations } from './testdata'
 import {
 
     resolveRow,
@@ -70,7 +70,7 @@ function generateColumnTitles(props) {
             <div
                 key={val}
                 style={{
-                    background: props.titleRange[index] ? 'red' : '#fff',
+                    background: props.titleRange[index] ? '#1ca3f9' : '#fff',
                     height: '100%',
                     width: '100%',
                     textAlign: 'center',
@@ -87,6 +87,36 @@ function generateColumnTitles(props) {
             </div>
         )
     })
+}
+
+function generateRowTitles(row) {
+
+
+    return [
+        { name: 'Single', number: 1, background: "#D6C7A1" },
+        { name: 'Single', number: 2, background: "#D6C7A1" },
+        { name: 'Double', number: 3, background: "#FFA25B" },
+        { name: 'Double', number: 4, background: "#FFA25B" },
+        { name: 'Double', number: 5, background: "#FFA25B" },
+        { name: 'Presidential', number: 6, background: "#F07966" },
+        { name: 'Double', number: 7, background: "#FFA25B" },
+        { name: 'Double', number: 8, background: "#FFA25B" },
+        { name: 'Single', number: 9, background: "#D6C7A1" },
+        { name: 'Single', number: 10, background: "#D6C7A1" },
+        { name: 'Single', number: 11, background: "#D6C7A1" },
+        { name: 'Single', number: 12, background: "#D6C7A1" },
+        { name: 'Double', number: 13, background: "#FFA25B" },
+        { name: 'Double', number: 14, background: "#FFA25B" },
+        { name: 'Single', number: 15, background: "#D6C7A1" },
+        { name: 'Queen', number: 16, background: "#7ED3B2" },
+
+    ].map((room, index) => {
+
+        return (<div>
+            <div style={{ padding: '3px', display: "flex", alignContent: "center", background: row === index ? '#1ca3f9' : room.background }}><div style={{ fontSize: "13px", marginRight: "10px" }}>{room.number}</div><div>{room.name}</div></div>
+        </div>)
+    })
+
 }
 
 function useGenerateMonths(count, startDate, width, rowTitleWidth = 0) {
@@ -198,7 +228,10 @@ function clearProps(props, template) {
     return finalObject
 }
 
-
+const cancelReservation = (deleteBar,setNewReservation,newReservation)=>{
+    deleteBar(newReservation)
+    setNewReservation({})
+}
 
 const cellDimesions = { width: 30, height: 30 }
 export default function HotelReservation(props) {
@@ -207,26 +240,37 @@ export default function HotelReservation(props) {
         isEditing,
         setIsEditing,
         addBar,
+        deleteBar,
         setBars,
         editBar
     } = useReserver(reserverReducer, [])
 
     const [addReservationModal, toggleAddReservation] = useModali({
         animated: true,
-        title: 'Are you sure?',
+        title: 'Add Name to Reservation',
         message: 'Deleting this user will be permanent.',
+        onEscapeKeyDown:()=>cancelReservation(deleteBar,setNewReservation,newReservation),
+        onOverlayClicked:()=>cancelReservation(deleteBar,setNewReservation,newReservation),
         buttons: [
             <Modali.Button
                 label="Cancel"
                 isStyleCancel
-                onClick={() => toggleAddReservation()}
+                onClick={() => {
+                   
+                    toggleAddReservation()
+                    cancelReservation(deleteBar,setNewReservation,newReservation)
+                    
+                }}
             />,
             <Modali.Button
                 label="Add"
                 isStyleDefault
                 onClick={() => {
-                    editBar({...newReservation,text:guestName})
+                    console.log(newReservation)
+                    
+                    editBar({ ...newReservation, name: guestName,new:false,editing:false })
                     toggleAddReservation();
+                    setNewReservation({})
                 }}
             />,
         ],
@@ -235,7 +279,7 @@ export default function HotelReservation(props) {
     const startDate = moment('26/04/2019', 'DD/MM/YYYY')
     const columnTitleHeight = 30
     const rowTitleWidth = 130
-   
+
     const [daysTotal, setDaysTotal] = useState(0)
     const [projectDimensions, setProjectDimensions] = useState({
         width: 0,
@@ -249,6 +293,7 @@ export default function HotelReservation(props) {
     const [draggingElement, setDraggingElement] = useState({})
 
     const [titleRange, setTitleRange] = useState({})
+    const [hoverRow, setHoverRow] = useState({})
 
     const reserverRef = useRef()
 
@@ -272,7 +317,7 @@ export default function HotelReservation(props) {
 
 
     useEffect(() => {
-        const nBars = projectUnits.map((bar) => {
+        const nBars = hotelReservations.map((bar) => {
             bar.dimension = cellDimesions
             if (bar.start && bar.end) {
                 bar.length = resolveDateDiff(bar.start, bar.end)
@@ -282,15 +327,13 @@ export default function HotelReservation(props) {
                 bar.column = resolveDateDiff(startDate, bar.start)
             }
 
-            if (bar.roomId) {
-                bar.row = resolveRow(rooms, bar.roomId)
-            }
             return bar
         })
 
         setBars(nBars)
     }, [])
 
+  
     return (
         <>
             <div
@@ -325,21 +368,9 @@ export default function HotelReservation(props) {
                         columnTitleHeight={columnTitleHeight}
                         dimension={cellDimesions}
                         rowTitleWidth={rowTitleWidth}
-                        rowTitles={() => {
-                            return [
-                                { name: 'Single', number: 1, background: "orange" },
-                                { name: 'Single', number: 2 },
-                                { name: 'Double', number: 3 },
-                                { name: 'Double', number: 4 },
-                                { name: 'Double', number: 5 },
-                                { name: 'Presidential', number: 6 },
-
-                            ].map((room) => {
-                                return (<div>
-                                    <div style={{ padding: '3px', display: "flex", alignContent: "center", background: room.background }}><div style={{ fontSize: "13px", marginRight: "10px" }}>{room.number}</div><div>{room.name}</div></div>
-                                </div>)
-                            })
-                        }}
+                        rowTitles={
+                            { func: () => { return generateRowTitles(hoverRow) }, hoverRow }
+                        }
                         columnTitles={{
                             func: (columnCount) => {
                                 setDaysTotal(columnCount)
@@ -370,16 +401,18 @@ export default function HotelReservation(props) {
                             return content
                         }}
                         mouseDownCell={(props) => {
-                            const newbar = createBar(props.dimension, props.cell)
+                            const newbar = createBar(props.dimension, props.cell, { new: true })
 
-                            const selectionRange = {}
+                            const selectionRange = {};
 
-                                ;[...Array(newbar.length)].forEach((na, i) => {
-                                    selectionRange[i + newbar.column] = true
-                                })
+                            [...Array(newbar.length)].forEach((na, i) => {
+                                selectionRange[i + newbar.column] = true
+                            })
 
                             setTitleRange(selectionRange)
 
+                            setHoverRow(newbar.row)
+                            setNewReservation(newbar)
                             addBar(newbar)
                             setDraggingElement(newbar)
                             setIsEditing(true)
@@ -407,24 +440,25 @@ export default function HotelReservation(props) {
                         }}
                         mouseEnterCell={(props) => {
                             if (isDragging && !isEditing) {
-                                const selectionRange = {}  ;[...Array(draggingElement.length)].forEach((na, i) => {
-                                        selectionRange[
-                                            i + props.cell.column - draggingElement.selectedCell
-                                        ] = true
-                                    })
-
+                                const selectionRange = {};
+                                [...Array(draggingElement.length)].forEach((na, i) => {
+                                    selectionRange[
+                                        i + props.cell.column - draggingElement.selectedCell
+                                    ] = true
+                                })
+                                setHoverRow(props.cell.row)
                                 setTitleRange(selectionRange)
                             }
 
                             if (isEditing) {
                                 const ebar = evaluatePosition(draggingElement, props.cell)
-                                console.log(ebar.length)
+
                                 const selectionRange = {}
 
                                     ;[...Array(ebar.length)].forEach((na, i) => {
                                         selectionRange[i + ebar.column] = true
                                     })
-
+                                setHoverRow(ebar.row)
                                 setTitleRange(selectionRange)
                                 setDraggingElement(ebar)
                                 editBar(ebar)
@@ -443,180 +477,191 @@ export default function HotelReservation(props) {
 
                                 setStyle(`.reserver-drag{transform: translate(0px,0px)}`)
                                 setTitleRange({})
+                                setHoverRow(-1)
                                 setIsDragging(false)
 
                             }
 
                             if (isEditing) {
 
-                                const bar =   bars.find((bar)=>{return bar.editing })
-                                setNewReservation(bar)
-                                editBar({...bar,editing:false})
-                                
+                                const bar = bars.find((bar) => { return bar.editing })                
+                                if (!isObjectEmpty(newReservation)) {
+                                    setNewReservation(bar)
+                                    toggleAddReservation();
+                                }
+                                editBar({ ...bar, editing: false })
+                                setHoverRow(-1)
                                 setTitleRange({})
                                 setIsEditing(false)
 
-                                toggleAddReservation();
                             }
                         }}
                     >
                         {({ columnTitleHeight, rowTitleWidth }) => {
-                        return bars.map((bar) => {
-                            return (
-                                <Bar
-                                    draggable
-                                    {...bar}
-                                    onDragStart={(e, bar) => {
-                                        if (isEditing) {
-                                            e.preventDefault()
-                                            return
-                                        }
-
-                                        const target = e.currentTarget.getBoundingClientRect()
-
-                                        const relativeX = e.pageX - target.left
-                                        const relativeY = e.pageY - target.top
-
-                                        const selectedCell = parseInt(
-                                            relativeX / bar.dimension.width
-                                        )
-
-                                        const element = {
-                                            ...bar,
-                                            selectedCell: selectedCell,
-                                            moving: true,
-                                            draggingLeft: e.pageX,
-                                            draggingTop: e.pageY
-                                        }
-
-                                        const exceptionObject = {}
-
-                                        exceptionObject.barEnd = {
-                                            x: bar.dimension.width * bar.length - relativeX,
-                                            y:
-                                                bar.dimension.height -
-                                                bar.dimension.height * 0.5 -
-                                                relativeY
-                                        }
-
-                                        exceptionObject.barStart = {
-                                            x: relativeX,
-                                            y: relativeY - bar.dimension.height * 0.5
-                                        }
-
-                                        if (bar.to) {
-                                            const toBarIndex = bars.findIndex((b) => {
-                                                return b.id === bar.to
-                                            })
-                                            const toBar = bars[toBarIndex]
-                                            if (toBarIndex > -1) {
-                                                console.log(bars)
-                                                console.log('toColumn', toBar.column)
-                                                exceptionObject.to = calculateLinePoint(
-                                                    toBar.column,
-                                                    toBar.dimension.width,
-                                                    columnTitleHeight,
-                                                    toBar.row,
-                                                    toBar.dimension.height,
-                                                    rowTitleWidth
-                                                )
+                            return bars.map((bar) => {
+                                return (
+                                    <Bar
+                                        draggable
+                                        {...bar}
+                                        onDragStart={(e, bar) => {
+                                            if (isEditing) {
+                                                e.preventDefault()
+                                                return
                                             }
-                                        }
-                                        if (bar.from) {
-                                            const fromBarIndex = bars.findIndex((b) => {
-                                                return b.id === bar.from
-                                            })
-                                            const fromBar = bars[fromBarIndex]
-                                            exceptionObject['from' + fromBar.id] = fromBar.id
-                                            if (fromBarIndex > -1) {
-                                                const location = calculateLinePoint(
-                                                    fromBar.column,
-                                                    fromBar.dimension.width,
-                                                    columnTitleHeight,
-                                                    fromBar.row,
-                                                    fromBar.dimension.height,
-                                                    rowTitleWidth
-                                                )
-                                                exceptionObject.from = {
-                                                    x:
-                                                        fromBar.dimension.width * fromBar.length +
-                                                        location.x,
-                                                    y: location.y
+
+                                            const target = e.currentTarget.getBoundingClientRect()
+
+                                            const relativeX = e.pageX - target.left
+                                            const relativeY = e.pageY - target.top
+
+                                            const selectedCell = parseInt(
+                                                relativeX / bar.dimension.width
+                                            )
+
+                                            const element = {
+                                                ...bar,
+                                                selectedCell: selectedCell,
+                                                moving: true,
+                                                draggingLeft: e.pageX,
+                                                draggingTop: e.pageY
+                                            }
+
+                                            const exceptionObject = {}
+
+                                            exceptionObject.barEnd = {
+                                                x: bar.dimension.width * bar.length - relativeX,
+                                                y:
+                                                    bar.dimension.height -
+                                                    bar.dimension.height * 0.5 -
+                                                    relativeY
+                                            }
+
+                                            exceptionObject.barStart = {
+                                                x: relativeX,
+                                                y: relativeY - bar.dimension.height * 0.5
+                                            }
+
+                                            if (bar.to) {
+                                                const toBarIndex = bars.findIndex((b) => {
+                                                    return b.id === bar.to
+                                                })
+                                                const toBar = bars[toBarIndex]
+                                                if (toBarIndex > -1) {
+
+                                                    exceptionObject.to = calculateLinePoint(
+                                                        toBar.column,
+                                                        toBar.dimension.width,
+                                                        columnTitleHeight,
+                                                        toBar.row,
+                                                        toBar.dimension.height,
+                                                        rowTitleWidth
+                                                    )
                                                 }
                                             }
-                                        }
-
-                                        editBar(element)
-                                        setDraggingElement(element)
-                                        setIsDragging(true)
-                                    }}
-                                    key={bar.id}
-                                    className={bar.moving ? 'reserver-drag' : ''}
-                                    lastContent={
-                                        <div style={{ zIndex: 10000 }}>
-                                            <img
-                                                style={{ float: 'right' }}
-                                                onMouseDown={() => {
-                                                    const newbar = {
-                                                        ...bar,
-                                                        stick: 'left',
-                                                        editing: true
+                                            if (bar.from) {
+                                                const fromBarIndex = bars.findIndex((b) => {
+                                                    return b.id === bar.from
+                                                })
+                                                const fromBar = bars[fromBarIndex]
+                                                exceptionObject['from' + fromBar.id] = fromBar.id
+                                                if (fromBarIndex > -1) {
+                                                    const location = calculateLinePoint(
+                                                        fromBar.column,
+                                                        fromBar.dimension.width,
+                                                        columnTitleHeight,
+                                                        fromBar.row,
+                                                        fromBar.dimension.height,
+                                                        rowTitleWidth
+                                                    )
+                                                    exceptionObject.from = {
+                                                        x:
+                                                            fromBar.dimension.width * fromBar.length +
+                                                            location.x,
+                                                        y: location.y
                                                     }
-                                                    editBar(newbar)
-                                                    setDraggingElement(newbar)
-                                                    setIsEditing(true)
-                                                }}
-                                                src='/react-reserver/resources/images/dragicon.png'
-                                            />
-                                        </div>
-                                    }
-                                    style={{
-                                        ...bar.style,
-                                        borderRadius: '6px',
-                                        pointerEvents:
-                                            bar.editing || bar.moving ? 'none' : 'auto',
-                                        zIndex: 1000,
-                                        ...getPosition(
-                                            bar.row,
-                                            bar.column,
-                                            bar.dimension,
-                                            rowTitleWidth,
-                                            columnTitleHeight
-                                        )
-                                    }}
-                                >
-                                    <Tag style={{ display: 'flex', alignItems: 'center' }}>
-                                        <div style={{ margin: '5px', width: 25 }}>
-                                            <img
-                                                style={{ borderRadius: '100%' }}
-                                                src={`/react-reserver/resources/images/${
-                                                    bar.img || 'default.jpg'
-                                                    }`}
-                                            />
-                                        </div>
-                                        <div
-                                            style={{
-                                                width: bar.length * bar.dimension.width - 40,
-                                                overflow: 'hidden',
-                                                color: '#fff'
-                                            }}
-                                        >
-                                            {bar.text}
-                                        </div>
-                                    </Tag>
-                                </Bar>
-                            )
-                        })
-                    }}
+                                                }
+                                            }
+
+                                            editBar(element)
+                                            setDraggingElement(element)
+                                            setIsDragging(true)
+                                        }}
+                                        key={bar.id}
+                                        className={bar.moving ? 'reserver-drag' : ''}
+                                        lastContent={
+                                            <div style={{ zIndex: 10000, display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+                                                <img
+                                                    style={{ marginRight: "3px", height: "20px" }}
+                                                    onMouseDown={() => {
+                                                        const newbar = {
+                                                            ...bar,
+                                                            stick: 'left',
+                                                            editing: true
+                                                        }
+                                                        editBar(newbar)
+                                                        setDraggingElement(newbar)
+                                                        setIsEditing(true)
+                                                    }}
+                                                    src='/react-reserver/resources/images/dragicon.png'
+                                                />
+                                            </div>
+                                        }
+                                        firstContent={
+                                            <div style={{ zIndex: 10000, display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+                                                <img
+                                                    style={{ marginLeft: "3px", height: "20px" }}
+                                                    onMouseDown={() => {
+                                                        const newbar = {
+                                                            ...bar,
+                                                            stick: 'right',
+                                                            editing: true
+                                                        }
+                                                        editBar(newbar)
+                                                        setDraggingElement(newbar)
+                                                        setIsEditing(true)
+                                                    }}
+                                                    src='/react-reserver/resources/images/dragicon.png'
+                                                />
+                                            </div>
+                                        }
+                                        style={{
+                                            ...bar.style,
+                                            borderRadius: '6px',
+                                            pointerEvents:
+                                                bar.editing || bar.moving ? 'none' : 'auto',
+                                            zIndex: 1000,
+                                            ...getPosition(
+                                                bar.row,
+                                                bar.column,
+                                                bar.dimension,
+                                                rowTitleWidth,
+                                                columnTitleHeight
+                                            )
+                                        }}
+                                    >
+                                        <Tag style={{
+                                            display: 'flex', alignItems: 'center', overflow: 'hidden',
+                                            color: '#fff', borderRadius: '6px', width: bar.length * bar.dimension.width - 14, marginLeft: "14px"
+                                        }}>
+                                            {bar.name}
+                                        </Tag>
+                                    </Bar>
+                                )
+                            })
+                        }}
                     </Reserver>
+                </div>
             </div>
-        </div>
-        <Modali.Modal {...addReservationModal}>
-            <div style={{ marginLeft: "20px", padding: "2px" }}>
-                Name:
+            <Modali.Modal {...addReservationModal}>
+
+                <div style={{ marginLeft: "20px", padding: "2px" }}>
+                    <div></div>
+                    <div>
+                        Name:
                 <input type="text" value={guestName} onChange={(event) => { setGuestName(event.target.value) }} />
-            </div>
-        </Modali.Modal>
+                    </div>
+                </div>
+            </Modali.Modal>
         </>
     )
 }
