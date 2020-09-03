@@ -12,7 +12,7 @@ import Reserver, {
   evaluatePosition
 } from 'react-reserver'
 import moment from 'moment'
-import 'react-reserver/dist/index.css'
+
 import { projectUnits } from './testdata'
 import {
 
@@ -43,8 +43,11 @@ function useStyle() {
     el.current.type = 'text/css'
 
     // Add it to the head of the document
-    const head = document.querySelector('head')
-    head.appendChild(el.current)
+    if(window !== 'undefined'){
+      const head = document.querySelector('head')
+      head.appendChild(el.current)
+
+  }
 
     // At some future point we can totally redefine the entire content of the style element
   }, [])

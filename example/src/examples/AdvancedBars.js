@@ -10,7 +10,7 @@ import Reserver, {
   Tag,
   checkCollisions
 } from 'react-reserver'
-import 'react-reserver/dist/index.css'
+
 import {
  resolveDateDiff,
   resolveRow,
