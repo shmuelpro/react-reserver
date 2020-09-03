@@ -9,9 +9,9 @@ import Reserver, {
   resizeBars,
   finishEditingBars
 } from 'react-reserver'
-
-import { getRandomColor } from './helpers'
 import styles from './basicexamples.module.css'
+import { getRandomColor } from './helpers'
+
 export default function BasicPlusPlus(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,

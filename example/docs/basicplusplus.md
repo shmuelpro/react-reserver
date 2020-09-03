@@ -15,7 +15,7 @@ You are probably thinking hey wait this looks exactly the same!
 
 so lets look at the code
 
-```jsx {5,10,15,31} file=../src/examples/BasicPlusPlus.js
+```jsx  file=../src/examples/BasicPlusPlus.js
 ```
 
 First we are adding **editing** and **setIsEditing**. 
@@ -23,7 +23,7 @@ Why do we need this? since otherwise every time we hover over a cell it runs **r
 So we make sure that we actually started editing before we run the functions.
 
 
-```jsx {1}
+```jsx 
  {() => {
 
             return bars.map((bar) => {

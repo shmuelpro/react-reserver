@@ -16,7 +16,7 @@ export function resolveDate(start, count, unit, format) {
   return moment(start).add(count, unit).format(format)
 }
 
-export function resolveColumnStart(startDate, date, format = 'DD-MM-YYYY') {
+export function resolveDateDiff(startDate, date, format = 'DD-MM-YYYY') {
   const a = moment(startDate, format).startOf('day')
   const b = moment(date, format).startOf('day')
   return b.diff(a, 'days')
@@ -38,12 +38,6 @@ export function positionToDate(
     .add(bar.column + bar.length, unit)
     .format(format)
   return bar
-}
-
-export function resolveLength(start, end, format = 'DD-MM-YYYY') {
-  const a = moment(start, format).startOf('day')
-  const b = moment(end, format).startOf('day')
-  return b.diff(a, 'days')
 }
 
 export function getRandomColor() {

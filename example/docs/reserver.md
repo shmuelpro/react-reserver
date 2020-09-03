@@ -218,12 +218,12 @@ Direction 'right to left' or 'left to right'
 
 ### children
 #### type: *array* | *function*
-Honestly I am not sure why you would have just an array. its very limiting and its up to you to position the compoents on the grid
+You can pass the array bars as is but that limits you from accessing changing props
 
 The function gets passed an object with rowCount, columnCount,rowTitleWidth,columnTitleHeight
 You will need these in order to calculate the position of the components on the grid.
 Reserver comes with a component called [Bar](/docs/bar) which you can use to block out time. 
-You are not limited to it and can build whatever compoenent you want. 
+You are not limited to it and can build whatever component you want. 
 
 ```jsx
 {() => {

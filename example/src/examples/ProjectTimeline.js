@@ -15,9 +15,9 @@ import moment from 'moment'
 import 'react-reserver/dist/index.css'
 import { projectUnits } from './testdata'
 import {
-  resolveColumnStart,
+
   resolveRow,
-  resolveLength,
+  resolveDateDiff,
   resolveDate,
   dateRange
 } from './helpers'
@@ -200,21 +200,21 @@ function useGenerateMonths(count, startDate, width, rowTitleWidth = 0) {
   let currentWidth = 0
   useEffect(() => {
     const tDivs = []
-    ;[...Array(count)].forEach((n, i) => {
-      const evaluatedMonth = startDate.clone().add(i, 'days').format('MMMM')
+      ;[...Array(count)].forEach((n, i) => {
+        const evaluatedMonth = startDate.clone().add(i, 'days').format('MMMM')
 
-      if (currentMonth !== evaluatedMonth && currentWidth > 0) {
-        tDivs.push(
-          <Month key={currentMonth} width={currentWidth}>
-            {currentMonth}
-          </Month>
-        )
-        currentWidth = 0
-        currentMonth = evaluatedMonth
-      }
+        if (currentMonth !== evaluatedMonth && currentWidth > 0) {
+          tDivs.push(
+            <Month key={currentMonth} width={currentWidth}>
+              {currentMonth}
+            </Month>
+          )
+          currentWidth = 0
+          currentMonth = evaluatedMonth
+        }
 
-      currentWidth += width
-    })
+        currentWidth += width
+      })
 
     if (currentWidth > 0) {
       tDivs.push(
@@ -440,7 +440,7 @@ function clearProps(props, template) {
   return finalObject
 }
 
-export default function DesignedProject(props) {
+export default function ProjectTimeline(props) {
   const {
     bars,
     isEditing,
@@ -515,11 +515,11 @@ export default function DesignedProject(props) {
     const nBars = projectUnits.map((bar) => {
       bar.dimension = cellDimesions
       if (bar.start && bar.end) {
-        bar.length = resolveLength(bar.start, bar.end)
+        bar.length = resolveDateDiff(bar.start, bar.end)
       }
 
       if (bar.start && bar.end) {
-        bar.column = resolveColumnStart(startDate, bar.start)
+        bar.column = resolveDateDiff(startDate, bar.start)
       }
 
       if (bar.roomId) {
@@ -608,15 +608,15 @@ export default function DesignedProject(props) {
             content={(columnCount, rowCount) => {
               const content = {}
 
-              ;[...Array(rowCount)].forEach((unused, r) => {
-                ;[...Array(columnCount)].forEach((unused, c) => {
-                  content[`r${r}c${c}`] = (
-                    <Peg
-                      style={{ background: c % 2 == 0 ? '#EDF1F2' : '#F6F8F9' }}
-                    />
-                  )
+                ;[...Array(rowCount)].forEach((unused, r) => {
+                  ;[...Array(columnCount)].forEach((unused, c) => {
+                    content[`r${r}c${c}`] = (
+                      <Peg
+                        style={{ background: c % 2 == 0 ? '#EDF1F2' : '#F6F8F9' }}
+                      />
+                    )
+                  })
                 })
-              })
 
               return content
             }}
@@ -625,9 +625,9 @@ export default function DesignedProject(props) {
 
               const selectionRange = {}
 
-              ;[...Array(newbar.length)].forEach((na, i) => {
-                selectionRange[i + newbar.column] = true
-              })
+                ;[...Array(newbar.length)].forEach((na, i) => {
+                  selectionRange[i + newbar.column] = true
+                })
 
               setTitleRange(selectionRange)
 
@@ -697,7 +697,7 @@ export default function DesignedProject(props) {
 
                 setStyle(
                   `.reserver-drag{transform: translate(${
-                    e.pageX - draggingElement.draggingLeft
+                  e.pageX - draggingElement.draggingLeft
                   }px,${e.pageY - draggingElement.draggingTop}px)}`
                 )
               }
@@ -716,11 +716,11 @@ export default function DesignedProject(props) {
             mouseEnterCell={(props) => {
               if (isDragging && !isEditing) {
                 const selectionRange = {}
-                ;[...Array(draggingElement.length)].forEach((na, i) => {
-                  selectionRange[
-                    i + props.cell.column - draggingElement.selectedCell
-                  ] = true
-                })
+                  ;[...Array(draggingElement.length)].forEach((na, i) => {
+                    selectionRange[
+                      i + props.cell.column - draggingElement.selectedCell
+                    ] = true
+                  })
 
                 setTitleRange(selectionRange)
               }
@@ -730,9 +730,9 @@ export default function DesignedProject(props) {
                 console.log(ebar.length)
                 const selectionRange = {}
 
-                ;[...Array(ebar.length)].forEach((na, i) => {
-                  selectionRange[i + ebar.column] = true
-                })
+                  ;[...Array(ebar.length)].forEach((na, i) => {
+                    selectionRange[i + ebar.column] = true
+                  })
 
                 setTitleRange(selectionRange)
                 setDraggingElement(ebar)
@@ -895,7 +895,7 @@ export default function DesignedProject(props) {
                           style={{ borderRadius: '100%' }}
                           src={`/react-reserver/resources/images/${
                             bar.img || 'default.jpg'
-                          }`}
+                            }`}
                         />
                       </div>
                       <div

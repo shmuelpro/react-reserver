@@ -6,13 +6,11 @@ sidebar_label: Content Crosshairs
 
 import ContentCrosshairs from '../src/examples/ContentCrosshairs'
 
-This is the most basic example.
-A grid, 500px wide and 500px high is created, since those are the default props.
-
-:::tip
-
-Click and drag on any square in the grid to create a new bar
-
-:::
+Just another example for content. 
+Hold the shift key down and move your cursor over a cell. 
+It will color the row and column green and will display the date and room you are hovering over
 
 <ContentCrosshairs />
+
+```jsx file=../src/examples/ContentCrosshairs.js
+```

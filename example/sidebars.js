@@ -21,8 +21,8 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'Show Case',
-      items: ['designedproject']
+      label: 'Showcase',
+      items: ['projecttimeline','hotelreservation']
     },
     {
       type: 'category',

@@ -17,6 +17,8 @@ Click and drag on any square in the grid to create a new bar
 
 <Basic />
 
+### The code
+
 ``` jsx
 import React from 'react'
 import 'react-reserver/dist/index.css'
@@ -31,6 +33,7 @@ resizeBars } from 'react-reserver'
 export default function Basic(props) {
     const { bars, addBar, setBars } = useReserver(reserverReducer, [])    
     return <Reserver 
+    cellClassName={styles.row_cell}
         mouseDownCell={(props) => {
             const newbar = createBar(props.dimension, props.cell);
             addBar(newbar)
@@ -59,6 +62,21 @@ export default function Basic(props) {
     </Reserver>
 ```
 
+```css
+.row_cell {
+    border: 1px solid #eaeaea;
+    color: hsl(0, 0%, 0%);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    background: white;
+}
+```
+
 So whats going on here?
 In order to allow you to control the state of Reserver we use a reducer
 
@@ -69,9 +87,13 @@ In order to allow you to control the state of Reserver we use a reducer
 **useReserver** is a the hook. 
 **reserverReducer** is the reducer. 
 
-The hook returns **bars** which is an array holding the current bars. 
-**addBar** takes a single object to add to the array and **setBars** sets all the bars. 
-There are more functions returned from the hook. We will start with these. 
+The hook returns:
+
+* **bars** which is an array of objects representing the bars 
+* **addBar** a function which takes a single object to add to the array 
+* **setBars** a function which sets all the bars
+
+*There are more functions returned from the hook. We will start with these.*
 
 ``` jsx
 mouseDownCell={(props) => {
@@ -80,17 +102,16 @@ mouseDownCell={(props) => {
         }}
 ```
 
-**mouseDownCell** is a prop that takes function which runs when you click down on one of the cells.
-The prop passes a dimension which is defined in an initial props of Reserver. 
-
-The dimension defines how large each cell is in pixels. 
-The cell is an object that looks like this 
+[mouseDownCell](/docs/reserver#mousedowncell) is the onMouseDown for all each cell.
+The prop parameter receives the [dimension](/docs/reserver#dimension) of the cell and the location in the object cell
 
 ```json 
- { row: r, column: c }
- ```
+cell: { row: r, column: c }
+ 
 
-dimension and cell get passed to the function **createBar**
+``` 
+
+The objects dimension and cell get passed to the function [createBar](/docs/helpers#createbar)
 
 createBar is a helper function that takes dimension and cell as arguments and returns an object containing 
 a new id, the dimension, editing as a boolean set to true, the location which is the cell.
@@ -105,10 +126,9 @@ All these get passed as props into the bar and are necessary as basic properties
         }}
 ```
 
-**mouseEnterCell** is a prop that takes a function which receives an object with dimension and cell and runs whenever a mouse hovers over a cell.
+[mouseEnterCell](/docs/reserver#mouseentercell) takes a function that runs when the mouse enters a cell
 
-**resizeBar** is a function that takes all bars and the props and calculates the new size of the bars. 
-It does this by finding all the bars that have the property **editing = true** and editing them accordinly. 
+[resizeBar](/docs/helpers#resizebars) is a function that takes all bars and the props and calculates the new size of the bars that have the property editing = true. 
 
 ``` jsx
    mouseUpCell={() => {  
@@ -121,8 +141,10 @@ It does this by finding all the bars that have the property **editing = true** a
             setBars(dBars)
         }}
 ```
-**mouseUpCell** is a prop that takes a function which runs when there is a onMouseUp over a cell. 
+
+[mouseUpCell](/docs/reserver#mouseupcell) takes a function that runs on mouse up on a cell
 Here, the bars are mapped over and all the edited bars that have true on **editing** becomes false. 
+The other option is to just use [finishEditingBars](/docs/helpers#finisheditingbars)
 
 ``` jsx
      {
@@ -133,9 +155,12 @@ Here, the bars are mapped over and all the edited bars that have true on **editi
             style={{ ...getPosition(bar.row, bar.column, bar.dimension) }} /> })
         }
 ```
+
 The children of the Reserver component are an array of the component Bar.
 
-**getPosition** is a helper function that takes the row,column and dimension and calculates the absolute position (top and left) of the bar and passes it into style. 
+[getPosition](/docs/helpers#getposition) is a helper function that takes the row, column and dimension and calculates the absolute position (top and left) of the bar and passes it into style. 
+
+[cellClassName](/docs/reserver#cellclassname) is the className that is passed to all cells. by default it is empty so if you dont add a style it will be invisible
 
 Thats it! Thats the most basic code that allows you to run the example. 
 
@@ -146,6 +171,7 @@ This is not the best way to use Reserver. Its only an example to simplify the pr
 :::tip
 Go to Basic++ to see a more robust example of how to use Reserver
 :::
+
      
 
  

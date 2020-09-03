@@ -26,7 +26,7 @@ export default function Content(props) {
     )
 
     setContent(c)
-  }, 50)
+  }, 150)
 
   return (
     <Reserver

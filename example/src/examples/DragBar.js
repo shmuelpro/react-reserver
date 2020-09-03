@@ -59,10 +59,7 @@ export default function DragBar(props) {
   return (
     <>
       <Reserver
-        cellClassName={styles.row_cell}
-        mouseDropCell={(props) => {
-          // moveBar(props.cell)
-        }}
+        cellClassName={styles.row_cell}      
         mouseDragOverCell={(props) => {
           hoverBar(props.cell)
         }}

@@ -12,7 +12,7 @@ import Reserver, {
 
 import moment from 'moment'
 import styles from './basicexamples.module.css'
-import { resolveColumnStart, resolveRow, resolveLength } from './helpers'
+import { resolveRow, resolveDateDiff} from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 
 import './example.css'
@@ -27,11 +27,11 @@ export default function ResolveDateTime(props) {
   useEffect(() => {
     const nBars = preMadeReservations.map((bar) => {
       if (bar.start && bar.end) {
-        bar.length = resolveLength(bar.start, bar.end)
+        bar.length = resolveDateDiff(bar.start, bar.end)
       }
 
       if (bar.start && bar.end) {
-        bar.column = resolveColumnStart(startDate, bar.start)
+        bar.column = resolveDateDiff(startDate, bar.start)
       }
 
       if (bar.roomId) {

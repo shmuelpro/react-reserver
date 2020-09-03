@@ -28,8 +28,9 @@ Is used to calculate the width of the component by takes the width of the dimens
 
 ### content
 #### type: *object*
-An object where each key corrisponds to a cell. the format of the keys is just the index.
+An object where each key corresponds to a cell. the format of the keys is just the index.
 The reason to use an object instead of an array is because you are more likely to have a single cell you might want to format.
+*In terms of order of importance, firstContent and lastContent take precedence over content, so if you put content={0:x} and firstContent={y} y will appear in the cell*
 
 ### firstContent
 #### type: *any*
