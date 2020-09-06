@@ -1,7 +1,7 @@
 {
   "name": "react-reserver",
   "version": "0.0.0-development",
-  "description": "A grid component allowing to block out time slots. Built to visualize reservations in a hotel managment system.",
+  "description": "A grid component allowing to block out time slots. Built to visualize reservations in a hotel management system.",
   "author": "shmuelpro",
   "license": "MIT",
   "repository": "shmuelpro/react-reserver",
@@ -17,9 +17,9 @@
       "1.0.x"
     ]
   },
-  "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+  "scripts": {   
+    "build": "microbundle --jsx React.createElement --format modern,cjs",
+    "start": "microbundle -w --no-compress --jsx React.createElement --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
@@ -54,7 +54,8 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
-    "microbundle-crl": "^0.13.10",
+    "microbundle": "^0.12.3",
+    "microbundle-crl": "^0.13.11",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
