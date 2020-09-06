@@ -26,6 +26,11 @@ module.exports = {
 
         { to: 'blog', label: 'Blog', position: 'left' },
         {
+          href: 'https://www.npmjs.com/package/react-reserver',
+          label: 'npm',
+          position: 'right'
+        },
+        {
           href: 'https://github.com/shmuelpro/react-reserver',
           label: 'GitHub',
           position: 'right'
