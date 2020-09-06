@@ -42,7 +42,7 @@ module.exports = {
       {
         docs: {
           remarkPlugins: [remarkcodeimport],
-          homePageId: 'gettingstarted',
+          
           sidebarPath: require.resolve('./sidebars.js')
         },
         blog: {
