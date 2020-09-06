@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">react-reserver</h1>
 
-> The best time blocking solution
+The best time blocking solution
 Find yourself needing to add a way to reserve a conference room in your office?
 Schedule shifts for your employees?
 Hotel or restaurant reservations? 
@@ -73,7 +73,7 @@ function App(){
 ![basic](https://user-images.githubusercontent.com/3017787/91833839-e5c9ca80-ec4f-11ea-8993-c33afcaceed1.gif)
 
 ![HotelReservation](https://user-images.githubusercontent.com/3017787/92125209-70085f00-ee07-11ea-9a9c-22b0d2215603.gif)
-[projectTimeline](https://user-images.githubusercontent.com/3017787/92125486-c37aad00-ee07-11ea-8114-c9e10ba9fed3.gif)
+![projectTimeline](https://user-images.githubusercontent.com/3017787/92125486-c37aad00-ee07-11ea-8114-c9e10ba9fed3.gif)
 
 ## License
 
