@@ -25,18 +25,19 @@ import {
 
 
 function useStyle() {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+        return {"error":"no window or document"};
+    }
     const el = useRef(document.createElement('style'))
 
     useEffect(() => {
         el.current.type = 'text/css'
 
         // Add it to the head of the document
-        if(window !== 'undefined'){
-            const head = document.querySelector('head')
-            head.appendChild(el.current)
-    
-        }
-    
+
+        const head = document.querySelector('head')
+        head.appendChild(el.current)
+
         // At some future point we can totally redefine the entire content of the style element
     }, [])
 
@@ -69,6 +70,7 @@ function Month(props) {
 
 function generateColumnTitles(props) {
     return dateRange(props.date, props.columnCount, 'days').map((val, index) => {
+        
         return (
             <div
                 key={val}
@@ -231,7 +233,7 @@ function clearProps(props, template) {
     return finalObject
 }
 
-const cancelReservation = (deleteBar,setNewReservation,newReservation)=>{
+const cancelReservation = (deleteBar, setNewReservation, newReservation) => {
     deleteBar(newReservation)
     setNewReservation({})
 }
@@ -252,17 +254,17 @@ export default function HotelReservation(props) {
         animated: true,
         title: 'Add Name to Reservation',
         message: 'Deleting this user will be permanent.',
-        onEscapeKeyDown:()=>cancelReservation(deleteBar,setNewReservation,newReservation),
-        onOverlayClicked:()=>cancelReservation(deleteBar,setNewReservation,newReservation),
+        onEscapeKeyDown: () => cancelReservation(deleteBar, setNewReservation, newReservation),
+        onOverlayClicked: () => cancelReservation(deleteBar, setNewReservation, newReservation),
         buttons: [
             <Modali.Button
                 label="Cancel"
                 isStyleCancel
                 onClick={() => {
-                   
+
                     toggleAddReservation()
-                    cancelReservation(deleteBar,setNewReservation,newReservation)
-                    
+                    cancelReservation(deleteBar, setNewReservation, newReservation)
+
                 }}
             />,
             <Modali.Button
@@ -270,8 +272,8 @@ export default function HotelReservation(props) {
                 isStyleDefault
                 onClick={() => {
                     console.log(newReservation)
-                    
-                    editBar({ ...newReservation, name: guestName,new:false,editing:false })
+
+                    editBar({ ...newReservation, name: guestName, new: false, editing: false })
                     toggleAddReservation();
                     setNewReservation({})
                 }}
@@ -336,7 +338,7 @@ export default function HotelReservation(props) {
         setBars(nBars)
     }, [])
 
-  
+
     return (
         <>
             <div
@@ -376,6 +378,7 @@ export default function HotelReservation(props) {
                         }
                         columnTitles={{
                             func: (columnCount) => {
+                                
                                 setDaysTotal(columnCount)
                                 return generateColumnTitles({
                                     date: startDate,
@@ -403,7 +406,8 @@ export default function HotelReservation(props) {
 
                             return content
                         }}
-                        mouseDownCell={(props) => {
+                     
+                        pointerDownCell={(props) => {
                             const newbar = createBar(props.dimension, props.cell, { new: true })
 
                             const selectionRange = {};
@@ -420,7 +424,7 @@ export default function HotelReservation(props) {
                             setDraggingElement(newbar)
                             setIsEditing(true)
                         }}
-                        mouseMoveGrid={(e) => {
+                        pointerMoveGrid={(e) => {
 
                             if (isDragging) {
                                 setStyle(
@@ -430,17 +434,8 @@ export default function HotelReservation(props) {
                                 )
                             }
                         }}
-                        mouseEnterCell={(props) => {
-                            if (isEditing) {
-                                let nBars = resizeBars(bars, props, (bar) => {
-                                    return positionToDate(bar, startDate)
-                                })
+                 
 
-                                nBars = checkCollisions(nBars)
-
-                                setBars(nBars)
-                            }
-                        }}
                         mouseEnterCell={(props) => {
                             if (isDragging && !isEditing) {
                                 const selectionRange = {};
@@ -487,7 +482,7 @@ export default function HotelReservation(props) {
 
                             if (isEditing) {
 
-                                const bar = bars.find((bar) => { return bar.editing })                
+                                const bar = bars.find((bar) => { return bar.editing })
                                 if (!isObjectEmpty(newReservation)) {
                                     setNewReservation(bar)
                                     toggleAddReservation();
@@ -507,6 +502,7 @@ export default function HotelReservation(props) {
                                         draggable
                                         {...bar}
                                         onDragStart={(e, bar) => {
+                                            console.log("drag started")
                                             if (isEditing) {
                                                 e.preventDefault()
                                                 return

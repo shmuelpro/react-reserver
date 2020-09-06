@@ -50,7 +50,7 @@ function Home() {
     >
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className='container'>
-          <h1 className='hero__title'><img src="/static/img/logo.png"/></h1>
+          <h1 className='hero__title'><img src="/react-reserver/img/logo.png"/></h1>
           <h1 className='hero__title'>{siteConfig.title}</h1>
           <p className='hero__subtitle'>{siteConfig.tagline}</p>
 
@@ -62,8 +62,7 @@ function Home() {
                 styles.getStartedButton
               )}
               to={useBaseUrl('docs/')}
-            >
-              Get Started
+            >     Get Started
             </Link>
           </div>
         </div>
@@ -72,7 +71,7 @@ function Home() {
         <section className={styles.featureText}>
           <div className='container'>
             <div className='row'>
-              <div style={{ width: "600px" }} >
+              <div style={{ width: "600px",padding:"0 20px" }} >
                 <h1>Find yourself needing to build a reservation system?</h1><br />
              Hotel or restaurant?<br />
               Schedule shifts for your employees?<br />

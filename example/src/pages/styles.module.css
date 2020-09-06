@@ -42,7 +42,7 @@
   align-items: center;
   padding: 7rem 0;
   width: 100%;
-  background-image:url(/static/img/background.jpg);
+  background-image:url(/react-reserver/img/background.jpg);
 }
 
 .features {

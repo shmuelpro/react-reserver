@@ -10,7 +10,7 @@ You will most likely want to have some text or really anything inside the bars y
 
 All you have to do is pass in a child to the [Bar](/docs/bar) component
 
-I use a helper component called [Tag](/docs/tag) to help position the text in the bar but it is not required.
+I use a helper component called [Tag](/docs/helpers#tag) to help position the text in the bar but it is not required.
 
 
 <BasicBar />

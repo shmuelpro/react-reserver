@@ -37,27 +37,29 @@ const arrowMarker = [
 ]
 
 function useStyle() {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return ()=>{}
+}
   const el = useRef(document.createElement('style'))
 
   useEffect(() => {
-    el.current.type = 'text/css'
+      el.current.type = 'text/css'
 
-    // Add it to the head of the document
-    if(window !== 'undefined'){
+      // Add it to the head of the document
+
       const head = document.querySelector('head')
       head.appendChild(el.current)
 
-  }
-
-    // At some future point we can totally redefine the entire content of the style element
+      // At some future point we can totally redefine the entire content of the style element
   }, [])
 
   const setStyle = (newStyles) => {
-    el.current.innerHTML = newStyles
+      el.current.innerHTML = newStyles
   }
 
   return setStyle
 }
+
 
 function buildElements(elements) {
   const frag = document.createDocumentFragment()
@@ -87,6 +89,11 @@ function buildElement(elementAttributes) {
 }
 
 function useSVG(attributes, defs) {
+
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return ()=>{}
+}
+
   const el = useRef(
     document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   )
@@ -110,6 +117,8 @@ function useSVG(attributes, defs) {
 
       el.current.setAttribute(key, value)
     })
+
+    
 
     // attach container to document
     const body = document.querySelector('body')
@@ -580,7 +589,7 @@ export default function ProjectTimeline(props) {
                 { name: 'Foundational', rows: 6 },
                 { name: 'Travel + lodging', rows: 1 }
               ].flatMap((item) => {
-                const rows = []
+                
                 return [...Array(item.rows)].map((n, i) => {
                   if (i === 0) {
                     return (

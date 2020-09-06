@@ -39,5 +39,5 @@ We will see in the next section - Date Overflow
 
 <ResolveDateTime />
 
-    ```jsx  file=../src/examples/ResolveDateTime.js
+    ```jsx file=../src/examples/ResolveDateTime.js
     ```
