@@ -48,6 +48,7 @@ const Reserver = React.forwardRef((props, ref) => {
       role='grid'
       onMouseLeave={props.mouseLeaveGrid}
       onMouseMove={props.mouseMoveGrid}
+      onPointerMove={props.pointerMoveGrid}
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
@@ -87,9 +88,12 @@ const Reserver = React.forwardRef((props, ref) => {
                   key={`r${r}c${c}`}
                   onMouseDown={props.mouseDownCell}
                   onMouseEnter={props.mouseEnterCell}
+                  onPointerEnter={props.pointerEnterCell}
                   onMouseUp={props.mouseUpCell}
                   onDrop={props.mouseDropCell}
                   onDragOver={props.mouseDragOverCell}
+                  onPointerDown={props.pointerDownCell}
+                  onPointerMove={props.pointerMoveCell}
                   dimension={dimension}
                   className={props.cellClassName}
                   column={c}
@@ -169,5 +173,7 @@ Reserver.defaultProps = {
   mouseDragOverCell: () => {},
   mouseDropCell: () => {},
   mouseLeaveGrid: () => {},
-  mouseMoveGrid: () => {}
+  mouseMoveGrid: () => {},
+  pointerDownCell:()=>{},
+  pointerEnterCell:()=>{}
 }

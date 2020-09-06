@@ -30,8 +30,39 @@ export default function Cell(props) {
           e
         )
       }}
+      onPointerEnter={
+        (e) => {
+          typeof props.onPointerEnter ==="function" && props.onPointerEnter(
+            {
+              dimension: props.dimension,
+              cell: { row: props.row, column: props.column }
+            },
+            e
+          )
+        }
+      }
+      onPointerMove={
+        (e) => {
+          typeof props.onPointerMove ==="function" && props.onPointerMove(
+            {
+              dimension: props.dimension,
+              cell: { row: props.row, column: props.column }
+            },
+            e
+          )
+        }
+      }
       onMouseDown={(e) => {
         props.onMouseDown(
+          {
+            dimension: props.dimension,
+            cell: { row: props.row, column: props.column }
+          },
+          e
+        )
+      }}
+      onPointerDown={(e) => {
+        props.onPointerDown(
           {
             dimension: props.dimension,
             cell: { row: props.row, column: props.column }
@@ -58,9 +89,9 @@ export default function Cell(props) {
 }
 
 Cell.defaultProps = {
-  onMouseEnter: () => {},
-  onMouseDown: () => {},
-  onMouseUp: () => {},
-  onMouseOver: () => {},
-  onDrop: () => {}
+  onMouseEnter: () => { },
+  onMouseDown: () => { },
+  onMouseUp: () => { },
+  onMouseOver: () => { },
+  onDrop: () => { }
 }
