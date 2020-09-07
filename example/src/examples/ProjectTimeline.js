@@ -714,17 +714,7 @@ export default function ProjectTimeline(props) {
                 )
               }
             }}
-            mouseEnterCell={(props) => {
-              if (isEditing) {
-                let nBars = resizeBars(bars, props, (bar) => {
-                  return positionToDate(bar, startDate)
-                })
-
-                nBars = checkCollisions(nBars)
-
-                setBars(nBars)
-              }
-            }}
+         
             mouseEnterCell={(props) => {
               if (isDragging && !isEditing) {
                 const selectionRange = {}
