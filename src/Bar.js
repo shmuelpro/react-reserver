@@ -45,10 +45,7 @@ export default function Bar(props) {
       }}
       onMouseUp={(e) => {
         props.onMouseUp(e, props)
-      }}
-      onTouchStart={(e) => {
-        typeof props.onTouchStart === "function" && props.onTouchStart(e, props)
-      }}
+      }}   
       onPointerDown={(e) => {
     
         typeof props.onPointerDown === "function" && props.onPointerDown(e, props)

@@ -97,6 +97,7 @@ const Reserver = React.forwardRef((props, ref) => {
                   onPointerEnter={props.pointerEnterCell}
                   onPointerLeave={props.pointerLeaveCell}
                   onPointerUp={props.pointerUpCell}
+                  onPointerOver={props.pointerOverCell}
                   dimension={dimension}
                   className={props.cellClassName}
                   column={c}

@@ -1,16 +1,14 @@
 import React from 'react'
 export default function Cell(props) {
-  return (
+    return (
     <div
       role='gridcell'
       aria-colindex={props.column}
       onDragStart={(e) => {
-        e.preventDefault()
-        console.log("here")
+        e.preventDefault()        
       }}
       onDragOver={(e) => {
-        e.preventDefault()
-        console.log("there")
+        e.preventDefault()        
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
       }}
       className={props.className}
@@ -24,7 +22,8 @@ export default function Cell(props) {
         )
       }}
       onMouseEnter={(e) => {
-        props.onMouseEnter(
+        
+        typeof props.onMouseEnter ===  props.onMouseEnter(
           {
             dimension: props.dimension,
             cell: { row: props.row, column: props.column }
@@ -32,9 +31,8 @@ export default function Cell(props) {
           e
         )
       }}
-      onPointerEnter={
-        (e) => {
-          typeof props.onPointerEnter === "function" && props.onPointerEnter(
+      onPointerEnter={(e) => {          
+       typeof props.onPointerEnter === "function" && props.onPointerEnter(
             {
               dimension: props.dimension,
               cell: { row: props.row, column: props.column }
@@ -45,7 +43,8 @@ export default function Cell(props) {
       }
       onPointerLeave={
         (e) => {
-          typeof props. onPointerLeave === "function" && props.onPointerLeave(
+          
+          typeof props.onPointerLeave === "function" && props.onPointerLeave(
             {
               dimension: props.dimension,
               cell: { row: props.row, column: props.column }
@@ -56,7 +55,8 @@ export default function Cell(props) {
       }
       onPointerMove={
         (e) => {
-          typeof props.onPointerMove === "function" && props.onPointerMove(
+          
+         typeof props.onPointerMove === "function" && props.onPointerMove(
             {
               dimension: props.dimension,
               cell: { row: props.row, column: props.column }
@@ -65,8 +65,28 @@ export default function Cell(props) {
           )
         }
       }
+      onPointerOut={(e) => {
+  
+        typeof props.onPointerOut === "function" && props.onPointerOut(
+              {
+                dimension: props.dimension,
+                cell: { row: props.row, column: props.column }
+              },
+              e
+            )
+          }}
+      onPointerOver={(e) => {
+  
+    typeof props.onPointerOver === "function" && props.onPointerOver(
+          {
+            dimension: props.dimension,
+            cell: { row: props.row, column: props.column }
+          },
+          e
+        )
+      }}
       onMouseDown={(e) => {
-        props.onMouseDown(
+        typeof props.onMouseDown === "function" &&  props.onMouseDown(
           {
             dimension: props.dimension,
             cell: { row: props.row, column: props.column }
@@ -84,7 +104,7 @@ export default function Cell(props) {
         )
       }}
       onPointerUp={(e) => {
-        typeof props.onPointerUp === "function" && props.onPointerUp(
+      typeof props.onPointerUp === "function" && props.onPointerUp(
           {
             dimension: props.dimension,
             cell: { row: props.row, column: props.column }
