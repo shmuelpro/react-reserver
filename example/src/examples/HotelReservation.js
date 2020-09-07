@@ -338,6 +338,7 @@ export default function HotelReservation(props) {
         setBars(nBars)
     }, [])
 
+    console.log("isDragging",isDragging)
 
     return (
         <>
@@ -345,7 +346,9 @@ export default function HotelReservation(props) {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    touchAction:"none"
+                   
                 }}
             >
                 <div
@@ -408,6 +411,7 @@ export default function HotelReservation(props) {
                         }}
                      
                         pointerDownCell={(props) => {
+                            console.log("pointer down cell")
                             const newbar = createBar(props.dimension, props.cell, { new: true })
 
                             const selectionRange = {};
@@ -424,8 +428,13 @@ export default function HotelReservation(props) {
                             setDraggingElement(newbar)
                             setIsEditing(true)
                         }}
+                        pointerCancelGrid={(e)=>{
+                         
+                            console.log("pionter cancel grid")
+                        }}
                         pointerMoveGrid={(e) => {
-
+                            console.log("pointerMoveGrid")
+                        
                             if (isDragging) {
                                 setStyle(
                                     `.reserver-drag{transform: translate(${
@@ -435,8 +444,11 @@ export default function HotelReservation(props) {
                             }
                         }}
                  
-
-                        mouseEnterCell={(props) => {
+                        pointerLeaveCell={(props,e)=>{
+                            console.log("left",e.pointerId)
+                        }}
+                        pointerEnterCell={(props,e) => {
+                            console.log("Eeee",e.pointerId)
                             if (isDragging && !isEditing) {
                                 const selectionRange = {};
                                 [...Array(draggingElement.length)].forEach((na, i) => {
@@ -447,10 +459,10 @@ export default function HotelReservation(props) {
                                 setHoverRow(props.cell.row)
                                 setTitleRange(selectionRange)
                             }
-
+                            
                             if (isEditing) {
                                 const ebar = evaluatePosition(draggingElement, props.cell)
-
+                                console.log("pointerEnter")
                                 const selectionRange = {}
 
                                     ;[...Array(ebar.length)].forEach((na, i) => {
@@ -458,11 +470,11 @@ export default function HotelReservation(props) {
                                     })
                                 setHoverRow(ebar.row)
                                 setTitleRange(selectionRange)
-                                setDraggingElement(ebar)
+                                setDraggingElement(ebar)    
                                 editBar(ebar)
                             }
                         }}
-                        mouseUpCell={({ cell }) => {
+                        pointerUpCell={({ cell }) => {
                             if (isDragging) {
                                 const bar = {
                                     ...draggingElement,
@@ -501,10 +513,12 @@ export default function HotelReservation(props) {
                                     <Bar
                                         draggable
                                         {...bar}
-                                        onDragStart={(e, bar) => {
+                                        onPointerDown={(e, bar) => {
+                                            console.log(e.pointerId)
                                             console.log("drag started")
                                             if (isEditing) {
-                                                e.preventDefault()
+                                                console.log("prevent default")
+                                            //    e.preventDefault()
                                                 return
                                             }
 
