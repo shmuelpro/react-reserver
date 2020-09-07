@@ -26,7 +26,7 @@ import {
 
 function useStyle() {
     if (typeof window === 'undefined' || typeof document === 'undefined') {
-        return {"error":"no window or document"};
+        return { "error": "no window or document" };
     }
     const el = useRef(document.createElement('style'))
 
@@ -70,7 +70,7 @@ function Month(props) {
 
 function generateColumnTitles(props) {
     return dateRange(props.date, props.columnCount, 'days').map((val, index) => {
-        
+
         return (
             <div
                 key={val}
@@ -338,7 +338,7 @@ export default function HotelReservation(props) {
         setBars(nBars)
     }, [])
 
-    console.log("isDragging",isDragging)
+
 
     return (
         <>
@@ -347,8 +347,8 @@ export default function HotelReservation(props) {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    touchAction:"none"
-                   
+                    touchAction: "none"
+
                 }}
             >
                 <div
@@ -381,7 +381,7 @@ export default function HotelReservation(props) {
                         }
                         columnTitles={{
                             func: (columnCount) => {
-                                
+
                                 setDaysTotal(columnCount)
                                 return generateColumnTitles({
                                     date: startDate,
@@ -409,9 +409,11 @@ export default function HotelReservation(props) {
 
                             return content
                         }}
-                     
-                        pointerDownCell={(props) => {
+
+                        pointerDownCell={(props, e) => {
                             console.log("pointer down cell")
+                            
+                            e.target.releasePointerCapture(e.pointerId)
                             const newbar = createBar(props.dimension, props.cell, { new: true })
 
                             const selectionRange = {};
@@ -428,14 +430,14 @@ export default function HotelReservation(props) {
                             setDraggingElement(newbar)
                             setIsEditing(true)
                         }}
-                        pointerCancelGrid={(e)=>{
-                         
+                        pointerCancelGrid={(e) => {
+
                             console.log("pionter cancel grid")
                         }}
                         pointerMoveGrid={(e) => {
-                            console.log("pointerMoveGrid")
-                        
-                            if (isDragging) {
+
+
+                            if (isDragging && !isEditing) {
                                 setStyle(
                                     `.reserver-drag{transform: translate(${
                                     e.pageX - draggingElement.draggingLeft
@@ -443,26 +445,23 @@ export default function HotelReservation(props) {
                                 )
                             }
                         }}
-                 
-                        pointerLeaveCell={(props,e)=>{
-                            console.log("left",e.pointerId)
-                        }}
-                        pointerEnterCell={(props,e) => {
-                            console.log("Eeee",e.pointerId)
+
+
+                        pointerEnterCell={(props, e) => {
+                            // console.log("Eeee",e.pointerId)
+                            e.target.releasePointerCapture(e.pointerId)
                             if (isDragging && !isEditing) {
                                 const selectionRange = {};
                                 [...Array(draggingElement.length)].forEach((na, i) => {
-                                    selectionRange[
-                                        i + props.cell.column - draggingElement.selectedCell
-                                    ] = true
+                                    selectionRange[i + props.cell.column - draggingElement.selectedCell] = true
                                 })
                                 setHoverRow(props.cell.row)
                                 setTitleRange(selectionRange)
                             }
-                            
+
                             if (isEditing) {
                                 const ebar = evaluatePosition(draggingElement, props.cell)
-                                console.log("pointerEnter")
+
                                 const selectionRange = {}
 
                                     ;[...Array(ebar.length)].forEach((na, i) => {
@@ -470,19 +469,25 @@ export default function HotelReservation(props) {
                                     })
                                 setHoverRow(ebar.row)
                                 setTitleRange(selectionRange)
-                                setDraggingElement(ebar)    
+                                setDraggingElement(ebar)
                                 editBar(ebar)
                             }
                         }}
+
                         pointerUpCell={({ cell }) => {
-                            if (isDragging) {
+                            console.log("pointer up cell")
+                            console.log("isdragging", isDragging)
+                            console.log("isediting", isEditing)
+                        
+                            if (isDragging && !isEditing) {
+                                
                                 const bar = {
                                     ...draggingElement,
                                     row: cell.row,
                                     column: cell.column - draggingElement.selectedCell,
                                     moving: false
                                 }
-
+                             
                                 editBar(bar)
 
                                 setStyle(`.reserver-drag{transform: translate(0px,0px)}`)
@@ -492,6 +497,7 @@ export default function HotelReservation(props) {
 
                             }
 
+
                             if (isEditing) {
 
                                 const bar = bars.find((bar) => { return bar.editing })
@@ -499,6 +505,7 @@ export default function HotelReservation(props) {
                                     setNewReservation(bar)
                                     toggleAddReservation();
                                 }
+                                
                                 editBar({ ...bar, editing: false })
                                 setHoverRow(-1)
                                 setTitleRange({})
@@ -514,13 +521,15 @@ export default function HotelReservation(props) {
                                         draggable
                                         {...bar}
                                         onPointerDown={(e, bar) => {
-                                            console.log(e.pointerId)
-                                            console.log("drag started")
+                                            e.target.releasePointerCapture(e.pointerId)
+                                            console.log("pointerdown",isEditing)
                                             if (isEditing) {
-                                                console.log("prevent default")
-                                            //    e.preventDefault()
+                                                console.log("inside")
+                                                e.preventDefault();
+                                             
                                                 return
                                             }
+                                            console.log("after")
 
                                             const target = e.currentTarget.getBoundingClientRect()
 
@@ -597,6 +606,7 @@ export default function HotelReservation(props) {
 
                                             editBar(element)
                                             setDraggingElement(element)
+                                            console.log("set is dragging true")
                                             setIsDragging(true)
                                         }}
                                         key={bar.id}
@@ -605,7 +615,11 @@ export default function HotelReservation(props) {
                                             <div style={{ zIndex: 10000, display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
                                                 <img
                                                     style={{ marginRight: "3px", height: "20px" }}
-                                                    onMouseDown={() => {
+                                                    onPointerDown={(e) => {
+                                                        console.log("last content clicked")
+                                                      
+                                                        e.stopPropagation();
+                                                        e.target.releasePointerCapture(e.pointerId)
                                                         const newbar = {
                                                             ...bar,
                                                             stick: 'left',
@@ -623,7 +637,10 @@ export default function HotelReservation(props) {
                                             <div style={{ zIndex: 10000, display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
                                                 <img
                                                     style={{ marginLeft: "3px", height: "20px" }}
-                                                    onMouseDown={() => {
+                                                    onPointerDown={(e) => {
+                                                         
+                                                        e.stopPropagation();
+                                                        e.target.releasePointerCapture(e.pointerId)
                                                         const newbar = {
                                                             ...bar,
                                                             stick: 'right',
