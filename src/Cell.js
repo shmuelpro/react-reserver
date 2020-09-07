@@ -6,9 +6,11 @@ export default function Cell(props) {
       aria-colindex={props.column}
       onDragStart={(e) => {
         e.preventDefault()
+        console.log("here")
       }}
       onDragOver={(e) => {
         e.preventDefault()
+        console.log("there")
         props.onDragOver({ cell: { row: props.row, column: props.column } }, e)
       }}
       className={props.className}
@@ -32,7 +34,18 @@ export default function Cell(props) {
       }}
       onPointerEnter={
         (e) => {
-          typeof props.onPointerEnter ==="function" && props.onPointerEnter(
+          typeof props.onPointerEnter === "function" && props.onPointerEnter(
+            {
+              dimension: props.dimension,
+              cell: { row: props.row, column: props.column }
+            },
+            e
+          )
+        }
+      }
+      onPointerLeave={
+        (e) => {
+          typeof props. onPointerLeave === "function" && props.onPointerLeave(
             {
               dimension: props.dimension,
               cell: { row: props.row, column: props.column }
@@ -43,7 +56,7 @@ export default function Cell(props) {
       }
       onPointerMove={
         (e) => {
-          typeof props.onPointerMove ==="function" && props.onPointerMove(
+          typeof props.onPointerMove === "function" && props.onPointerMove(
             {
               dimension: props.dimension,
               cell: { row: props.row, column: props.column }
@@ -62,7 +75,16 @@ export default function Cell(props) {
         )
       }}
       onPointerDown={(e) => {
-        props.onPointerDown(
+        typeof props.onPointerDown === "function" && props.onPointerDown(
+          {
+            dimension: props.dimension,
+            cell: { row: props.row, column: props.column }
+          },
+          e
+        )
+      }}
+      onPointerUp={(e) => {
+        typeof props.onPointerUp === "function" && props.onPointerUp(
           {
             dimension: props.dimension,
             cell: { row: props.row, column: props.column }

@@ -46,6 +46,14 @@ export default function Bar(props) {
       onMouseUp={(e) => {
         props.onMouseUp(e, props)
       }}
+      onTouchStart={(e) => {
+        typeof props.onTouchStart === "function" && props.onTouchStart(e, props)
+      }}
+      onPointerDown={(e) => {
+    
+        typeof props.onPointerDown === "function" && props.onPointerDown(e, props)
+      }
+      }
       draggable={props.draggable}
       style={{
         ...props.style,
@@ -93,16 +101,16 @@ export default function Bar(props) {
 Bar.defaultProps = {
   style: {},
   dimension: { width: 20, height: 20 },
-  onClick: () => {},
-  onMouseOver: () => {},
-  onDragStart: () => {},
-  onDragEnd: () => {},
-  onContextMenu: () => {},
-  onMouseDown: () => {},
-  onMouseUp: () => {},
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
-  onMouseMove: () => {},
+  onClick: () => { },
+  onMouseOver: () => { },
+  onDragStart: () => { },
+  onDragEnd: () => { },
+  onContextMenu: () => { },
+  onMouseDown: () => { },
+  onMouseUp: () => { },
+  onMouseEnter: () => { },
+  onMouseLeave: () => { },
+  onMouseMove: () => { },
   length: 1,
   content: {}
 }

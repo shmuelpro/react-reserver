@@ -49,6 +49,7 @@ const Reserver = React.forwardRef((props, ref) => {
       onMouseLeave={props.mouseLeaveGrid}
       onMouseMove={props.mouseMoveGrid}
       onPointerMove={props.pointerMoveGrid}
+      onPointerCancel={props.pointerCancelGrid}
       style={{ ...props.style, position: 'relative' }}
     >
       <Head
@@ -87,13 +88,15 @@ const Reserver = React.forwardRef((props, ref) => {
                 <Cell
                   key={`r${r}c${c}`}
                   onMouseDown={props.mouseDownCell}
-                  onMouseEnter={props.mouseEnterCell}
-                  onPointerEnter={props.pointerEnterCell}
+                  onMouseEnter={props.mouseEnterCell}               
                   onMouseUp={props.mouseUpCell}
                   onDrop={props.mouseDropCell}
                   onDragOver={props.mouseDragOverCell}
                   onPointerDown={props.pointerDownCell}
                   onPointerMove={props.pointerMoveCell}
+                  onPointerEnter={props.pointerEnterCell}
+                  onPointerLeave={props.pointerLeaveCell}
+                  onPointerUp={props.pointerUpCell}
                   dimension={dimension}
                   className={props.cellClassName}
                   column={c}
