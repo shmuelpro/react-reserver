@@ -23,7 +23,7 @@ module.exports = {
           label: 'Docs',
           position: 'left'
         },
-       
+
         {
           href: 'https://www.npmjs.com/package/react-reserver',
           label: 'npm',
@@ -47,7 +47,7 @@ module.exports = {
       {
         docs: {
           remarkPlugins: [remarkcodeimport],
-          
+
           sidebarPath: require.resolve('./sidebars.js')
         },
         blog: {

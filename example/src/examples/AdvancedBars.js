@@ -11,12 +11,7 @@ import Reserver, {
   checkCollisions
 } from 'react-reserver'
 
-import {
- resolveDateDiff,
-  resolveRow,
- 
-  positionToDate
-} from './helpers'
+import { resolveDateDiff, resolveRow, positionToDate } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 import moment from 'moment'
 import styles from './basicexamples.module.css'

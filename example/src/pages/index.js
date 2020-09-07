@@ -42,7 +42,7 @@ function Feature({ imageUrl, title, description }) {
 
 function Home() {
   const context = useDocusaurusContext()
-  const { siteConfig = {} } = context  
+  const { siteConfig = {} } = context
   return (
     <Layout
       title={`Docs for ${siteConfig.title}`}
@@ -50,10 +50,11 @@ function Home() {
     >
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className='container'>
-          <h1 className='hero__title'><img src="/react-reserver/img/logo.png"/></h1>
+          <h1 className='hero__title'>
+            <img src='/react-reserver/img/logo.png' />
+          </h1>
           <h1 className='hero__title'>{siteConfig.title}</h1>
           <p className='hero__subtitle'>{siteConfig.tagline}</p>
-
 
           <div className={styles.buttons}>
             <Link
@@ -62,7 +63,9 @@ function Home() {
                 styles.getStartedButton
               )}
               to={useBaseUrl('docs/')}
-            >     Get Started
+            >
+              {' '}
+              Get Started
             </Link>
           </div>
         </div>
@@ -71,41 +74,65 @@ function Home() {
         <section className={styles.featureText}>
           <div className='container'>
             <div className='row'>
-              <div style={{ width: "600px",padding:"0 20px" }} >
-                <h1>Find yourself needing to build a reservation system?</h1><br />
-             Hotel or restaurant?<br />
-              Schedule shifts for your employees?<br />
-               reserve a conference room in your office?<br/>
-              Project management?<br /><br/>
-              <b><i>All of this but totally customizable???</i></b><br /><br />
-
-              This is the solution you've been looking for!<br />
-
-              react-reserver is a time blocking solution.<br />
-              It creates a grid which allows you to block out different time slots representing time ownership. 
-              Allowing you to build a wide variety of tools. <br />
-
-              <div style={{ background: "#3578e5", textAlign: "center", color: "#fff", padding: "4px 0", borderRadius: "14px",marginTop:"10px" }}> Checkout the example below or the <a style={{color:"#fff"}} href="./docs">docs</a></div>
-              <br />
-
+              <div style={{ width: '600px', padding: '0 20px' }}>
+                <h1>Find yourself needing to build a reservation system?</h1>
+                <br />
+                Hotel or restaurant?
+                <br />
+                Schedule shifts for your employees?
+                <br />
+                reserve a conference room in your office?
+                <br />
+                Project management?
+                <br />
+                <br />
+                <b>
+                  <i>All of this but totally customizable???</i>
+                </b>
+                <br />
+                <br />
+                This is the solution you've been looking for!
+                <br />
+                react-reserver is a time blocking solution.
+                <br />
+                It creates a grid which allows you to block out different time
+                slots representing time ownership. Allowing you to build a wide
+                variety of tools. <br />
+                <div
+                  style={{
+                    background: '#3578e5',
+                    textAlign: 'center',
+                    color: '#fff',
+                    padding: '4px 0',
+                    borderRadius: '14px',
+                    marginTop: '10px'
+                  }}
+                >
+                  {' '}
+                  Checkout the example below or the{' '}
+                  <a style={{ color: '#fff' }} href='./docs'>
+                    docs
+                  </a>
+                </div>
+                <br />
+              </div>
             </div>
           </div>
-          </div>
         </section>
-      {features && features.length > 0 && (
-        <section className={styles.features}>
-          <div className='container'>
-            <div className='row'>
-              {features.map((props, idx) => (
-                <Feature key={idx} {...props} />
-              ))}
+        {features && features.length > 0 && (
+          <section className={styles.features}>
+            <div className='container'>
+              <div className='row'>
+                {features.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
-      <HotelReservation />
+          </section>
+        )}
+        <HotelReservation />
       </main>
-    </Layout >
+    </Layout>
   )
 }
 

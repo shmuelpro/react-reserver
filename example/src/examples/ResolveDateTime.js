@@ -12,7 +12,7 @@ import Reserver, {
 
 import moment from 'moment'
 import styles from './basicexamples.module.css'
-import { resolveRow, resolveDateDiff} from './helpers'
+import { resolveRow, resolveDateDiff } from './helpers'
 import { rooms, preMadeReservations } from './testdata'
 
 import './example.css'

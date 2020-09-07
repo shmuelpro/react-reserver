@@ -35,8 +35,8 @@ export default function RowTitle(props) {
                   background: '#12D3CF',
                   height: '100%',
                   textAlign: 'center',
-                  cursor:"pointer",
-                  fontSize:"15px"
+                  cursor: 'pointer',
+                  fontSize: '15px'
                 }}
                 onClick={() => {
                   setSelectedWorker(val)

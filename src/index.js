@@ -88,7 +88,7 @@ const Reserver = React.forwardRef((props, ref) => {
                 <Cell
                   key={`r${r}c${c}`}
                   onMouseDown={props.mouseDownCell}
-                  onMouseEnter={props.mouseEnterCell}               
+                  onMouseEnter={props.mouseEnterCell}
                   onMouseUp={props.mouseUpCell}
                   onDrop={props.mouseDropCell}
                   onDragOver={props.mouseDragOverCell}
@@ -178,6 +178,6 @@ Reserver.defaultProps = {
   mouseDropCell: () => {},
   mouseLeaveGrid: () => {},
   mouseMoveGrid: () => {},
-  pointerDownCell:()=>{},
-  pointerEnterCell:()=>{}
+  pointerDownCell: () => {},
+  pointerEnterCell: () => {}
 }

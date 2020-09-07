@@ -97,9 +97,7 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  >
-    great
-  </div>
+  />
   <div
     style={
       Object {
@@ -117,9 +115,7 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  >
-    cool
-  </div>
+  />
   <div
     style={
       Object {
@@ -128,9 +124,7 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  >
-    meh
-  </div>
+  />
 </div>
 `;
 

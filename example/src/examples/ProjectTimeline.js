@@ -14,13 +14,7 @@ import Reserver, {
 import moment from 'moment'
 
 import { projectUnits } from './testdata'
-import {
-
-  resolveRow,
-  resolveDateDiff,
-  resolveDate,
-  dateRange
-} from './helpers'
+import { resolveRow, resolveDateDiff, resolveDate, dateRange } from './helpers'
 
 const arrowMarker = [
   {
@@ -38,28 +32,27 @@ const arrowMarker = [
 
 function useStyle() {
   if (typeof window === 'undefined' || typeof document === 'undefined') {
-    return ()=>{}
-}
+    return () => {}
+  }
   const el = useRef(document.createElement('style'))
 
   useEffect(() => {
-      el.current.type = 'text/css'
+    el.current.type = 'text/css'
 
-      // Add it to the head of the document
+    // Add it to the head of the document
 
-      const head = document.querySelector('head')
-      head.appendChild(el.current)
+    const head = document.querySelector('head')
+    head.appendChild(el.current)
 
-      // At some future point we can totally redefine the entire content of the style element
+    // At some future point we can totally redefine the entire content of the style element
   }, [])
 
   const setStyle = (newStyles) => {
-      el.current.innerHTML = newStyles
+    el.current.innerHTML = newStyles
   }
 
   return setStyle
 }
-
 
 function buildElements(elements) {
   const frag = document.createDocumentFragment()
@@ -89,10 +82,9 @@ function buildElement(elementAttributes) {
 }
 
 function useSVG(attributes, defs) {
-
   if (typeof window === 'undefined' || typeof document === 'undefined') {
-    return ()=>{}
-}
+    return () => {}
+  }
 
   const el = useRef(
     document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -117,8 +109,6 @@ function useSVG(attributes, defs) {
 
       el.current.setAttribute(key, value)
     })
-
-    
 
     // attach container to document
     const body = document.querySelector('body')
@@ -212,21 +202,21 @@ function useGenerateMonths(count, startDate, width, rowTitleWidth = 0) {
   let currentWidth = 0
   useEffect(() => {
     const tDivs = []
-      ;[...Array(count)].forEach((n, i) => {
-        const evaluatedMonth = startDate.clone().add(i, 'days').format('MMMM')
+    ;[...Array(count)].forEach((n, i) => {
+      const evaluatedMonth = startDate.clone().add(i, 'days').format('MMMM')
 
-        if (currentMonth !== evaluatedMonth && currentWidth > 0) {
-          tDivs.push(
-            <Month key={currentMonth} width={currentWidth}>
-              {currentMonth}
-            </Month>
-          )
-          currentWidth = 0
-          currentMonth = evaluatedMonth
-        }
+      if (currentMonth !== evaluatedMonth && currentWidth > 0) {
+        tDivs.push(
+          <Month key={currentMonth} width={currentWidth}>
+            {currentMonth}
+          </Month>
+        )
+        currentWidth = 0
+        currentMonth = evaluatedMonth
+      }
 
-        currentWidth += width
-      })
+      currentWidth += width
+    })
 
     if (currentWidth > 0) {
       tDivs.push(
@@ -589,7 +579,6 @@ export default function ProjectTimeline(props) {
                 { name: 'Foundational', rows: 6 },
                 { name: 'Travel + lodging', rows: 1 }
               ].flatMap((item) => {
-                
                 return [...Array(item.rows)].map((n, i) => {
                   if (i === 0) {
                     return (
@@ -620,15 +609,15 @@ export default function ProjectTimeline(props) {
             content={(columnCount, rowCount) => {
               const content = {}
 
-                ;[...Array(rowCount)].forEach((unused, r) => {
-                  ;[...Array(columnCount)].forEach((unused, c) => {
-                    content[`r${r}c${c}`] = (
-                      <Peg
-                        style={{ background: c % 2 == 0 ? '#EDF1F2' : '#F6F8F9' }}
-                      />
-                    )
-                  })
+              ;[...Array(rowCount)].forEach((unused, r) => {
+                ;[...Array(columnCount)].forEach((unused, c) => {
+                  content[`r${r}c${c}`] = (
+                    <Peg
+                      style={{ background: c % 2 == 0 ? '#EDF1F2' : '#F6F8F9' }}
+                    />
+                  )
                 })
+              })
 
               return content
             }}
@@ -637,9 +626,9 @@ export default function ProjectTimeline(props) {
 
               const selectionRange = {}
 
-                ;[...Array(newbar.length)].forEach((na, i) => {
-                  selectionRange[i + newbar.column] = true
-                })
+              ;[...Array(newbar.length)].forEach((na, i) => {
+                selectionRange[i + newbar.column] = true
+              })
 
               setTitleRange(selectionRange)
 
@@ -709,20 +698,19 @@ export default function ProjectTimeline(props) {
 
                 setStyle(
                   `.reserver-drag{transform: translate(${
-                  e.pageX - draggingElement.draggingLeft
+                    e.pageX - draggingElement.draggingLeft
                   }px,${e.pageY - draggingElement.draggingTop}px)}`
                 )
               }
             }}
-         
             mouseEnterCell={(props) => {
               if (isDragging && !isEditing) {
                 const selectionRange = {}
-                  ;[...Array(draggingElement.length)].forEach((na, i) => {
-                    selectionRange[
-                      i + props.cell.column - draggingElement.selectedCell
-                    ] = true
-                  })
+                ;[...Array(draggingElement.length)].forEach((na, i) => {
+                  selectionRange[
+                    i + props.cell.column - draggingElement.selectedCell
+                  ] = true
+                })
 
                 setTitleRange(selectionRange)
               }
@@ -732,9 +720,9 @@ export default function ProjectTimeline(props) {
                 console.log(ebar.length)
                 const selectionRange = {}
 
-                  ;[...Array(ebar.length)].forEach((na, i) => {
-                    selectionRange[i + ebar.column] = true
-                  })
+                ;[...Array(ebar.length)].forEach((na, i) => {
+                  selectionRange[i + ebar.column] = true
+                })
 
                 setTitleRange(selectionRange)
                 setDraggingElement(ebar)
@@ -897,7 +885,7 @@ export default function ProjectTimeline(props) {
                           style={{ borderRadius: '100%' }}
                           src={`/react-reserver/resources/images/${
                             bar.img || 'default.jpg'
-                            }`}
+                          }`}
                         />
                       </div>
                       <div

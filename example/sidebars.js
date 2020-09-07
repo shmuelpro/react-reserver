@@ -22,7 +22,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Showcase',
-      items: ['projecttimeline','hotelreservation']
+      items: ['projecttimeline', 'hotelreservation']
     },
     {
       type: 'category',

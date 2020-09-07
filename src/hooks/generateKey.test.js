@@ -13,6 +13,6 @@ test('it', () => {
   }
 
   obj.is = obj
-  
+
   expect(2).toBe(2)
 })

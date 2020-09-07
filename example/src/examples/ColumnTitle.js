@@ -39,7 +39,7 @@ export default function ColumnTitle(props) {
                     height: '100%',
                     width: '100%',
                     textAlign: 'center',
-                    cursor:"pointer"
+                    cursor: 'pointer'
                   }}
                   onClick={() => {
                     setSelectedDate(

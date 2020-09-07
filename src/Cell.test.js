@@ -2,7 +2,6 @@ import React from 'react'
 import Cell from './Cell'
 import { render, fireEvent, screen } from '@testing-library/react'
 
-
 test('onDragStart event fires', () => {
   const dragMe = jest.fn()
   render(
@@ -19,11 +18,10 @@ test('onDragStart event fires', () => {
   expect(dragMe).not.toHaveBeenCalled()
 })
 
-
 test('onPointerUp event fires', () => {
   const fn = jest.fn()
 
-  //fireEvent(node, myEvent)
+  // fireEvent(node, myEvent)
   render(
     <Cell
       style={{ pointerEvents: 'auto' }}
@@ -42,7 +40,7 @@ test('onPointerUp event fires', () => {
 test('onPointerDown event fires', () => {
   const fn = jest.fn()
 
-  //fireEvent(node, myEvent)
+  // fireEvent(node, myEvent)
   render(
     <Cell
       style={{ pointerEvents: 'auto' }}
@@ -61,14 +59,12 @@ test('onPointerDown event fires', () => {
 test('onPointerMove event fires', () => {
   const fn = jest.fn()
 
-
-  //fireEvent(node, myEvent)
+  // fireEvent(node, myEvent)
   render(
     <Cell
       style={{ pointerEvents: 'auto' }}
       dimension='20'
       onPointerMove={fn}
-
       row={2}
       column={3}
     />
@@ -98,7 +94,6 @@ test('onPointerOver event fires', () => {
 
   expect(fn).toHaveBeenCalled()
   expect(fn2).toHaveBeenCalled()
-
 })
 
 test('onPointerOut event fires', () => {
@@ -120,11 +115,7 @@ test('onPointerOut event fires', () => {
 
   expect(fn).toHaveBeenCalled()
   expect(fn2).toHaveBeenCalled()
-  
-
 })
-
-
 
 test('onDragOver event fires', () => {
   let cell = {}
