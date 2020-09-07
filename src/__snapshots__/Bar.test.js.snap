@@ -12,6 +12,7 @@ exports[`renders content 1`] = `
   onMouseMove={[Function]}
   onMouseOver={[Function]}
   onMouseUp={[Function]}
+  onPointerDown={[Function]}
   role="listitem"
   style={
     Object {
@@ -76,6 +77,7 @@ exports[`renders content only body 1`] = `
   onMouseMove={[Function]}
   onMouseOver={[Function]}
   onMouseUp={[Function]}
+  onPointerDown={[Function]}
   role="listitem"
   style={
     Object {
@@ -95,7 +97,9 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  />
+  >
+    great
+  </div>
   <div
     style={
       Object {
@@ -113,7 +117,9 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  />
+  >
+    cool
+  </div>
   <div
     style={
       Object {
@@ -122,7 +128,9 @@ exports[`renders content only body 1`] = `
         "width": 20,
       }
     }
-  />
+  >
+    meh
+  </div>
 </div>
 `;
 
@@ -138,6 +146,7 @@ exports[`renders content only last  1`] = `
   onMouseMove={[Function]}
   onMouseOver={[Function]}
   onMouseUp={[Function]}
+  onPointerDown={[Function]}
   role="listitem"
   style={
     Object {

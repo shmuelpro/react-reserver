@@ -41,6 +41,20 @@ test('onContextMenu event fires', () => {
   expect(onClick).toHaveBeenCalled()
 })
 
+test('onContextMenu event fires', () => {
+  const onClick = jest.fn()
+  render(
+    <Bar
+      style={{ pointerEvents: 'auto' }}
+      dimension={{ width: 20, height: 20 }}
+      onPointerDown={onClick}
+    />
+  )
+  fireEvent.pointerDown(screen.getByRole('listitem'))
+
+  expect(onClick).toHaveBeenCalled()
+})
+
 test('onDragStart event fires', () => {
   const dragMe = jest.fn()
   render(
