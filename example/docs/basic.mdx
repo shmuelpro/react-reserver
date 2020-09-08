@@ -15,13 +15,27 @@ Click and drag on any square in the grid to create a new bar
 
 :::
 
-<Basic />
+<iframe
+  src="https://codesandbox.io/embed/gracious-leaf-3ryy4?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 600,
+    border: 0,
+    borderRadius: 4,
+    
+    overflow: "hidden"
+  }}
+  title="gracious-leaf-3ryy4"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>
+
 
 ### The code
 
 ``` jsx
 import React from 'react'
-import 'react-reserver/dist/index.css'
+import styles from './basicexamples.module.css'
 import Reserver, 
 { Bar, 
 useReserver,
@@ -39,7 +53,7 @@ export default function Basic(props) {
             addBar(newbar)
         }}
         mouseEnterCell={(props) => {
-            const nBars = resizeBar(bars, props)
+            const nBars = resizeBars(bars, props)
             setBars(nBars)
         }}
         mouseUpCell={() => {  
@@ -60,6 +74,7 @@ export default function Basic(props) {
             style={{ ...getPosition(bar.row, bar.column, bar.dimension) }} /> })
         }
     </Reserver>
+}
 ```
 
 ```css

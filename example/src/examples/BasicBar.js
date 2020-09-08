@@ -12,7 +12,7 @@ import Reserver, {
 import styles from './basicexamples.module.css'
 import { getRandomColor } from './helpers'
 
-export default function BasicPlusPlus(props) {
+export default function BasicBar(props) {
   const { bars, isEditing, setIsEditing, addBar, setBars } = useReserver(
     reserverReducer,
     []

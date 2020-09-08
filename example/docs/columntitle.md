@@ -3,14 +3,27 @@ id: columntitle
 title: Column Title
 sidebar_label: Column Title
 ---
-import ColumnTitle from '../src/examples/ColumnTitle'
+
 
 So we want to give each column a title, it could be a date or time. 
 In this example I use the library [moment](https://momentjs.com/) in order to generate the array of dates but you can use any library you want or you can just use a static array. 
 
 Click on a title to see what happens!
 
-<ColumnTitle />
+<iframe
+  src="https://codesandbox.io/embed/goofy-architecture-n0dq4?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 600,
+    border: 0,
+    borderRadius: 4,
+    overflow: "hidden"
+  }}
+  title="goofy-architecture-n0dq4"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>;
+
 
 
 ```jsx  file=../src/examples/ColumnTitle.js
