@@ -63,7 +63,21 @@ In order to control the direction of expansion and contraction of the bar I need
 stick is the property that defines which side stays in place. 
 so when I am moving the right side I want the left to stay in place. 
 When I decide the right should stay in place its `stick:right`
-<AdvancedBars />
+
+<iframe
+  src="https://codesandbox.io/embed/advanced-bars-ck647?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: "hidden"
+  }}
+  title="Advanced Bars"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>;
+
 
 ```jsx file=../src/examples/AdvancedBars.js
 ```
