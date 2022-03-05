@@ -17,7 +17,7 @@
       "1.0.x"
     ]
   },
-  "scripts": {   
+  "scripts": {
     "build": "microbundle --jsx React.createElement --format modern,cjs",
     "start": "microbundle -w --no-compress --jsx React.createElement --format modern,cjs",
     "prepare": "run-s build",
@@ -34,7 +34,7 @@
     "commit": "npx git-cz"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0 || ^17.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.24.1",
