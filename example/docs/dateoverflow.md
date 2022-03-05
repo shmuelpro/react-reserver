@@ -5,9 +5,19 @@ sidebar_label: Date Overflow
 ---
 
 
-import DateOverflow from '../src/examples/DateOverflow'
-
-<DateOverflow />
+<iframe
+  src="https://codesandbox.io/embed/date-overflow-tdmq8?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: "hidden"
+  }}
+  title="Date Overflow"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>;
 
 As you see here before every render we clip the sides that overflow. 
 We leave a flag in case we want a way to have a visual identification of the change. 

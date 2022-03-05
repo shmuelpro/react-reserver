@@ -3,7 +3,6 @@ id: rowtitle
 title: Row Title
 sidebar_label: Row Title
 ---
-import RowTitle from '../src/examples/RowTitle'
 
 How about giving each row a title?
 Maybe it represents a room, a vehicle or person. 
@@ -11,7 +10,20 @@ So here we are going to create a list of people so we can assign their work time
 
 Click on a title to see what happens!
 
-<RowTitle />
+<iframe
+  src="https://codesandbox.io/embed/rowtitle-04kdb?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: "hidden"
+  }}
+  title="RowTitle"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>;
+
 
 We are going to use the prop rowTitles which takes an array or a function that returns an array. 
 

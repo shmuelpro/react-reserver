@@ -29,7 +29,7 @@ export default function ContentCrosshairs(props) {
   const [content, setContent] = useState({})
   const [currentDateRoom, setCurrentDateRoom] = useState({ date: '', room: '' })
   const [contextMenuState, setContextMenuState] = useState({
-    visibile: false,
+    visible: false,
     top: 0,
     left: 0
   })

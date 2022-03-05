@@ -2,7 +2,7 @@ const remarkcodeimport = require('remark-code-import')
 
 module.exports = {
   title: 'React Reserver',
-  tagline: 'The best time blocking solution ',
+  tagline: 'A powerful time blocking solution ',
   url: 'https://shmuelpro.github.io',
   baseUrl: '/react-reserver/',
   onBrokenLinks: 'throw',

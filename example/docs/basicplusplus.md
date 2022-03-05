@@ -3,13 +3,24 @@ id: basicplusplus
 title: Basic++
 sidebar_label: Basic++
 ---
-import BasicPlusPlus from '../src/examples/BasicPlusPlus'
 
 Ok so you ran the basic example and you want to see more.
 
 Here it is 
 
-<BasicPlusPlus />
+<iframe
+  src="https://codesandbox.io/embed/morning-leaf-e4cp8?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style={{
+    width: "100%",
+    height: 600,
+    border: 0,
+    borderRadius: 4,
+    overflow: "hidden"
+  }}
+  title="morning-leaf-e4cp8"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+/>
 
 You are probably thinking hey wait this looks exactly the same!
 
