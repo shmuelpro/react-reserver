@@ -7,7 +7,7 @@ sidebar_label: Basic
 import Basic from '../src/examples/Basic'
 
 This is the most basic example.
-A grid, 500px wide and 500px high is created, since those are the default props.
+A grid, 500px wide and 500px high, is created since those are the default props.
 
 :::tip
 
@@ -99,8 +99,8 @@ In order to allow you to control the state of Reserver we use a reducer
  const { bars, addBar, setBars } = useReserver(reserverReducer, [])   
 ```
 
-**useReserver** is a the hook. 
-**reserverReducer** is the reducer. 
+**useReserver** is a hook. 
+**reserverReducer** is a reducer. 
 
 The hook returns:
 
@@ -117,8 +117,8 @@ mouseDownCell={(props) => {
         }}
 ```
 
-[mouseDownCell](/docs/reserver#mousedowncell) is the onMouseDown for all each cell.
-The prop parameter receives the [dimension](/docs/reserver#dimension) of the cell and the location in the object cell
+[mouseDownCell](/docs/reserver#mousedowncell) is the onMouseDown for all the cells.
+The **props** parameter receives the [dimension](/docs/reserver#dimension) of the cell and the location in the object cell
 
 ```json 
 cell: { row: r, column: c }
@@ -126,9 +126,9 @@ cell: { row: r, column: c }
 
 ``` 
 
-The objects dimension and cell get passed to the function [createBar](/docs/helpers#createbar)
+The object's **dimension** and **cell** get passed to the function [createBar](/docs/helpers#createbar)
 
-createBar is a helper function that takes dimension and cell as arguments and returns an object containing 
+**createBar** is a helper function that takes dimension and cell as arguments and returns an object containing 
 a new id, the dimension, editing as a boolean set to true, the location which is the cell.
 All these get passed as props into the bar and are necessary as basic properties for the bars array. 
 
@@ -177,7 +177,7 @@ The children of the Reserver component are an array of the component Bar.
 
 [cellClassName](/docs/reserver#cellclassname) is the className that is passed to all cells. by default it is empty so if you dont add a style it will be invisible
 
-Thats it! Thats the most basic code that allows you to run the example. 
+That's it! Thats the most basic code that allows you to run the example. 
 
 :::caution
 This is not the best way to use Reserver. Its only an example to simplify the process of getting started. 
@@ -186,7 +186,3 @@ This is not the best way to use Reserver. Its only an example to simplify the pr
 :::tip
 Go to Basic++ to see a more robust example of how to use Reserver
 :::
-
-     
-
- 
