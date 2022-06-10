@@ -62,7 +62,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "react-test-renderer": "^16.13.1",
-    "semantic-release": "^17.1.1"
+    "semantic-release": "^19.0.3"
   },
   "files": [
     "dist"
